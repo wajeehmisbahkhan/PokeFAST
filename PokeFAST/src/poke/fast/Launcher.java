@@ -2,6 +2,8 @@ package poke.fast;
 
 public class Launcher {
 	public static void main (String[] args) {
+		System.out.println("Starting Ceremony. Yay!");
+		System.out.println("A seperate idea.");
 		System.out.println("Starting Ceremony. Master!");
 	}
 }

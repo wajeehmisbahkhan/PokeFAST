@@ -5,5 +5,6 @@ public class Launcher {
 		System.out.println("Starting Ceremony. Master!");
 		System.out.println("A seperate idea.");
 		System.out.println("Starting Ceremony. Master!");
+		//important
 	}
 }

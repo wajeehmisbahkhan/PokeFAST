@@ -5,7 +5,7 @@ public class Launcher {
 		//This main method will instantiate and launch the game
 		
 		Game game = new Game("PokeFAST", 400, 400);
-		//game.start();
+		game.start();
 		
 	}
 }

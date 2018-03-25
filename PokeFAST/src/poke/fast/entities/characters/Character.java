@@ -66,6 +66,4 @@ public abstract class Character extends Entity {
 		this.yMove = yMove;
 	}
 	
-	
-	
 }

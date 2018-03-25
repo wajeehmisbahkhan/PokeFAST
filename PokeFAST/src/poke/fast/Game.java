@@ -135,7 +135,14 @@ public class Game implements Runnable {
 	public void setHeight (int h) {
 		height = h;
 	}
+	public GameState getGameState () {
+		return gameState;
+	}
+	public MenuState getMenuState () {
+		return menuState;
+	}
 	public MouseManager getMouseManager () {
 		return mouseManager;
 	}
+	
 }

@@ -7,7 +7,7 @@ public class Assets {
 	public static final int width = 32, height = 32; // This will be used for most of the objects
 	
 	//GameItems
-	public static BufferedImage player, grass, rock, dirt, tree;	//spritesheet needed
+	public static BufferedImage player, grass, rock, dirt, tree;	
 	
 	//The Menu Items
 	public static BufferedImage[] btn_start;
@@ -35,7 +35,7 @@ public class Assets {
 		
 		
 		//Game
-		player = boxSheet.crop(0, 0, width, height);
+		player = boxSheet.crop(0, 0, width, height);		//replace this with array of player textures
 		grass = boxSheet.crop(width, 0, width, height);
 		rock = boxSheet.crop(width*2, height*3, width, height);
 		dirt = boxSheet.crop(0, height*3, width, height);

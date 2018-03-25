@@ -73,7 +73,7 @@ public class Game implements Runnable {
 		
 		//Managers
 		mouseManager = new MouseManager();
-		keyManager = new KeyManager();
+		//keyManager = new KeyManager();
 		
 		//States
 		gameState = new GameState(handler);

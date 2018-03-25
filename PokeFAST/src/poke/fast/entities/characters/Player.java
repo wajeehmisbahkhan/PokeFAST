@@ -39,6 +39,7 @@ public class Player extends Character{
 		getInput();
 		move();
 		handler.getGameCamera().centerOnEntity(this);
+		System.out.println("player ticking");
 	}
 
 	private void getInput() {
@@ -59,7 +60,6 @@ public class Player extends Character{
 	
 	@Override
 	public void render(Graphics g) {
-		//assets.player should be replaced with current animation
 		g.drawImage(getCurrentAnimationFrame(), (int) ( x - handler.getGameCamera().getxOffset() ), (int) ( y - handler.getGameCamera().getyOffset() ),
 				width, height, null);
 		

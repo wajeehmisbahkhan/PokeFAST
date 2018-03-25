@@ -6,16 +6,17 @@ import poke.fast.tiles.Tile;
 
 public abstract class Character extends Entity {
 	
-	//some gpa, health, speed vars needed
+	public static final float DEFAULT_GPA = 4.0f ;
 	public static final int DEFAULT_WIDTH = 64,
 							DEFAULT_HEIGHT = 64;
 	public static final float DEFAULT_SPEED = 3.0f;
 	
-	protected int health;
+	protected float gpa;
 	protected float speed, xMove, yMove;
 
 	public Character(Handler handler, float x, float y, int width, int height) {
 		super(handler, x, y, width, height);
+		gpa = DEFAULT_GPA;
 		speed = DEFAULT_SPEED;
 		xMove = 0; yMove = 0;
 	}
@@ -23,6 +24,7 @@ public abstract class Character extends Entity {
 	public void move() {
 		moveX();
 		moveY();
+		System.out.println("move called");
 	}
 	
 	public void moveY() {
@@ -66,12 +68,12 @@ public abstract class Character extends Entity {
 		return handler.getMap().getTile(x,y).isSolid();
 	}
 
-	public int getHealth() {
-		return health;
+	public float getHealth() {
+		return gpa;
 	}
 
 	public void setHealth(int health) {
-		this.health = health;
+		this.gpa = health;
 	}
 
 	public float getSpeed() {

@@ -1,5 +1,6 @@
 package poke.fast;
 
+import poke.fast.gfx.GameCamera;
 import poke.fast.input.MouseManager;
 import poke.fast.maps.Map;
 import poke.fast.states.GameState;
@@ -9,6 +10,7 @@ import poke.fast.states.GameState;
 public class Handler {
 	private Game game;
 	private Map map;
+	private GameState gameState;
 	
 	public Handler (Game game) {
 		this.game = game;
@@ -41,4 +43,9 @@ public class Handler {
 	public int getHeight() {
 		return game.getHeight();
 	}
+	
+	public GameCamera getGameCamera() {
+		return gameState.getGameCamera() ;
+	}
+	
 }

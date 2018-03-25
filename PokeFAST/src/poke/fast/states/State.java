@@ -11,7 +11,7 @@ public abstract class State {
 	private static State currentState = null; //It is static because we want to access it directly through the class and it can only be one thing globally
 	
 	//The handler
-	private Handler handler;	
+	protected Handler handler;	
 	//Constructor is for the inherited children
 	public State(Handler handler) {
 		this.handler = handler;

@@ -6,6 +6,8 @@ import java.awt.image.BufferedImage;
 public class Assets {
 	public static final int width = 32, height = 32; // This will be used for most of the objects
 	
+	//GameItems
+	public static BufferedImage player, grass, rock, dirt, tree;	//spritesheet needed
 	
 	//The Menu Items
 	public static BufferedImage[] btn_start;

@@ -21,6 +21,9 @@ public class Assets {
 		SpriteSheet menuBack = new SpriteSheet(ImageLoader.loadImage("/textures/menu_bg.jpg")); //Change later to become part of menu_sheet
 		SpriteSheet logoSheet = new SpriteSheet(ImageLoader.loadImage("/textures/logo.png")); //Change later
 		
+		//player and tiles
+		SpriteSheet boxSheet = new SpriteSheet(ImageLoader.loadImage("/textures/box_sheet.png"));
+		
 		//Crop the required items
 		//Menu
 		menuBg = menuBack.crop(0, 0, 615, 393);
@@ -32,6 +35,13 @@ public class Assets {
 		
 		
 		//Game
+		player = boxSheet.crop(0, 0, width, height);
+		grass = boxSheet.crop(width, 0, width, height);
+		rock = boxSheet.crop(width*2, height*3, width, height);
+		dirt = boxSheet.crop(0, height*3, width, height);
+		tree = boxSheet.crop(width, height, width, height);
+		
+		
 	}
 	
 }

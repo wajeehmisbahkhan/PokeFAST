@@ -1,6 +1,7 @@
 package poke.fast;
 
 import poke.fast.gfx.GameCamera;
+import poke.fast.input.KeyManager;
 import poke.fast.input.MouseManager;
 import poke.fast.maps.Map;
 import poke.fast.states.GameState;
@@ -25,9 +26,10 @@ public class Handler {
 		return game.getMouseManager();
 	}
 	
-	public GameState getGameState () {
-		return game.getGameState();
+	public KeyManager getKeyManager() {
+		return game.getKeyManager();
 	}
+	
 
 	public Map getMap() {
 		return map;
@@ -45,7 +47,7 @@ public class Handler {
 	}
 	
 	public GameCamera getGameCamera() {
-		return gameState.getGameCamera() ;
+		return game.getGameCamera() ;
 	}
 	
 }

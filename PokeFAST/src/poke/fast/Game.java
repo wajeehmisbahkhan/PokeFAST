@@ -5,6 +5,8 @@ import java.awt.image.BufferStrategy;
 
 import poke.fast.display.Display;
 import poke.fast.gfx.Assets;
+import poke.fast.gfx.GameCamera;
+import poke.fast.input.KeyManager;
 import poke.fast.input.MouseManager;
 import poke.fast.states.State;
 import poke.fast.states.GameState;
@@ -29,11 +31,15 @@ public class Game implements Runnable {
 	private boolean running;
 	
 	//The States
-	private GameState gameState;
-	private MenuState menuState;
+	private State gameState;
+	private State menuState;
 	
 	//These are the inputs
 	private MouseManager mouseManager;
+	private KeyManager keyManager;
+	
+	//Game Camera
+	private GameCamera gameCamera;
 	
 	//This is the handler for the game
 	private Handler handler;
@@ -46,6 +52,8 @@ public class Game implements Runnable {
 		this.title = title;
 		this.width = width;
 		this.height = height;
+		
+		keyManager = new KeyManager();
 	}
 	
 	//Initialize the game
@@ -53,13 +61,19 @@ public class Game implements Runnable {
 		//Initialize
 		//Display
 		display = new Display(title, width, height);
+		//Keylistener - JFrame
+		display.getFrame().addKeyListener(keyManager);
 		//Handler
 		handler = new Handler(this);
 		//Assets
 		Assets.init();
 		
+		//Camera
+		gameCamera = new GameCamera(handler);
+		
 		//Managers
 		mouseManager = new MouseManager();
+		keyManager = new KeyManager();
 		
 		//States
 		gameState = new GameState(handler);
@@ -77,6 +91,7 @@ public class Game implements Runnable {
 	
 	//Keep updating these Managers
 	public void tick () {
+		keyManager.tick();
 		if (State.getState() != null)
 			State.getState().tick();
 	}
@@ -135,14 +150,17 @@ public class Game implements Runnable {
 	public void setHeight (int h) {
 		height = h;
 	}
-	public GameState getGameState () {
-		return gameState;
-	}
-	public MenuState getMenuState () {
-		return menuState;
-	}
 	public MouseManager getMouseManager () {
 		return mouseManager;
 	}
-	
+	public KeyManager getKeyManager() {
+		return keyManager;
+	}
+	public GameCamera getGameCamera() {
+		return gameCamera;
+	}
+
+	public State getGameState() {
+		return gameState;
+	}
 }

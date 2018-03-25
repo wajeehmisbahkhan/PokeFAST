@@ -11,6 +11,8 @@ public class GameCamera {
 	
 	public GameCamera (Handler handler) {
 		this.handler = handler;
+		xOffset = 0;
+		yOffset = 0;
 	}
 	
 	//When the player moves, it will change the position of the camera

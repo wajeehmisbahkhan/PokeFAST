@@ -43,20 +43,20 @@ public class Map {
 	
 	public void render (Graphics g) {
 		//Only render tiles that are within the game camera
-		int xStart = (int) Math.max(0, handler.getGameState().getGameCamera().getxOffset() / Tile.TILEWIDTH);
-		int xEnd = (int) Math.min(width, ((handler.getGameState().getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEWIDTH) + 1);
-		int yStart = (int) Math.max(0, handler.getGameState().getGameCamera().getyOffset() / Tile.TILEHEIGHT);
-		int yEnd = (int) Math.min(height, ((handler.getGameState().getGameCamera().getyOffset() + handler.getHeight()) / Tile.TILEHEIGHT) + 1);
+		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILEWIDTH);
+		int xEnd = (int) Math.min(width, ((handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEWIDTH) + 1);
+		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILEHEIGHT);
+		int yEnd = (int) Math.min(height, ((handler.getGameCamera().getyOffset() + handler.getHeight()) / Tile.TILEHEIGHT) + 1);
 		//Render the tiles
 		for (int y = yStart; y < yEnd; y++) { //Prevents problems
 			for (int x = xStart; x < xEnd; x++) {
-				getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - handler.getGameState().getGameCamera().getxOffset()),
-						(int) (y * Tile.TILEHEIGHT - handler.getGameState().getGameCamera().getyOffset()));
+				getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - handler.getGameCamera().getxOffset()),
+						(int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
 			}
 		}
 	}
 	
-	private Tile getTile(int x, int y) {
+	public Tile getTile(int x, int y) {
 		if (x < 0 || y < 0 || x >= width || y >= height) //In case our starting and ending are miscalculated
 			return Tile.grassTile;
 		//The tile is taken using its id

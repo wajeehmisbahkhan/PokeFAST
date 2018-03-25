@@ -18,16 +18,14 @@ public class Assets {
 	public static void init () {
 		//Load all the sprite sheets
 		SpriteSheet menuSheet = new SpriteSheet(ImageLoader.loadImage("/textures/menu_sheet.png"));
-		SpriteSheet menuBack = new SpriteSheet(ImageLoader.loadImage("/textures/menu_bg.jpg")); //Change later to become part of menu_sheet
-		SpriteSheet logoSheet = new SpriteSheet(ImageLoader.loadImage("/textures/logo.png")); //Change later
+		SpriteSheet menuBack = new SpriteSheet(ImageLoader.loadImage("/textures/menu_bg.jpg"));
 		
 		//player and tiles
 		SpriteSheet boxSheet = new SpriteSheet(ImageLoader.loadImage("/textures/box_sheet.png"));
 		
 		//Crop the required items
 		//Menu
-		menuBg = menuBack.crop(0, 0, 615, 393);
-		logo = logoSheet.crop(0, 0, 2125, 521);
+		menuBg = menuBack.crop(0, 0, 400, 400);
 		
 		btn_start = new BufferedImage[2];
 		btn_start[0] = menuSheet.crop(0, 0, 160, 45);

@@ -11,12 +11,10 @@ public abstract class Character extends Entity {
 							DEFAULT_HEIGHT = 64;
 	public static final float DEFAULT_SPEED = 0.7f;
 	
-	protected float gpa;
 	protected float speed, xMove, yMove;
 
 	public Character(Handler handler, float x, float y, int width, int height) {
 		super(handler, x, y, width, height);
-		gpa = DEFAULT_GPA;
 		speed = DEFAULT_SPEED;
 		xMove = 0; yMove = 0;
 	}
@@ -66,15 +64,6 @@ public abstract class Character extends Entity {
 	protected boolean collisionWithTile (int x, int y) {
 		return handler.getMap().getTile(x,y).isSolid();
 	}
-
-	public float getHealth() {
-		return gpa;
-	}
-
-	public void setHealth(int health) {
-		this.gpa = health;
-	}
-
 	public float getSpeed() {
 		return speed;
 	}

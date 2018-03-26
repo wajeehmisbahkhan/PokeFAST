@@ -10,12 +10,14 @@ import poke.fast.gfx.Assets;
 public class Player extends Character{
 
 	//animation & direction
-	private int direction;
+	private int direction, GPA;
 	private Animation upimation, downimation, leftimation, rightimation;
 	
 	
 	public Player( Handler handler, float x, float y) {
 		super(handler, x, y, Character.DEFAULT_WIDTH, Character.DEFAULT_HEIGHT);
+		
+		GPA = 400;
 		
 		bounds.x = 16;
 		bounds.y = 32;

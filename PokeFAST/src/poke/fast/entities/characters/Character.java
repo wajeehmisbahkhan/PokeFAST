@@ -19,6 +19,11 @@ public abstract class Character extends Entity {
 		xMove = 0; yMove = 0;
 	}
 
+	//For BattleState
+	public Character () {
+		
+	}
+	
 	public void move() {
 		moveX();
 		moveY();

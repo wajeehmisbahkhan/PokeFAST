@@ -3,6 +3,7 @@ package poke.fast.entities.characters;
 import java.awt.Graphics;
 
 import poke.fast.Handler;
+import poke.fast.textboxes.Option;
 
 public abstract class Enemy extends Character{
 
@@ -17,6 +18,11 @@ public abstract class Enemy extends Character{
 		bounds.width = 32;
 		bounds.height = 32;
 	}
+	
+	//For BattleState
+	public Enemy () {
+		
+	}
 
 	@Override
 	public void tick() {
@@ -29,5 +35,8 @@ public abstract class Enemy extends Character{
 		// TODO Auto-generated method stub
 		
 	}
+
+	//Enemies will return options
+	public abstract Option[] getOptions();
 
 }

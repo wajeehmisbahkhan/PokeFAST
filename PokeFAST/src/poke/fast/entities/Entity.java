@@ -21,6 +21,11 @@ public abstract class Entity {
 		bounds = new Rectangle(0,0,width,height);	//default bounds, to be over-ridden
 	}
 	
+	//For BattleState
+	public Entity () {
+		
+	}
+	
 	public abstract void tick();
 	public abstract void render(Graphics g);
 

@@ -8,6 +8,7 @@ import poke.fast.gfx.Assets;
 import poke.fast.gfx.GameCamera;
 import poke.fast.input.KeyManager;
 import poke.fast.input.MouseManager;
+import poke.fast.states.BattleState;
 import poke.fast.states.State;
 import poke.fast.states.GameState;
 import poke.fast.states.MenuState;
@@ -33,6 +34,7 @@ public class Game implements Runnable {
 	//The States
 	private State gameState;
 	private State menuState;
+	private State battleState;
 	
 	//These are the inputs
 	private MouseManager mouseManager;
@@ -78,7 +80,9 @@ public class Game implements Runnable {
 		//States
 		gameState = new GameState(handler);
 		menuState = new MenuState(handler);
-		State.setState(menuState);
+		battleState = new BattleState(handler);
+		//State.setState(menuState);
+		State.setState(battleState);
 		
 		//Add the Event Listeners to JFrame
 		display.getFrame().addMouseListener(mouseManager);

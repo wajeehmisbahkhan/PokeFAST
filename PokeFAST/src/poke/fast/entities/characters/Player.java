@@ -39,7 +39,6 @@ public class Player extends Character{
 		getInput();
 		move();
 		handler.getGameCamera().centerOnEntity(this);
-		System.out.println("player ticking");
 	}
 
 	private void getInput() {

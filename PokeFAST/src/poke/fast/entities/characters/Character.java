@@ -9,7 +9,7 @@ public abstract class Character extends Entity {
 	public static final float DEFAULT_GPA = 4.0f ;
 	public static final int DEFAULT_WIDTH = 64,
 							DEFAULT_HEIGHT = 64;
-	public static final float DEFAULT_SPEED = 0.7f;
+	public static final float DEFAULT_SPEED = 3.0f;
 	
 	protected float speed, xMove, yMove;
 

@@ -61,7 +61,7 @@ public class Game implements Runnable {
 		//Initialize
 		//Display
 		display = new Display(title, width, height);
-		//Keylistener - JFrame
+		//Key listener - JFrame
 		display.getFrame().addKeyListener(keyManager);
 		//Handler
 		handler = new Handler(this);
@@ -130,10 +130,34 @@ public class Game implements Runnable {
 	public void run() {
 		//Initialize the game
 		init();
+		
+		//Timing stuff
+		int fps = 60;
+		double interval = 1000000000/fps;
+		double delta = 0;
+		long now, lastTime = System.nanoTime();
+		long timer = 0;
+		int ticks = 0;
+		
 		while (running) {
-			tick();
-			render();
+			now = System.nanoTime();
+			delta += (now - lastTime) / interval;
+			timer += (now - lastTime);
+			lastTime = now;		//sed lyf :(
+			
+			if(delta >= 1) {
+				tick();
+				render();
+				ticks++;
+				delta=0;
+			}
+			
+			if(timer >= 1000000000) {
+				ticks = 0; timer = 0;
+			}
+			
 		}
+		
 	}
 	
 	

@@ -11,7 +11,6 @@ import poke.fast.states.GameState;
 public class Handler {
 	private Game game;
 	private Map map;
-	private GameState gameState;
 	
 	public Handler (Game game) {
 		this.game = game;

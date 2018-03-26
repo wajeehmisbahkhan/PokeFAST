@@ -4,8 +4,8 @@ import poke.fast.Handler;
 
 public class Senior extends Enemy{
 
-	public Senior(Handler handler, float x, float y, int width, int height) {
-		super(handler, x, y, width, height);
+	public Senior(Handler handler, float x, float y) {
+		super(handler, x, y);
 		// TODO Auto-generated constructor stub
 	}
 

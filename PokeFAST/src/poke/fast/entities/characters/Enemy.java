@@ -6,9 +6,16 @@ import poke.fast.Handler;
 
 public abstract class Enemy extends Character{
 
-	public Enemy(Handler handler, float x, float y, int width, int height) {
-		super(handler, x, y, width, height);
-		// TODO Auto-generated constructor stub
+	
+	
+	
+	public Enemy(Handler handler, float x, float y) {
+		super(handler, x, y,Character.DEFAULT_WIDTH, Character.DEFAULT_HEIGHT);
+		
+		bounds.x = 16;
+		bounds.y = 32;
+		bounds.width = 32;
+		bounds.height = 32;
 	}
 
 	@Override

@@ -46,15 +46,66 @@ public class Player extends Character{
 	private void getInput() {
 		xMove = 0; yMove = 0;
 		//will edit this later to get constant velocity
-		if ( handler.getKeyManager().up)
-			yMove = -speed;
-		if ( handler.getKeyManager().down)
-			yMove = speed;
-		if ( handler.getKeyManager().left)
-			xMove = -speed;
-		if ( handler.getKeyManager().right)
-			xMove = speed;
 		
+		if(handler.getKeyManager().up) {
+			if (!handler.getKeyManager().left && !handler.getKeyManager().right)
+				yMove = -speed;
+			else {
+				yMove = -speed*(0.7071f);
+				if ( handler.getKeyManager().left)
+					xMove = -speed*(0.7071f);
+				if ( handler.getKeyManager().right)
+					xMove = speed*(0.7071f);
+			}
+		}	
+		
+		if(handler.getKeyManager().down) {
+			if (!handler.getKeyManager().left && !handler.getKeyManager().right)
+				yMove = speed;
+			else {
+				yMove = speed*(0.7071f);
+				if ( handler.getKeyManager().left)
+					xMove = -speed*(0.7071f);
+				if ( handler.getKeyManager().right)
+					xMove = speed*(0.7071f);
+			}
+		}	
+		
+		if(handler.getKeyManager().up) {
+			if (!handler.getKeyManager().left && !handler.getKeyManager().right)
+				yMove = -speed;
+			else {
+				yMove = -speed*(0.7071f);
+				if ( handler.getKeyManager().left)
+					xMove = -speed*(0.7071f);
+				if ( handler.getKeyManager().right)
+					xMove = speed*(0.7071f);
+			}
+		}	
+		
+		if(handler.getKeyManager().left) {
+			if (!handler.getKeyManager().up && !handler.getKeyManager().down)
+				xMove = -speed;
+			else {
+				xMove = -speed*(0.7071f);
+				if ( handler.getKeyManager().up)
+					yMove = -speed*(0.7071f);
+				if ( handler.getKeyManager().down)
+					yMove = speed*(0.7071f);
+			}
+		}	
+		
+		if(handler.getKeyManager().right) {
+			if (!handler.getKeyManager().up && !handler.getKeyManager().down)
+				xMove = speed;
+			else {
+				xMove = speed*(0.7071f);
+				if ( handler.getKeyManager().up)
+					yMove = -speed*(0.7071f);
+				if ( handler.getKeyManager().down)
+					yMove = speed*(0.7071f);
+			}
+		}	
 		
 	}
 	

@@ -2,13 +2,14 @@ package poke.fast.textboxes;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 
 import poke.fast.Handler;
 import poke.fast.entities.characters.Enemy;
 import poke.fast.input.KeyManager;
 
 public class OptionBox {
-	
+	private boolean flag;
 	private int width, height, x, y;
 	private Option[] options = new Option[4];
 	private int optionPosition[][] = new int[4][2];
@@ -30,6 +31,8 @@ public class OptionBox {
 		setOptionPosition();
 		
 		selectedOption = 1;
+		
+		flag = false;
 	}
 	
 	public void tick () {
@@ -79,20 +82,24 @@ public class OptionBox {
 	}
 
 	public void getInput () {
+		
+		if(!handler.getKeyManager().left && !handler.getKeyManager().right && !handler.getKeyManager().up && !handler.getKeyManager().down) {
+			flag = false;
+		}
 		//Moves one 
-		if (handler.getKeyManager().left)
-			selectedOption--;
-		if (handler.getKeyManager().up || handler.getKeyManager().down)
-			selectedOption += 2;
-		if (handler.getKeyManager().right)
-			selectedOption++;
+		if (handler.getKeyManager().left  && !flag)
+			{selectedOption--; flag = true;}
+		if( (handler.getKeyManager().up || handler.getKeyManager().down)   && !flag )
+			{selectedOption += 2; flag = true;}
+		if (handler.getKeyManager().right  && !flag)
+			{selectedOption++; flag = true;}
 		//Press left when left top is selected
 		if (selectedOption < 1)
-			selectedOption += 4;
+			selectedOption += 4; 
 		//Press right when right bottom is selected
 		if (selectedOption > 4)
 			selectedOption %= 4;
-	}
 	
+	}
 	
 }

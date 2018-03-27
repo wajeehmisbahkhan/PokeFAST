@@ -26,7 +26,10 @@ public class Assets {
 		
 		//player and tiles
 		SpriteSheet boxSheet = new SpriteSheet(ImageLoader.loadImage("/textures/box_sheet.png"));
+		SpriteSheet boxSheet2 = new SpriteSheet(ImageLoader.loadImage("/textures/box2_sheet.jpg"));
+		SpriteSheet boxSheet3 = new SpriteSheet(ImageLoader.loadImage("/textures/box3_sheet.png"));
 		SpriteSheet characterSheet = new SpriteSheet(ImageLoader.loadImage("/textures/character_sheet.png"));
+		SpriteSheet fountain = new SpriteSheet(ImageLoader.loadImage("/textures/fountain-final.png"));
 		
 		
 		//Crop the required items
@@ -85,10 +88,10 @@ public class Assets {
 		teacher_still[i] = characterSheet.crop(width*9, height*i, width, height);
 		senior_still[i] = characterSheet.crop(width*6, height*(i+4), width, height);
 		
-		grass = boxSheet.crop(width, 0, width, height);	
+		grass = boxSheet2.crop(width, 0, width, height);	
 		rock = boxSheet.crop(width*2, height*3, width, height);
 		dirt = boxSheet.crop(0, height*3, width, height);
-		tree = boxSheet.crop(width, height, width, height);
+		tree = fountain.crop(0, 0, width, height);
 		
 	}
 	

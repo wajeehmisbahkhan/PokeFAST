@@ -38,7 +38,7 @@ public class Teacher extends Enemy {
 	}
 	
 	public void render(Graphics g) {
-		g.drawImage(Assets.player_up[1], (int) ( x - handler.getGameCamera().getxOffset() ), (int) ( y - handler.getGameCamera().getyOffset() ),
+		g.drawImage(Assets.teacher_left[2], (int) ( x - handler.getGameCamera().getxOffset() ), (int) ( y - handler.getGameCamera().getyOffset() ),
 				width, height, null);
 		
 	}

@@ -7,8 +7,8 @@ import poke.fast.tiles.Tile;
 public abstract class Character extends Entity {
 	
 	public static final float DEFAULT_GPA = 4.0f ;
-	public static final int DEFAULT_WIDTH = 64,
-							DEFAULT_HEIGHT = 64;
+	public static final int DEFAULT_WIDTH = 56,
+							DEFAULT_HEIGHT = 56;
 	public static final float DEFAULT_SPEED = 3.0f;
 	
 	protected float speed, xMove, yMove;

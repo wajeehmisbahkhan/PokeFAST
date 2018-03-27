@@ -10,6 +10,8 @@ public class Assets {
 	public static BufferedImage player, grass, rock, dirt, tree;
 	
 	public static BufferedImage[] player_still, player_down, player_up, player_left, player_right;
+	public static BufferedImage[] teacher_still, teacher_down, teacher_up, teacher_left, teacher_right;
+	public static BufferedImage[] senior_still, senior_down, senior_up, senior_left, senior_right;
 	
 	//The Menu Items
 	public static BufferedImage[] btn_start;
@@ -25,6 +27,8 @@ public class Assets {
 		//player and tiles
 		SpriteSheet boxSheet = new SpriteSheet(ImageLoader.loadImage("/textures/box_sheet.png"));
 		SpriteSheet playerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/player_sheet.png"));
+		SpriteSheet teacherSheet = new SpriteSheet(ImageLoader.loadImage("/textures/teacher_sheet.png"));
+		
 		
 		//Crop the required items
 		//Menu
@@ -41,6 +45,13 @@ public class Assets {
 		player_down = new BufferedImage[3];
 		player_left = new BufferedImage[3];
 		player_right = new BufferedImage[3];
+		
+		teacher_still = new BufferedImage[4];
+		teacher_up = new BufferedImage[3];
+		teacher_down = new BufferedImage[3];
+		teacher_left = new BufferedImage[3];
+		teacher_right = new BufferedImage[3];
+		
 		
 		for(int i=0;i<4;i++)
 			player_still[i] = playerSheet.crop(0,  height*i, width, height);

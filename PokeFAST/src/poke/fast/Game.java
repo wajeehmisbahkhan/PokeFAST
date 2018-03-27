@@ -82,7 +82,7 @@ public class Game implements Runnable {
 		menuState = new MenuState(handler);
 		battleState = new BattleState(handler);
 		//State.setState(menuState);
-		State.setState(battleState);
+		State.setState(gameState);
 		
 		//Add the Event Listeners to JFrame
 		display.getFrame().addMouseListener(mouseManager);

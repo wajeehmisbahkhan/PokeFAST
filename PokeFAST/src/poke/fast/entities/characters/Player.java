@@ -139,5 +139,9 @@ public class Player extends Character{
 			return Assets.player_still[direction];	//nicely done ;)
 		
 	}
+
+	public int getDirection() {
+		return direction;
+	}
 	
 }

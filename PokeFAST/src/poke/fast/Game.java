@@ -4,13 +4,10 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import poke.fast.display.Display;
-import poke.fast.entities.characters.Player;
-import poke.fast.entities.characters.Senior;
 import poke.fast.gfx.Assets;
 import poke.fast.gfx.GameCamera;
 import poke.fast.input.KeyManager;
 import poke.fast.input.MouseManager;
-import poke.fast.states.BattleState;
 import poke.fast.states.GameState;
 import poke.fast.states.MenuState;
 import poke.fast.states.State;
@@ -41,7 +38,6 @@ public class Game implements Runnable {
 	//These are the inputs
 	private MouseManager mouseManager;
 	private KeyManager keyManager;
-	private boolean pressed;
 	
 	//Game Camera
 	private GameCamera gameCamera;

@@ -22,7 +22,7 @@ public class Player extends Character{
 		bounds.x = 16;
 		bounds.y = 32;
 		bounds.width = 32;
-		bounds.height = 32;
+		bounds.height = Character.DEFAULT_HEIGHT - bounds.y;
 		
 		//Animations: up, down, left, right
 		direction = 0;
@@ -138,6 +138,10 @@ public class Player extends Character{
 		else
 			return Assets.player_still[direction];	//nicely done ;)
 		
+	}
+
+	public int getDirection() {
+		return direction;
 	}
 	
 	public int getGPA () {

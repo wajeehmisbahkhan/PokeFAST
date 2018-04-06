@@ -15,8 +15,8 @@ public class Assets {
 	public static BufferedImage player, grass, rock, dirt, tree;
 	
 	public static BufferedImage[] player_still, player_down, player_up, player_left, player_right;
-//	public static BufferedImage[] teacher_still, teacher_down, teacher_up, teacher_left, teacher_right;
-//	public static BufferedImage[] senior_still, senior_down, senior_up, senior_left, senior_right;
+	public static BufferedImage[] teacher_still, teacher_down, teacher_up, teacher_left, teacher_right;
+	public static BufferedImage[] senior_still, senior_down, senior_up, senior_left, senior_right;
 	
 	//The Menu Items
 	public static BufferedImage[] btn_start;
@@ -36,8 +36,10 @@ public class Assets {
 		
 		//player and tiles
 		SpriteSheet boxSheet = new SpriteSheet(ImageLoader.loadImage("/textures/box_sheet.png"));
-		SpriteSheet playerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/player_sheet.png"));
-		//SpriteSheet teacherSheet = new SpriteSheet(ImageLoader.loadImage("/textures/teacher_sheet.png"));
+		SpriteSheet boxSheet2 = new SpriteSheet(ImageLoader.loadImage("/textures/box2_sheet.jpg"));
+		SpriteSheet boxSheet3 = new SpriteSheet(ImageLoader.loadImage("/textures/box3_sheet.png"));
+		SpriteSheet characterSheet = new SpriteSheet(ImageLoader.loadImage("/textures/character_sheet.png"));
+		SpriteSheet fountain = new SpriteSheet(ImageLoader.loadImage("/textures/fountain-final.png"));
 		
 		SpriteSheet enemySheet = new SpriteSheet(ImageLoader.loadImage("/textures/enemies_sheet.jpg"));
 		
@@ -62,26 +64,50 @@ public class Assets {
 		player_left = new BufferedImage[3];
 		player_right = new BufferedImage[3];
 		
-	//	teacher_still = new BufferedImage[4];
-		//teacher_up = new BufferedImage[3];
-		//teacher_down = new BufferedImage[3];
-		//teacher_left = new BufferedImage[3];
-		//teacher_right = new BufferedImage[3];
+		teacher_still = new BufferedImage[4];
+		teacher_up = new BufferedImage[3];
+		teacher_down = new BufferedImage[3];
+		teacher_left = new BufferedImage[3];
+		teacher_right = new BufferedImage[3];
+		
+		senior_still = new BufferedImage[4];
+		senior_up = new BufferedImage[3];
+		senior_down = new BufferedImage[3];
+		senior_left = new BufferedImage[3];
+		senior_right = new BufferedImage[3];
 		
 		
-		for(int i=0;i<4;i++)
-			player_still[i] = playerSheet.crop(0,  height*i, width, height);
-		for(int i=0;i<3;i++) {
-			player_down[i] = playerSheet.crop(width*(i+1), 0, width, height);
-			player_left[i] = playerSheet.crop(width*(i+1), height, width, height);
-			player_right[i] = playerSheet.crop(width*(i+1), height*2, width, height);
-			player_up[i] = playerSheet.crop(width*(i+1), height*3, width, height);
+		int i;
+		for(i=0;i<3;i++) {
+			
+			player_still[i] = characterSheet.crop(0,  height*i, width, height);
+			teacher_still[i] = characterSheet.crop(width*9, height*i, width, height);
+			senior_still[i] = characterSheet.crop(width*6, height*(i+4), width, height);
+			
+			player_down[i] = characterSheet.crop(width*(i), 0, width, height);
+			player_left[i] = characterSheet.crop(width*(i), height, width, height);
+			player_right[i] = characterSheet.crop(width*(i), height*2, width, height);
+			player_up[i] = characterSheet.crop(width*(i), height*3, width, height);
+			
+			teacher_down[i] = characterSheet.crop(width*(i+9), 0, width, height);
+			teacher_left[i] = characterSheet.crop(width*(i+9), height, width, height);
+			teacher_right[i] = characterSheet.crop(width*(i+9), height*2, width, height);
+			teacher_up[i] = characterSheet.crop(width*(i+9), height*3, width, height);
+			
+			senior_down[i] = characterSheet.crop(width*(i+6), 0, width, height);
+			senior_left[i] = characterSheet.crop(width*(i+6), height, width, height);
+			senior_right[i] = characterSheet.crop(width*(i+6), height*2, width, height);
+			senior_up[i] = characterSheet.crop(width*(i+6), height*3, width, height);
+			
 		}
-		player = boxSheet.crop(0, 0, width, height);		//replace this with array of player textures
-		grass = boxSheet.crop(width, 0, width, height);	
+		player_still[i] = characterSheet.crop(0,  height*i, width, height);
+		teacher_still[i] = characterSheet.crop(width*9, height*i, width, height);
+		senior_still[i] = characterSheet.crop(width*6, height*(i+4), width, height);
+		
+		grass = boxSheet2.crop(width, 0, width, height);	
 		rock = boxSheet.crop(width*2, height*3, width, height);
 		dirt = boxSheet.crop(0, height*3, width, height);
-		tree = boxSheet.crop(width, height, width, height);
+		tree = fountain.crop(0, 0, width, height);
 		
 	}
 	

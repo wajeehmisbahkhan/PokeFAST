@@ -4,14 +4,14 @@ public class Option {
 	
 	private String text; //Will contain the text of the option
 	private int damage; //The damage it will do
-	//private String[] effects; //The effects
+	private String effect; //The effects
 	
 	
-	public Option (String text, int damage) {
+	public Option (String text, int damage, String effect) {
 		//String[] effects
 		this.text = text;
 		this.damage = damage;
-		//this.effects = effects; 
+		this.effect = effect;
 	}
 	
 	public String getText () {
@@ -29,6 +29,13 @@ public class Option {
 	public void setDamage(int damage) {
 		this.damage = damage;
 	}
-	
+
+	public String getEffect() {
+		return effect;
+	}
+
+	public void setEffect(String effect) {
+		this.effect = effect;
+	}
 	
 }

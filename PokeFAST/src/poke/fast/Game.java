@@ -4,14 +4,16 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import poke.fast.display.Display;
+import poke.fast.entities.characters.Player;
+import poke.fast.entities.characters.Senior;
 import poke.fast.gfx.Assets;
 import poke.fast.gfx.GameCamera;
 import poke.fast.input.KeyManager;
 import poke.fast.input.MouseManager;
 import poke.fast.states.BattleState;
-import poke.fast.states.State;
 import poke.fast.states.GameState;
 import poke.fast.states.MenuState;
+import poke.fast.states.State;
 
 //The Game Class will consist of the game and all of its necessary components.
 public class Game implements Runnable {
@@ -39,6 +41,7 @@ public class Game implements Runnable {
 	//These are the inputs
 	private MouseManager mouseManager;
 	private KeyManager keyManager;
+	private boolean pressed;
 	
 	//Game Camera
 	private GameCamera gameCamera;
@@ -80,8 +83,6 @@ public class Game implements Runnable {
 		//States
 		gameState = new GameState(handler);
 		menuState = new MenuState(handler);
-		battleState = new BattleState(handler);
-		//State.setState(menuState);
 		State.setState(gameState);
 		
 		//Add the Event Listeners to JFrame
@@ -190,5 +191,13 @@ public class Game implements Runnable {
 
 	public State getGameState() {
 		return gameState;
+	}
+	
+	public State getMenuState () {
+		return menuState;
+	}
+	
+	public State getBattleState () {
+		return battleState;
 	}
 }

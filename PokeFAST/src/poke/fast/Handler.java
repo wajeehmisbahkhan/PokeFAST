@@ -4,7 +4,6 @@ import poke.fast.gfx.GameCamera;
 import poke.fast.input.KeyManager;
 import poke.fast.input.MouseManager;
 import poke.fast.maps.Map;
-import poke.fast.states.GameState;
 
 
 //This class will be helpful to access the properties of the major objects such as the game and the map

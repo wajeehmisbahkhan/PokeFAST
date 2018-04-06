@@ -10,31 +10,17 @@ public class Teacher extends Enemy {
 	
 	public Teacher(Handler handler, float x, float y) {
 		super(handler, x, y);
+		name = "Teacher";
+		health = 120;
+		fullHealth = 120;
 	}
-	//The options
-	private Option optOne = new Option("Surprise Quiz", 32);
-	private Option optTwo = new Option("Nagging", 7);
-
-	private Option[] options;
-	
-	public Teacher(Handler handler, float x, float y, int width, int height) {
-		super();
-	}
-	
-	//For BattleState
-	public Teacher() {
-		options = new Option[4];
-		options[0] = optOne;
-		options[1] = optTwo;
-	}
-
-	@Override
-	public Option[] getOptions() {
-		return options;
-		}
+	//The options for the player
+	private Option optOne = new Option("Funny Noises", 80, "It was super annoying...");
+	private Option optTwo = new Option("Plead", 7, "It was not very effective...");
+	private Option optThree = new Option("Witty Comeback", 60, "The whole class started laughing.");
 
 	public void tick() {
-		
+		setOptions(new Option[]{optOne, optTwo, optThree}); //Anonymous arrays
 	}
 	
 	public void render(Graphics g) {

@@ -5,26 +5,15 @@ import poke.fast.textboxes.Option;
 
 public class Senior extends Enemy {
 	
-	//The options
-	private Option optOne = new Option("Ragging", 5);
-
-	public Senior(Handler handler, float x, float y) {
-		super(handler, x, y);
-	}
-	private Option[] options = {optOne};
+	//The options for the player
+	private Option optOne = new Option("Snitch", 150, "The senior was charged 5000 rupees... It was super effective.");
 	
 	public Senior(Handler handler, float x, float y, int width, int height) {
-		super();
-	}
-	
-	//For BattleState
-	public Senior () {
-		
-	}
-	
-	@Override
-	public Option[] getOptions() {
-		return options;
+		super(handler, x, y);
+		options[0] = optOne;
+		health = 100;
+		fullHealth = 100;
+		name = "Senior";
 	}
 
 }

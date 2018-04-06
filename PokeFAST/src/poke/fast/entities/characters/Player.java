@@ -13,11 +13,11 @@ public class Player extends Character{
 	private int direction, GPA;
 	private Animation upimation, downimation, leftimation, rightimation;
 	
-	
 	public Player( Handler handler, float x, float y) {
 		super(handler, x, y, Character.DEFAULT_WIDTH, Character.DEFAULT_HEIGHT);
 		
 		GPA = 400;
+		name = "Student";
 		
 		bounds.x = 16;
 		bounds.y = 32;
@@ -138,6 +138,14 @@ public class Player extends Character{
 		else
 			return Assets.player_still[direction];	//nicely done ;)
 		
+	}
+	
+	public int getGPA () {
+		return GPA;
+	}
+	
+	public void setGPA (int GPA) {
+		this.GPA = GPA;
 	}
 	
 }

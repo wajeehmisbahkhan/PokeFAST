@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import poke.fast.Handler;
 import poke.fast.entities.characters.Player;
+import poke.fast.entities.characters.Senior;
 import poke.fast.entities.characters.Teacher;
 import poke.fast.entities.inanimates.Tree;
 import poke.fast.gfx.GameCamera;
@@ -21,7 +22,7 @@ public class GameState extends State {
 		map = new Map(handler, "fast");
 		handler.setMap(map);
 		player = new Player(handler, 100, 100);
-		teacher = new Teacher(handler, 200,200);
+		teacher = new Teacher(handler, 200, 200);
 		tree = new Tree(handler, 150, 100);
 	}
 
@@ -30,6 +31,9 @@ public class GameState extends State {
 		player.tick();
 		teacher.tick();
 		tree.tick();
+		
+		if (handler.getKeyManager().space)
+			State.setState(new BattleState(handler, player, teacher));
 	}
 
 	public void render(Graphics g) {
@@ -38,5 +42,10 @@ public class GameState extends State {
 		teacher.render(g);
 		tree.render(g);
 	}
+	
+	public Player getPlayer () {
+		return player;
+	}
+	
 	
 }

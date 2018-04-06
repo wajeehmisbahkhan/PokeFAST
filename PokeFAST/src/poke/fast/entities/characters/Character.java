@@ -12,6 +12,8 @@ public abstract class Character extends Entity {
 	public static final float DEFAULT_SPEED = 3.0f;
 	
 	protected float speed, xMove, yMove;
+	
+	protected String name; //For battles
 
 	public Character(Handler handler, float x, float y, int width, int height) {
 		super(handler, x, y, width, height);
@@ -91,6 +93,14 @@ public abstract class Character extends Entity {
 
 	public void setyMove(float yMove) {
 		this.yMove = yMove;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

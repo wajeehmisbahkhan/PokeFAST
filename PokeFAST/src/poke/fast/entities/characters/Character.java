@@ -20,11 +20,6 @@ public abstract class Character extends Entity {
 		speed = DEFAULT_SPEED;
 		xMove = 0; yMove = 0;
 	}
-
-	//For BattleState
-	public Character () {
-		
-	}
 	
 	public void move() {
 		moveX();

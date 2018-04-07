@@ -26,14 +26,14 @@ public class OptionBox {
 	public OptionBox (Handler handler, Enemy e) {
 		this.handler = handler;
 		options = e.getOptions();
-		width = (int) Math.floor(handler.getWidth() * 0.45);
+		width = (int) Math.floor(handler.getWidth() * 0.52);
 		height = 80;
 		x = handler.getWidth() - width - 5;
 		y = handler.getHeight() - height - 10;
 		
-		setOptionPosition();
-		
 		selectedOption = 1;
+		
+		setOptionPosition();
 		
 		flag = false;
 	}
@@ -50,25 +50,23 @@ public class OptionBox {
 		g.drawRect(x, y, width, height);
 		//Display Options
 		displayOptions(g);
-		//Display selection
-		Text.drawString(g, ">", optionPosition[selectedOption-1][0] - 50, optionPosition[selectedOption-1][1], true, Color.BLACK, Assets.optionFont);
 	}
 	
 	public void setOptionPosition () {
 		//X Position
 		for (int i = 0; i < 4; i++) {
 			if (i % 2 == 0)
-				optionPosition[i][0] = x + 15;
+				optionPosition[i][0] = x + 65;
 			else
-				optionPosition[i][0] = (x + 15) + x / 2;
+				optionPosition[i][0] = (x + 65) + (x + 10) / 2;
 		}
 		
 		//Y Position
 		for (int i = 0; i < 4; i++) {
 			if (i < 2)
-				optionPosition[i][1] = y + 25;
+				optionPosition[i][1] = y + 10;
 			else
-				optionPosition[i][1] = y + 60;
+				optionPosition[i][1] = y + 40;
 		}
 		
 	}
@@ -77,10 +75,13 @@ public class OptionBox {
 		opt = 0;
 		validOptions = 0;
 		for (Option o: options) {
-			if (o == null)
+			if (o.getText() == "")
 				Text.drawString(g, "-", optionPosition[opt][0], optionPosition[opt][1], true, Color.BLACK, Assets.optionFont);
 			else {
-				Text.drawString(g, o.getText(), optionPosition[opt][0], optionPosition[opt][1], true, Color.BLACK, Assets.optionFont);
+				if (opt == selectedOption - 1)
+					Text.drawString(g, ">" + o.getText(), optionPosition[opt][0], optionPosition[opt][1], true, Color.BLACK, Assets.optionFont);
+				else
+					Text.drawString(g, " " + o.getText(), optionPosition[opt][0], optionPosition[opt][1], true, Color.BLACK, Assets.optionFont);
 				validOptions++;
 			}
 			opt++;

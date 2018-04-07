@@ -10,9 +10,9 @@ public abstract class Enemy extends Character{
 	//The health
 	protected int health;
 	protected int fullHealth;
-	
+
 	protected Option[] options = new Option[4];
-	
+	protected Option[] attacks = new Option[4];
 	
 	public Enemy(Handler handler, float x, float y) {
 		super(handler, x, y,Character.DEFAULT_WIDTH, Character.DEFAULT_HEIGHT);
@@ -41,7 +41,16 @@ public abstract class Enemy extends Character{
 	protected void setOptions(Option[] options) { //Only for enemy children
 		this.options = options;
 	}
-	
+	public Option[] getAttacks() {
+		return attacks;
+	}
+	public Option getRandomAttack() {
+		int randomNumber = (int) (Math.random() * attacks.length); // (random() * (max-min) + 1) + min
+		return attacks[randomNumber];
+	}
+	protected void setAttacks(Option[] attacks) { //Only for enemy children
+		this.attacks = attacks;
+	}
 	public int getHealth() {
 		return health;
 	}

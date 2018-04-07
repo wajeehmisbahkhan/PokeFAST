@@ -1,6 +1,7 @@
 package poke.fast.gfx;
 
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 //This will be used to load all the graphical assets. It will be mostly static so it can be accessed directly through the class
@@ -23,7 +24,7 @@ public class Assets {
 	public static BufferedImage menuBg, logo;
 	
 	//Battle
-	public static BufferedImage student, senior, teacher, assignment;
+	public static BufferedImage student, senior, teacher, assignment, battleGround;
 	
 	//When the game initializes
 	public static void init () {
@@ -42,12 +43,14 @@ public class Assets {
 		SpriteSheet fountain = new SpriteSheet(ImageLoader.loadImage("/textures/fountain-final.png"));
 		
 		SpriteSheet enemySheet = new SpriteSheet(ImageLoader.loadImage("/textures/enemies_sheet.jpg"));
+		SpriteSheet battleSheet = new SpriteSheet(ImageLoader.loadImage("/textures/battle_sheet.png"));
 		
 		//Crop the required items
 		student = ImageLoader.loadImage("/textures/student.png");
 		senior = enemySheet.crop(80, 240, 80, 80);
 		teacher = enemySheet.crop(160, 240, 80, 80);
 		assignment = enemySheet.crop(80, 0, 80, 80);
+		battleGround = battleSheet.crop(0, 0, 256, 144);
 		
 		//Menu
 		menuBg = ImageLoader.loadImage("/textures/menu_bg.jpg");

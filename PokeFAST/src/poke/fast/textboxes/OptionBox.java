@@ -2,12 +2,10 @@ package poke.fast.textboxes;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
 
 import poke.fast.Handler;
 import poke.fast.entities.characters.Enemy;
 import poke.fast.gfx.Assets;
-import poke.fast.input.KeyManager;
 import poke.fast.utils.Text;
 
 public class OptionBox {
@@ -75,7 +73,7 @@ public class OptionBox {
 		opt = 0;
 		validOptions = 0;
 		for (Option o: options) {
-			if (o.getText() == "")
+			if (o == null)
 				Text.drawString(g, "-", optionPosition[opt][0], optionPosition[opt][1], true, Color.BLACK, Assets.optionFont);
 			else {
 				if (opt == selectedOption - 1)

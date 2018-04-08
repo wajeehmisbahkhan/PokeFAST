@@ -21,8 +21,9 @@ public class BattleState extends State {
 	private Enemy enemy;
 	
 	//Image
-	private BufferedImage character;
-	
+	private BufferedImage character; //For Sliding
+	private BufferedImage enemyImage; //For showing
+	private String eName;
 	//For battle
 	private int playerWidth, playerHeight;
 	private int enemyWidth, enemyHeight;
@@ -52,7 +53,13 @@ public class BattleState extends State {
 		optionBox = new OptionBox(handler, enemy);
 		playerHealth = new Health();
 		enemyHealth = new Health();
-		
+		eName = enemy.getName().toLowerCase();
+		if (eName.equals("senior"))
+			enemyImage = Assets.senior;
+		else if (eName.equals("teacher"))
+			enemyImage = Assets.teacher;
+		else if (eName.equals("assignment"))
+			enemyImage = Assets.assignment;
 		//Too many variables
 		starting = true;
 		sliding = true;
@@ -69,7 +76,7 @@ public class BattleState extends State {
 
 	public void tick() {
 			
-		if (ticks > 60 && handler.getKeyManager().space) { //For space clicks
+		if (ticks > 30 && handler.getKeyManager().space) { //For space clicks
 			spacePressed = true;
 			ticks = 0;
 		}
@@ -86,7 +93,7 @@ public class BattleState extends State {
 		
 		if (battling) {
 			dialogueBox.tick();
-			if (!damaging) // || beingDamaged
+			if (playerTurn && !damaging)
 				optionBox.tick();
 		}
 		ticks++;
@@ -120,7 +127,7 @@ public class BattleState extends State {
 	public void battle (Graphics g) {
 		//Images
 		g.drawImage(Assets.student, playerX, playerY, null);
-		g.drawImage(Assets.teacher, enemyX, enemyY, enemyWidth, enemyHeight, null);
+		g.drawImage(enemyImage, enemyX, enemyY, enemyWidth, enemyHeight, null);
 		playerHealth.render(g, enemyX, playerY, player.getGPA(), 400);
 		enemyHealth.render(g, playerX, enemyY, enemy.getHealth(), enemy.getFullHealth());
 		//Begin
@@ -209,7 +216,7 @@ public class BattleState extends State {
 			if (!sliding)
 				dialogueBox.say(g, "You won! No knowledge gained.");
 		} else {
-			g.drawImage(Assets.teacher, enemyX, enemyY, enemyWidth, enemyHeight, null);
+			g.drawImage(enemyImage, enemyX, enemyY, enemyWidth, enemyHeight, null);
 			slide(player.getName().toLowerCase(), "down", g);
 			dialogueBox.render(g);
 			if (!sliding)

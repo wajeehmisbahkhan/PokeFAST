@@ -2,12 +2,12 @@ package poke.fast.tiles;
 
 import poke.fast.gfx.Assets;
 
-public class RockTile extends Tile {
+public class ShopTile extends Tile {
 
-	public RockTile( int id) {
-		super(Assets.rock, id);
+	public ShopTile(int id) {
+		super(Assets.shop, id);
 	}
-	
+
 	@Override
 	public boolean isSolid() {
 		return true;

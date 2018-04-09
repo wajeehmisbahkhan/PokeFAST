@@ -7,6 +7,7 @@ import poke.fast.entities.characters.Assignment;
 import poke.fast.entities.characters.Player;
 import poke.fast.entities.characters.Senior;
 import poke.fast.entities.characters.Teacher;
+import poke.fast.entities.inanimates.Fountain;
 import poke.fast.entities.inanimates.Tree;
 import poke.fast.maps.Map;
 
@@ -18,6 +19,7 @@ public class GameState extends State {
 	private Senior senior;
 	private Assignment assignment;
 	private Tree tree;
+	private Fountain fountain;
 	
 	public GameState (Handler handler) {
 		super(handler);
@@ -28,6 +30,7 @@ public class GameState extends State {
 		senior = new Senior(handler, 300, 300);
 		assignment = new Assignment(handler, 400, 400);
 		tree = new Tree(handler, 150, 100);
+		fountain = new Fountain(handler, 1500-32, 964+16);
 	}
 
 	public void tick() {
@@ -38,7 +41,7 @@ public class GameState extends State {
 		senior.tick();
 		assignment.tick();
 		if (handler.getKeyManager().space)
-			State.setState(new BattleState(handler, player, assignment));
+			State.setState(new BattleState(handler, player, senior));
 	}
 
 	public void render(Graphics g) {
@@ -46,6 +49,8 @@ public class GameState extends State {
 		player.render(g);
 		teacher.render(g);
 		tree.render(g);
+		fountain.render(g);
+		map.renderLater(g);
 	}
 	
 	public Player getPlayer () {

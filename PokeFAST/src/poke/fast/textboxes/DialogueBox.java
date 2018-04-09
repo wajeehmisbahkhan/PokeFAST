@@ -16,7 +16,8 @@ public class DialogueBox {
 	private ArrayList <String> message;
 	private int current;
 	private int end;
-	private boolean running;
+	
+	//Static isSaying
 
 	
 	private Handler handler;
@@ -26,16 +27,14 @@ public class DialogueBox {
 		width = handler.getWidth() - 1;
 		height = 100;
 		x = 0;
-		y = handler.getHeight() - height - 1;
+		y = this.handler.getHeight() - height - 1;
 		margin = 10;
 		message = new ArrayList <String>();
-		running = false;
 	}
 
 
 	public void tick () {
-		if (running)
-			getInput();
+		
 	}
 	
 	public void render(Graphics g) {
@@ -56,13 +55,7 @@ public class DialogueBox {
 	}
 	
 	public void getInput () {
-		/*if (handler.getKeyManager().space && running) {	
-			current++;
-			Text.drawString(g, this.message.get(current), x+margin, y + Assets.dialogueFont.getSize() + margin, false, Color.BLACK, Assets.dialogueFont);
-			if (current > end)
-				running = false;
-			System.out.println(current);
-		}*/
+		
 	}
 
 	//GETTERS & SETTERS

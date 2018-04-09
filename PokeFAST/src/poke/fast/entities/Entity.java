@@ -12,6 +12,7 @@ public abstract class Entity {
 	protected int width, height;//entity dimensions
 	protected Rectangle bounds;
 	
+	
 	public Entity(Handler handler, float x, float y, int width, int height) {
 		this.handler = handler;
 		this.x = x;
@@ -59,5 +60,15 @@ public abstract class Entity {
 
 	public void setHeight(int height) {
 		this.height = height;
+	}
+
+	/*public boolean checkEntityCollision( float xOffset, float yOffset) {
+		for(Entity e: handler.getMap().getEntityManager().getEntities()) {
+			
+		}
+	}
+	*/
+	public Rectangle getCollisionBounds( float xOffset, float yOffset) {
+		return new Rectangle( (int) (x + bounds.x + xOffset), (int) (y + bounds.y + yOffset), bounds.width, bounds.height );
 	}
 }

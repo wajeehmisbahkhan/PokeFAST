@@ -1,7 +1,6 @@
 package poke.fast.gfx;
 
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 //This will be used to load all the graphical assets. It will be mostly static so it can be accessed directly through the class
@@ -40,7 +39,6 @@ public class Assets {
 		SpriteSheet boxSheet2 = new SpriteSheet(ImageLoader.loadImage("/textures/box2_sheet.jpg"));
 		SpriteSheet boxSheet3 = new SpriteSheet(ImageLoader.loadImage("/textures/box3_sheet.png"));
 		SpriteSheet characterSheet = new SpriteSheet(ImageLoader.loadImage("/textures/character_sheet.png"));
-		SpriteSheet fountain = new SpriteSheet(ImageLoader.loadImage("/textures/fountain-final.png"));
 		
 		SpriteSheet enemySheet = new SpriteSheet(ImageLoader.loadImage("/textures/enemies_sheet.jpg"));
 		SpriteSheet battleSheet = new SpriteSheet(ImageLoader.loadImage("/textures/battle_sheet.png"));
@@ -110,7 +108,7 @@ public class Assets {
 		grass = boxSheet2.crop(width, 0, width, height);	
 		rock = boxSheet.crop(width*2, height*3, width, height);
 		dirt = boxSheet.crop(0, height*3, width, height);
-		tree = fountain.crop(0, 0, width, height);
+		tree = boxSheet3.crop(width, height, width, height);
 		
 	}
 	

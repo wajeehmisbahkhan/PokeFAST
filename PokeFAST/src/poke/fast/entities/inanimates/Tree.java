@@ -19,7 +19,7 @@ public class Tree extends Inanimate{
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage( Assets.tree, (int) ( x - handler.getGameCamera().getxOffset() ),(int) ( y - handler.getGameCamera().getxOffset() ), width, height, null);
+		g.drawImage( Assets.tree, (int) ( x - handler.getGameCamera().getxOffset() ),(int) ( y - handler.getGameCamera().getyOffset() ), width, height, null);
 	}
 
 }

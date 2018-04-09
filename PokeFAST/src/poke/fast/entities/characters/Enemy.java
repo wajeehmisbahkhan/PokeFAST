@@ -1,6 +1,7 @@
 package poke.fast.entities.characters;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 import poke.fast.Handler;
 import poke.fast.textboxes.Option;
@@ -11,6 +12,8 @@ public abstract class Enemy extends Character{
 	protected int health;
 	protected int fullHealth;
 
+	protected Rectangle fov;
+	
 	protected Option[] options = new Option[4];
 	protected Option[] attacks = new Option[4];
 	
@@ -20,6 +23,7 @@ public abstract class Enemy extends Character{
 		bounds.y = 32;
 		bounds.width = 32;
 		bounds.height = 32;
+		fov = new Rectangle(0,0,width,height);
 	}
 
 	@Override

@@ -3,6 +3,9 @@ package poke.fast.maps;
 import java.awt.Graphics;
 
 import poke.fast.Handler;
+import poke.fast.entities.EntityManager;
+import poke.fast.entities.characters.Player;
+import poke.fast.entities.inanimates.Tree;
 import poke.fast.tiles.Tile;
 import poke.fast.utils.TextReader;
 
@@ -14,9 +17,20 @@ public class Map {
 	
 	private int spawnX, spawnY; //The player's position in terms of tiles; Will be defined according to the entry point
 	
+	//Entities
+	private EntityManager entityManager;
+	
 	public Map (Handler handler, String name) {
 		this.handler = handler;
+		entityManager = new EntityManager(handler, new Player(handler,50,100));
+		entityManager.addEntity(new Tree(handler, 100, 250));
+		
+		
 		loadMap(name); //Fills up the tiles array with id's
+		
+		entityManager.getPlayer().setX(spawnX);
+		entityManager.getPlayer().setY(spawnY);
+		
 	}
 	
 	public void loadMap (String name) {
@@ -39,6 +53,8 @@ public class Map {
 	
 	public void tick () {
 		
+		entityManager.tick();
+		
 	}
 	
 	public void render (Graphics g) {
@@ -54,6 +70,10 @@ public class Map {
 						(int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
 			}
 		}
+		
+		//entities
+		entityManager.render(g);
+		
 	}
 	
 	public Tile getTile(int x, int y) {

@@ -36,11 +36,11 @@ public class Assets {
 		SpriteSheet menuSheet = new SpriteSheet(ImageLoader.loadImage("/textures/menu_sheet.png"));
 		
 		//player and tiles
+
 		SpriteSheet tileSheet = new SpriteSheet(ImageLoader.loadImage("/textures/tiles_sheet.png"));
 		SpriteSheet inanimateSheet = new SpriteSheet(ImageLoader.loadImage("/textures/inanimates_sheet.png"));
+		SpriteSheet characterSheet = new SpriteSheet(ImageLoader.loadImage("/textures/character_sheet.png"));		
 		
-		
-		SpriteSheet characterSheet = new SpriteSheet(ImageLoader.loadImage("/textures/character_sheet.png"));
 		SpriteSheet enemySheet = new SpriteSheet(ImageLoader.loadImage("/textures/enemies_sheet.jpg"));
 		SpriteSheet battleSheet = new SpriteSheet(ImageLoader.loadImage("/textures/battle_sheet.png"));
 		
@@ -116,6 +116,7 @@ public class Assets {
 		teleport = tileSheet.crop(width*3, height, width, height);
 		tree = inanimateSheet.crop(0, 0, width, height);
 		fountain = inanimateSheet.crop(width*3, 0, width*5, height*3);
+
 	}
 	
 }

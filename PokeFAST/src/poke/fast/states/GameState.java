@@ -19,18 +19,17 @@ public class GameState extends State {
 	private Senior senior;
 	private Assignment assignment;
 	private Tree tree;
-	private Fountain fountain;
-	
+	private Fountain fountain;	
 	public GameState (Handler handler) {
 		super(handler);
 		map = new Map(handler, "fast");
 		handler.setMap(map);
-		player = new Player(handler, 100, 100);
-		teacher = new Teacher(handler, 200, 200);
+		//teacher = new Teacher(handler, 200, 200);
 		senior = new Senior(handler, 300, 300);
 		assignment = new Assignment(handler, 400, 400);
 		tree = new Tree(handler, 150, 100);
-		fountain = new Fountain(handler, 1500-32, 964+16);
+		fountain = new Fountain(handler, 1500-32, 964+32);
+
 	}
 
 	public void tick() {
@@ -41,7 +40,7 @@ public class GameState extends State {
 		senior.tick();
 		assignment.tick();
 		if (handler.getKeyManager().space)
-			State.setState(new BattleState(handler, player, senior));
+			State.setState(new BattleState(handler, player, assignment));
 	}
 
 	public void render(Graphics g) {
@@ -50,7 +49,6 @@ public class GameState extends State {
 		teacher.render(g);
 		tree.render(g);
 		fountain.render(g);
-		map.renderLater(g);
 	}
 	
 	public Player getPlayer () {

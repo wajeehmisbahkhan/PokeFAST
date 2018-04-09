@@ -5,26 +5,26 @@ import poke.fast.textboxes.Option;
 
 public class Senior extends Enemy {
 	
-	//The options
-	private Option optOne = new Option("Ragging", 5);
-
-	public Senior(Handler handler, float x, float y) {
+	public Senior(Handler handler, float x, float y/*, int width, int height*/) {
 		super(handler, x, y);
-	}
-	private Option[] options = {optOne};
-	
-	public Senior(Handler handler, float x, float y, int width, int height) {
-		super();
+		health = 100;
+		fullHealth = 100;
+		name = "Senior";
 	}
 	
-	//For BattleState
-	public Senior () {
-		
-	}
+	//The options for the player
+	private Option optOne = new Option("Shikayat", 70, "The senior was charged 5000 rupees... It was super effective.");
+	private Option optTwo = new Option("Witty Comeback", 10, "Senior was shocked... But it was not very effective.");
 	
-	@Override
-	public Option[] getOptions() {
-		return options;
+	//Attacks for Senior
+	private Option attackOne = new Option("Ragging", 60, "It was super embarassing.");
+	private Option attackTwo = new Option("Point party", 30, "You were charged 1500 rupees.");
+	private Option attackThree = new Option("Gaana gao", 40, "You were forced to sing.");
+	
+	
+	public void tick () {
+		setOptions(new Option[]{optOne, optTwo}); //Anonymous arrays
+		setAttacks(new Option[]{attackOne, attackTwo, attackThree}); //The enemy can have infinite attacks
 	}
 
 }

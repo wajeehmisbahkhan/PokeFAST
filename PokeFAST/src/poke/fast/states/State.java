@@ -3,6 +3,8 @@ package poke.fast.states;
 import java.awt.Graphics;
 
 import poke.fast.Handler;
+import poke.fast.entities.characters.Player;
+import poke.fast.textboxes.DialogueBox;
 
 //This class will change the state of the game between menu and play
 public abstract class State {
@@ -29,6 +31,13 @@ public abstract class State {
 	}
 	public static void setState (State state) {
 		currentState = state;
+	}
+	
+	
+	//Override in gamestate
+	public Player getPlayer() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

@@ -1,10 +1,16 @@
 package poke.fast.gfx;
 
+import java.awt.Font;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 //This will be used to load all the graphical assets. It will be mostly static so it can be accessed directly through the class
 public class Assets {
 	public static final int width = 32, height = 32; // This will be used for most of the objects
+	
+	//Fonts
+	public static Font dialogueFont;
+	public static Font optionFont;
 	
 	//GameItems
 	public static BufferedImage player, grass, rock, dirt, tree;
@@ -17,12 +23,17 @@ public class Assets {
 	public static BufferedImage[] btn_start;
 	public static BufferedImage menuBg, logo;
 	
+	//Battle
+	public static BufferedImage student, senior, teacher, assignment, battleGround;
 	
 	//When the game initializes
 	public static void init () {
+		//Fonts
+		dialogueFont = FontLoader.loadFont("res/fonts/PKMN RBYGSC.ttf", 15);
+		optionFont = FontLoader.loadFont("res/fonts/Verdana.ttf", 12);
+		
 		//Load all the sprite sheets
 		SpriteSheet menuSheet = new SpriteSheet(ImageLoader.loadImage("/textures/menu_sheet.png"));
-		SpriteSheet menuBack = new SpriteSheet(ImageLoader.loadImage("/textures/menu_bg.jpg"));
 		
 		//player and tiles
 		SpriteSheet boxSheet = new SpriteSheet(ImageLoader.loadImage("/textures/box_sheet.png"));
@@ -31,10 +42,18 @@ public class Assets {
 		SpriteSheet characterSheet = new SpriteSheet(ImageLoader.loadImage("/textures/character_sheet.png"));
 		SpriteSheet fountain = new SpriteSheet(ImageLoader.loadImage("/textures/fountain-final.png"));
 		
+		SpriteSheet enemySheet = new SpriteSheet(ImageLoader.loadImage("/textures/enemies_sheet.jpg"));
+		SpriteSheet battleSheet = new SpriteSheet(ImageLoader.loadImage("/textures/battle_sheet.png"));
 		
 		//Crop the required items
+		student = ImageLoader.loadImage("/textures/student.png");
+		senior = enemySheet.crop(80, 240, 80, 80);
+		teacher = enemySheet.crop(160, 240, 80, 80);
+		assignment = enemySheet.crop(80, 0, 80, 80);
+		battleGround = battleSheet.crop(0, 0, 256, 144);
+		
 		//Menu
-		menuBg = menuBack.crop(0, 0, 400, 400);
+		menuBg = ImageLoader.loadImage("/textures/menu_bg.jpg");
 		
 		btn_start = new BufferedImage[2];
 		btn_start[0] = menuSheet.crop(0, 0, 160, 45);

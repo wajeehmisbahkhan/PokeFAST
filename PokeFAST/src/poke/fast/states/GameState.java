@@ -24,6 +24,7 @@ public class GameState extends State {
 		super(handler);
 		map = new Map(handler, "fast");
 		handler.setMap(map);
+		player = new Player(handler, 200, 200);
 		//teacher = new Teacher(handler, 200, 200);
 		senior = new Senior(handler, 300, 300);
 		assignment = new Assignment(handler, 400, 400);
@@ -34,8 +35,8 @@ public class GameState extends State {
 
 	public void tick() {
 		map.tick();
-		player.tick();
-		teacher.tick();
+		//player.tick();
+		//teacher.tick();
 		tree.tick();
 		senior.tick();
 		assignment.tick();
@@ -45,8 +46,8 @@ public class GameState extends State {
 
 	public void render(Graphics g) {
 		map.render(g);
-		player.render(g);
-		teacher.render(g);
+		//player.render(g);
+		//teacher.render(g);
 		tree.render(g);
 		fountain.render(g);
 	}

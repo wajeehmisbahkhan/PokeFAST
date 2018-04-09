@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import poke.fast.Handler;
 import poke.fast.entities.EntityManager;
 import poke.fast.entities.characters.Player;
+import poke.fast.entities.characters.Teacher;
 import poke.fast.entities.inanimates.Tree;
 import poke.fast.tiles.Tile;
 import poke.fast.utils.TextReader;
@@ -26,16 +27,25 @@ public class Map {
 		entityManager.addEntity(new Tree(handler, 100, 250));
 		entityManager.addEntity(new Tree(handler, 100, 300));
 		entityManager.addEntity(new Tree(handler, 100, 400));
+		entityManager.addEntity(new Teacher(handler,300,300));
 		
 		
 		loadMap(name); //Fills up the tiles array with id's
 		
 		//spawn position of player
-		entityManager.getPlayer().setX(100);
-		entityManager.getPlayer().setY(300);
+		entityManager.getPlayer().setX(200);
+		entityManager.getPlayer().setY(200);
 		
 	}
 	
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
+
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
+
 	public void loadMap (String name) {
 		//Player loading
 		spawnX = 0; //Change later according to entry position
@@ -55,9 +65,7 @@ public class Map {
 	}
 	
 	public void tick () {
-		
 		entityManager.tick();
-		
 	}
 	
 	public void render (Graphics g) {

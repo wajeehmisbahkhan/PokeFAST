@@ -13,7 +13,7 @@ import poke.fast.maps.Map;
 public class GameState extends State {
 
 	private Map map;
-	private Teacher teacher;
+	//private Teacher teacher;
 	private Senior senior;
 	private Assignment assignment;
 	
@@ -21,7 +21,7 @@ public class GameState extends State {
 		super(handler);
 		map = new Map(handler, "fast");
 		handler.setMap(map);
-		teacher = new Teacher(handler, 200, 200);
+		//teacher = new Teacher(handler, 200, 200);
 		senior = new Senior(handler, 300, 300);
 		assignment = new Assignment(handler, 400, 400);
 
@@ -29,7 +29,7 @@ public class GameState extends State {
 
 	public void tick() {
 		map.tick();
-		teacher.tick();
+		//teacher.tick();
 		senior.tick();
 		assignment.tick();
 		if (handler.getKeyManager().space)
@@ -38,7 +38,7 @@ public class GameState extends State {
 
 	public void render(Graphics g) {
 		map.render(g);
-		teacher.render(g);
+		//teacher.render(g);
 
 	}
 	

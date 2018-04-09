@@ -24,6 +24,8 @@ public class Map {
 		this.handler = handler;
 		entityManager = new EntityManager(handler, new Player(handler,50,100));
 		entityManager.addEntity(new Tree(handler, 100, 250));
+		entityManager.addEntity(new Tree(handler, 100, 300));
+		entityManager.addEntity(new Tree(handler, 100, 400));
 		
 		
 		loadMap(name); //Fills up the tiles array with id's

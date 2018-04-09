@@ -18,11 +18,11 @@ public class Map {
 	private int spawnX, spawnY; //The player's position in terms of tiles; Will be defined according to the entry point
 	
 	//Entities
-	private EntityManager entityManager;
+	public EntityManager entityManager;
 	
 	public Map (Handler handler, String name) {
 		this.handler = handler;
-		entityManager = new EntityManager(handler, new Player(handler,50,100));
+		entityManager = new EntityManager(handler, new Player(handler,100,100));
 		entityManager.addEntity(new Tree(handler, 100, 250));
 		entityManager.addEntity(new Tree(handler, 100, 300));
 		entityManager.addEntity(new Tree(handler, 100, 400));
@@ -30,8 +30,9 @@ public class Map {
 		
 		loadMap(name); //Fills up the tiles array with id's
 		
-		entityManager.getPlayer().setX(spawnX);
-		entityManager.getPlayer().setY(spawnY);
+		//spawn position of player
+		entityManager.getPlayer().setX(100);
+		entityManager.getPlayer().setY(300);
 		
 	}
 	

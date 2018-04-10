@@ -79,7 +79,7 @@ public class Game implements Runnable {
 		//States
 		gameState = new GameState(handler);
 		menuState = new MenuState(handler);
-		State.setState(gameState);
+		State.setState(menuState);
 		
 		//Add the Event Listeners to JFrame
 		display.getFrame().addMouseListener(mouseManager);
@@ -138,8 +138,6 @@ public class Game implements Runnable {
 		double delta = 0;
 		long now, lastTime = System.nanoTime();
 		long timer = 0;
-		int ticks = 0;
-		
 		while (running) {
 			now = System.nanoTime();
 			delta += (now - lastTime) / interval;
@@ -149,12 +147,11 @@ public class Game implements Runnable {
 			if(delta >= 1) {
 				tick();
 				render();
-				ticks++;
 				delta=0;
 			}
 			
 			if(timer >= 1000000000) {
-				ticks = 0; timer = 0;
+				timer = 0;
 			}
 			
 		}

@@ -4,7 +4,6 @@ import java.awt.Graphics;
 
 import poke.fast.Handler;
 import poke.fast.entities.characters.Player;
-import poke.fast.textboxes.DialogueBox;
 
 //This class will change the state of the game between menu and play
 public abstract class State {

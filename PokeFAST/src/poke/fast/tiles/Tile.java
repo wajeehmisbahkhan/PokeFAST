@@ -9,7 +9,12 @@ public class Tile {
 	public static Tile grassTile = new GrassTile(0);
 	public static Tile dirtTile = new DirtTile(1);
 	public static Tile rockTile = new RockTile(2);
-
+	public static Tile shadesTile = new ShadesTile(3);
+	public static Tile csTile = new CSTile(4);
+	public static Tile shopTile = new ShopTile(5);
+	public static Tile teleportTile = new TeleportTile(6);
+	public static Tile shadowTile = new ShadowTile(7);
+	
 	//CLASS
 	
 	public static final int TILEWIDTH = 64, TILEHEIGHT = 64;
@@ -32,6 +37,10 @@ public class Tile {
 	}
 	
 	public boolean isSolid() {		//Override for rocks, benches, and walls
+		return false;
+	}
+	
+	public boolean renderLater() { //Override for shades etc
 		return false;
 	}
 	

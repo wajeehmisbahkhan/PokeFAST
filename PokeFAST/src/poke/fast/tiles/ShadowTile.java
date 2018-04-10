@@ -2,10 +2,9 @@ package poke.fast.tiles;
 
 import poke.fast.gfx.Assets;
 
-public class RockTile extends Tile {
-
-	public RockTile( int id) {
-		super(Assets.rock, id);
+public class ShadowTile extends Tile {
+	public ShadowTile (int id) {
+		super(Assets.shadow, id);
 	}
 	
 	@Override

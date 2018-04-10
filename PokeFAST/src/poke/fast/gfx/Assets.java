@@ -12,7 +12,8 @@ public class Assets {
 	public static Font optionFont;
 	
 	//GameItems
-	public static BufferedImage player, grass, rock, dirt, tree;
+	public static BufferedImage player, grass, rock, dirt, cs, shop, shades, teleport, shadow; //Tiles
+	public static BufferedImage tree, fountain; //Inanimate
 	
 	public static BufferedImage[] player_still, player_down, player_up, player_left, player_right;
 	public static BufferedImage[] teacher_still, teacher_down, teacher_up, teacher_left, teacher_right;
@@ -35,10 +36,10 @@ public class Assets {
 		SpriteSheet menuSheet = new SpriteSheet(ImageLoader.loadImage("/textures/menu_sheet.png"));
 		
 		//player and tiles
-		SpriteSheet boxSheet = new SpriteSheet(ImageLoader.loadImage("/textures/box_sheet.png"));
-		SpriteSheet boxSheet2 = new SpriteSheet(ImageLoader.loadImage("/textures/box2_sheet.jpg"));
-		SpriteSheet boxSheet3 = new SpriteSheet(ImageLoader.loadImage("/textures/box3_sheet.png"));
-		SpriteSheet characterSheet = new SpriteSheet(ImageLoader.loadImage("/textures/character_sheet.png"));
+
+		SpriteSheet tileSheet = new SpriteSheet(ImageLoader.loadImage("/textures/tiles_sheet.png"));
+		SpriteSheet inanimateSheet = new SpriteSheet(ImageLoader.loadImage("/textures/inanimates_sheet.png"));
+		SpriteSheet characterSheet = new SpriteSheet(ImageLoader.loadImage("/textures/character_sheet.png"));		
 		
 		SpriteSheet enemySheet = new SpriteSheet(ImageLoader.loadImage("/textures/enemies_sheet.jpg"));
 		SpriteSheet battleSheet = new SpriteSheet(ImageLoader.loadImage("/textures/battle_sheet.png"));
@@ -105,11 +106,17 @@ public class Assets {
 		teacher_still[i] = characterSheet.crop(width*9, height*i, width, height);
 		senior_still[i] = characterSheet.crop(width*6, height*(i+4), width, height);
 		
-		grass = boxSheet2.crop(width, 0, width, height);	
-		rock = boxSheet.crop(width*2, height*3, width, height);
-		dirt = boxSheet.crop(0, height*3, width, height);
-		tree = boxSheet3.crop(width, height, width, height);
-		
+		grass = tileSheet.crop(0, 0, width, height);	
+		dirt = tileSheet.crop(width, 0, width, height);
+		rock = tileSheet.crop(width*2, 0, width, height);
+		shades = tileSheet.crop(width*3, 0, width, height);
+		cs = tileSheet.crop(0, height, width, height);
+		shop = tileSheet.crop(width, height, width, height);
+		shadow = tileSheet.crop(width*2, height, width, height);
+		teleport = tileSheet.crop(width*3, height, width, height);
+		tree = inanimateSheet.crop(0, 0, width, height);
+		fountain = inanimateSheet.crop(width*3, 0, width*5, height*3);
+
 	}
 	
 }

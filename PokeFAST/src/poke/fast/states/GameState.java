@@ -7,35 +7,34 @@ import poke.fast.entities.characters.Assignment;
 import poke.fast.entities.characters.Player;
 import poke.fast.entities.characters.Senior;
 import poke.fast.entities.characters.Teacher;
-import poke.fast.entities.inanimates.Tree;
 import poke.fast.maps.Map;
 
 public class GameState extends State {
 
 	private Map map;
-	
-	//private Senior senior;	//battlestate senior, will remove later
-	
+
 	public GameState (Handler handler) {
 		super(handler);
 		map = new Map(handler, "fast");
 		handler.setMap(map);
-		
+
 	}
 
 	public void tick() {
 		map.tick();
 		if (handler.getKeyManager().space)
+
 			State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getSenior()));
+
+			//State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getAssignment()));
 	}
 
 	public void render(Graphics g) {
 		map.render(g);
-		
 	}
 	
 	public Player getPlayer () {
-		return  map.entityManager.getPlayer();
+		return map.entityManager.getPlayer();
 	}
 	public Teacher getTeacher () {
 		return  map.entityManager.getTeacher();

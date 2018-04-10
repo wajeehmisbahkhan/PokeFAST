@@ -28,6 +28,8 @@ public class GameState extends State {
 
 			//State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getAssignment()));
 	
+		if (getPlayer().checkEntityEncounter(0f,getPlayer().getyMove())	||	getPlayer().checkEntityEncounter(getPlayer().getxMove(),0f)	)
+			State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getSenior()));
 	}
 
 	public void render(Graphics g) {

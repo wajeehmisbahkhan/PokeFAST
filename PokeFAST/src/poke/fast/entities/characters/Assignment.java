@@ -1,6 +1,9 @@
 package poke.fast.entities.characters;
 
+import java.awt.Graphics;
+
 import poke.fast.Handler;
+import poke.fast.gfx.Assets;
 import poke.fast.textboxes.Option;
 
 public class Assignment extends Enemy {
@@ -26,4 +29,9 @@ public class Assignment extends Enemy {
 		setAttacks(new Option[]{attackOne, attackTwo}); //The enemy can have infinite attacks
 	}
 
+	public void render(Graphics g) {
+		g.drawImage(Assets.teacher_up[2], (int) ( x - handler.getGameCamera().getxOffset() ), (int) ( y - handler.getGameCamera().getyOffset() ),
+				width, height, null);
+	}
+	
 }

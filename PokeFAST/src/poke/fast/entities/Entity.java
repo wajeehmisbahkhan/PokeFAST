@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import poke.fast.Handler;
+import poke.fast.entities.characters.Enemy;
 
 public abstract class Entity {
 
@@ -20,7 +21,7 @@ public abstract class Entity {
 		this.width = width;
 		this.height = height;
 		bounds = new Rectangle(24,24,width/2,height/2);	//default bounds, to be over-ridden
-		fov = new Rectangle(0,0,width,height);
+		fov = new Rectangle(-width,-height,2*width,2*height);
 	}
 	
 	//For BattleState
@@ -76,11 +77,11 @@ public abstract class Entity {
 		return new Rectangle( (int) (x + bounds.x + xOffset), (int) (y + bounds.y + yOffset), bounds.width, bounds.height );
 	}
 	
-	public boolean checkEntityEncounter( float xOffset, float yOffset) {
+	public boolean checkEntityEncounter( float xOffset, float yOffset) {		//checks fov
 		for(Entity e: handler.getMap().getEntityManager().getEntities()) {
 			if(e.equals(this))
 				continue;
-			if(e.getEncounterBounds(0f,0f).intersects(getEncounterBounds(xOffset,yOffset)))
+			if(e.getEncounterBounds(0f,0f).intersects(getEncounterBounds(xOffset,yOffset))	&& e instanceof Enemy	)
 				return true;
 		}
 		return false;

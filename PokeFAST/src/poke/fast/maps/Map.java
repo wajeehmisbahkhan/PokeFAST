@@ -26,16 +26,16 @@ public class Map {
 	
 	public Map (Handler handler, String name) {
 		this.handler = handler;
-		entityManager = new EntityManager(handler, new Player(handler,800,800), new Teacher(handler, 300, 100), new Senior(handler, 400, 100), new Assignment(handler, 250, 100));
+		entityManager = new EntityManager(handler, new Player(handler,0,0), new Teacher(handler, 600, 100), new Senior(handler, 400, 300), new Assignment(handler, 250, 500));
 		entityManager.addEntity(new Tree(handler, 100, 250));
 		entityManager.addEntity(new Tree(handler, 100, 300));
 		entityManager.addEntity(new Tree(handler, 100, 400));
-		entityManager.addEntity(new Fountain(handler, 1470, 1020));
+		entityManager.addEntity(new Fountain(handler, 1470, 1020));	//don't change
 		loadMap(name); //Fills up the tiles array with id's
 		
 		//spawn position of player
-		entityManager.getPlayer().setX(300);
-		entityManager.getPlayer().setY(400);
+		entityManager.getPlayer().setX(100);
+		entityManager.getPlayer().setY(1200);
 		
 	}
 	

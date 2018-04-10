@@ -89,36 +89,17 @@ public class Map {
 		
 		//tilesAboveEntities
 		
-		//Only render tiles that are within the game camera
-				//Render the tiles
-				for (int y = yStart; y < yEnd; y++) { //Prevents problems
-					for (int x = xStart; x < xEnd; x++) {
-						if( getTile(x,y).renderLater()) {
-						getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - handler.getGameCamera().getxOffset()),
+				for (int y = yStart; y < yEnd; y++) 
+					for (int x = xStart; x < xEnd; x++) 
+						if( getTile(x,y).renderLater()) 
+							getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - handler.getGameCamera().getxOffset()),
 								(int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
-						}
-					}
-				}
+						
+					
+				
 		
 	}
 	
-	/*Render tiles like shades
-	public void renderLater (Graphics g) {
-		//Only render tiles that are within the game camera
-		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILEWIDTH);
-		int xEnd = (int) Math.min(width, ((handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEWIDTH) + 1);
-		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILEHEIGHT);
-		int yEnd = (int) Math.min(height, ((handler.getGameCamera().getyOffset() + handler.getHeight()) / Tile.TILEHEIGHT) + 1);
-		//Render the tiles
-		for (int y = yStart; y < yEnd; y++) { //Prevents problems
-			for (int x = xStart; x < xEnd; x++) {
-				if (getTile(x,y).renderLater())
-					getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - handler.getGameCamera().getxOffset()),
-											(int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
-			}
-		}
-	}
-	*/
 	public Tile getTile(int x, int y) {
 		if (x < 0 || y < 0 || x >= width || y >= height) //In case our starting and ending are miscalculated
 			return Tile.grassTile;
@@ -129,6 +110,10 @@ public class Map {
 			return Tile.dirtTile;
 		return t;
 	}
+	
+	//Teleportation
+	
+	
 	
 	//GETTERS & SETTERS
 	public int getWidth() {

@@ -1,6 +1,7 @@
 package poke.fast.entities.inanimates;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 import poke.fast.Handler;
 import poke.fast.gfx.Assets;
@@ -10,6 +11,7 @@ public class Fountain extends Inanimate {
 	
 	public Fountain(Handler handler, float x, float y) {
 		super(handler, x, y, Tile.TILEWIDTH*4, Tile.TILEHEIGHT*2);
+		bounds = new Rectangle(32,16,196,96);
 	}
 
 	@Override

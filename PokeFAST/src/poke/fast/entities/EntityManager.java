@@ -9,6 +9,7 @@ import poke.fast.entities.characters.Assignment;
 import poke.fast.entities.characters.Player;
 import poke.fast.entities.characters.Senior;
 import poke.fast.entities.characters.Teacher;
+import poke.fast.entities.inanimates.Fountain;
 
 public class EntityManager {
 
@@ -22,6 +23,8 @@ public class EntityManager {
 
 		@Override
 		public int compare(Entity a, Entity b) {
+			if(b instanceof Fountain)
+				return 1;
 			if(a.getY()+a.getHeight() < b.getY()+b.getHeight())
 				return -1;
 			return 1;

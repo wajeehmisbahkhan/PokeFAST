@@ -15,7 +15,7 @@ public class GameState extends State {
 
 	public GameState (Handler handler) {
 		super(handler);
-		map = new Map(handler, "fast");
+		map = new Map(handler, "cs_1");
 		handler.setMap(map);
 
 	}

@@ -8,6 +8,7 @@ import poke.fast.entities.characters.Assignment;
 import poke.fast.entities.characters.Player;
 import poke.fast.entities.characters.Senior;
 import poke.fast.entities.characters.Teacher;
+import poke.fast.entities.inanimates.Fountain;
 import poke.fast.entities.inanimates.Tree;
 import poke.fast.tiles.Tile;
 import poke.fast.utils.TextReader;
@@ -25,16 +26,16 @@ public class Map {
 	
 	public Map (Handler handler, String name) {
 		this.handler = handler;
-		entityManager = new EntityManager(handler, new Player(handler,100,100), new Teacher(handler, 300, 100), new Senior(handler, 400, 100), new Assignment(handler, 250, 100));
+		entityManager = new EntityManager(handler, new Player(handler,800,800), new Teacher(handler, 300, 100), new Senior(handler, 400, 100), new Assignment(handler, 250, 100));
 		entityManager.addEntity(new Tree(handler, 100, 250));
 		entityManager.addEntity(new Tree(handler, 100, 300));
 		entityManager.addEntity(new Tree(handler, 100, 400));
-		
+		entityManager.addEntity(new Fountain(handler, 1470, 1020));
 		loadMap(name); //Fills up the tiles array with id's
 		
 		//spawn position of player
-		entityManager.getPlayer().setX(200);
-		entityManager.getPlayer().setY(200);
+		entityManager.getPlayer().setX(300);
+		entityManager.getPlayer().setY(400);
 		
 	}
 	
@@ -85,9 +86,23 @@ public class Map {
 		//entities
 		entityManager.render(g);
 		
+		
+		//tilesAboveEntities
+		
+		//Only render tiles that are within the game camera
+				//Render the tiles
+				for (int y = yStart; y < yEnd; y++) { //Prevents problems
+					for (int x = xStart; x < xEnd; x++) {
+						if( getTile(x,y).renderLater()) {
+						getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - handler.getGameCamera().getxOffset()),
+								(int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
+						}
+					}
+				}
+		
 	}
 	
-	//Render tiles like shades
+	/*Render tiles like shades
 	public void renderLater (Graphics g) {
 		//Only render tiles that are within the game camera
 		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILEWIDTH);
@@ -103,7 +118,7 @@ public class Map {
 			}
 		}
 	}
-	
+	*/
 	public Tile getTile(int x, int y) {
 		if (x < 0 || y < 0 || x >= width || y >= height) //In case our starting and ending are miscalculated
 			return Tile.grassTile;

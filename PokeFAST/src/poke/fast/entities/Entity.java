@@ -19,7 +19,7 @@ public abstract class Entity {
 		this. y = y;
 		this.width = width;
 		this.height = height;
-		bounds = new Rectangle(16,24,width/2,height/2);	//default bounds, to be over-ridden
+		bounds = new Rectangle(24,24,width/2,height/2);	//default bounds, to be over-ridden
 		fov = new Rectangle(0,0,width,height);
 	}
 	

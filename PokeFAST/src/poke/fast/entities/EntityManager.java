@@ -5,13 +5,18 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 import poke.fast.Handler;
+import poke.fast.entities.characters.Assignment;
 import poke.fast.entities.characters.Player;
+import poke.fast.entities.characters.Senior;
 import poke.fast.entities.characters.Teacher;
 
 public class EntityManager {
 
 	private Handler handler;
 	private Player player;
+	private Teacher teacher;
+	private Assignment assignment;
+	private Senior senior;
 	private ArrayList<Entity> entities;		//variable-size array of entity sub-classes
 	private Comparator<Entity> renderOrder = new Comparator<Entity>() {
 
@@ -25,13 +30,43 @@ public class EntityManager {
 	};
 	
 	
-	public EntityManager(Handler handler, Player player) {
+	public EntityManager(Handler handler, Player player, Teacher teacher, Senior senior, Assignment assignment) {
 		this.handler = handler;
 		this.player = player;
+		this.teacher = teacher;
+		this.senior = senior;
+		this.assignment = assignment;
 		entities = new ArrayList<Entity>();
 		addEntity(player);
+		addEntity(teacher);
+		addEntity(senior);
+		addEntity(assignment);
 	}
 	
+	public Assignment getAssignment() {
+		return assignment;
+	}
+
+	public void setAssignment(Assignment assignment) {
+		this.assignment = assignment;
+	}
+
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
+
+	public Senior getSenior() {
+		return senior;
+	}
+
+	public void setSenior(Senior senior) {
+		this.senior = senior;
+	}
+
 	public void tick() {
 		
 		for(int i=0;i<entities.size();i++) {

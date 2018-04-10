@@ -4,7 +4,9 @@ import java.awt.Graphics;
 
 import poke.fast.Handler;
 import poke.fast.entities.EntityManager;
+import poke.fast.entities.characters.Assignment;
 import poke.fast.entities.characters.Player;
+import poke.fast.entities.characters.Senior;
 import poke.fast.entities.characters.Teacher;
 import poke.fast.entities.inanimates.Tree;
 import poke.fast.tiles.Tile;
@@ -23,12 +25,10 @@ public class Map {
 	
 	public Map (Handler handler, String name) {
 		this.handler = handler;
-		entityManager = new EntityManager(handler, new Player(handler,100,100));
+		entityManager = new EntityManager(handler, new Player(handler,100,100), new Teacher(handler, 300, 100), new Senior(handler, 400, 100), new Assignment(handler, 250, 100));
 		entityManager.addEntity(new Tree(handler, 100, 250));
 		entityManager.addEntity(new Tree(handler, 100, 300));
 		entityManager.addEntity(new Tree(handler, 100, 400));
-		entityManager.addEntity(new Teacher(handler,300,300));
-		
 		
 		loadMap(name); //Fills up the tiles array with id's
 		

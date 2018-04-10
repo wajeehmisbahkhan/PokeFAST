@@ -47,4 +47,8 @@ public class Tile {
 	public int getId() {
 		return id;
 	}
+
+	public boolean isPortal() {		//Override for entrances
+		return false;
+	}
 }

@@ -69,6 +69,8 @@ public abstract class Character extends Entity {
 	protected boolean collisionWithTile (int x, int y) {
 		return handler.getMap().getTile(x,y).isSolid();
 	}
+	
+	
 	public float getSpeed() {
 		return speed;
 	}

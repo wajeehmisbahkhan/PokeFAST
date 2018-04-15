@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import poke.fast.Handler;
 import poke.fast.entities.characters.Player;
+import poke.fast.gfx.Transition;
 
 //This class will change the state of the game between menu and play
 public abstract class State {
@@ -12,11 +13,16 @@ public abstract class State {
 	private static State currentState = null; //It is static because we want to access it directly through the class and it can only be one thing globally
 	
 	//The handler
-	protected Handler handler;	
+	protected Handler handler;
+	
+	//Useful for all
+	protected boolean spacePressed;
+	protected Transition transition;
+	
 	//Constructor is for the inherited children
 	public State(Handler handler) {
 		this.handler = handler;
-		
+		transition = new Transition(handler);
 	}
 	
 	//These methods will be defined by the children

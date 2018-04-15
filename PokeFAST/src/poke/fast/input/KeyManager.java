@@ -9,6 +9,8 @@ public class KeyManager implements KeyListener{
 	public boolean up, down, left, right;
 	public boolean space;
 	
+	public boolean spacePressed;
+	private int ticks = 0;
 	public KeyManager() {
 		keys = new boolean[256];
 	}
@@ -19,11 +21,25 @@ public class KeyManager implements KeyListener{
 		left = keys[KeyEvent.VK_A] || keys[KeyEvent.VK_LEFT];
 		right = keys[KeyEvent.VK_D] || keys[KeyEvent.VK_RIGHT];
 		space = keys[KeyEvent.VK_SPACE];
+		if (space && ticks > 30) {
+			spacePressed = true;
+			ticks = 0;
+		} else
+			spacePressed = false;
+		ticks++;
 	}
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		keys[e.getKeyCode()] = true;
+		//For space
+		/*if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			if (ticks > 30) {
+				keys[e.getKeyCode()] = true;
+				ticks = 0;
+			} else
+				keys[e.getKeyCode()] = false;
+		}*/
 	}
 
 	@Override

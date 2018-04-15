@@ -9,17 +9,20 @@ import poke.fast.entities.characters.Senior;
 import poke.fast.entities.characters.Teacher;
 import poke.fast.entities.inanimates.Fountain;
 import poke.fast.entities.inanimates.Tree;
+import poke.fast.gfx.Transition;
 import poke.fast.maps.Map;
+import poke.fast.sfx.SoundManager;
 
 public class GameState extends State {
-
+	
 	private Map map;
 	private Player player;
 	private Teacher teacher;
 	private Senior senior;
 	private Assignment assignment;
 	private Tree tree;
-	private Fountain fountain;	
+	private Fountain fountain;
+	
 	public GameState (Handler handler) {
 		super(handler);
 		map = new Map(handler, "fast");
@@ -30,7 +33,6 @@ public class GameState extends State {
 		assignment = new Assignment(handler, 400, 400);
 		tree = new Tree(handler, 150, 100);
 		fountain = new Fountain(handler, 1500-32, 964+32);
-
 	}
 
 	public void tick() {
@@ -40,8 +42,10 @@ public class GameState extends State {
 		tree.tick();
 		senior.tick();
 		assignment.tick();
-		if (handler.getKeyManager().space)
+		if (Transition.played) {
+			Transition.played = false;
 			State.setState(new BattleState(handler, player, assignment));
+		}
 	}
 
 	public void render(Graphics g) {
@@ -50,6 +54,10 @@ public class GameState extends State {
 		//teacher.render(g);
 		tree.render(g);
 		fountain.render(g);
+		if (handler.getKeyManager().spacePressed || Transition.playing) { //First condition will change so the entire structure MIGHT change
+			Transition.playing = true;
+			transition.swipeIn(g);
+		}
 	}
 	
 	public Player getPlayer () {

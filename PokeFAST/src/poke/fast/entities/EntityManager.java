@@ -6,7 +6,7 @@ import java.util.Comparator;
 
 import poke.fast.Handler;
 import poke.fast.entities.characters.Player;
-import poke.fast.entities.characters.Teacher;
+import poke.fast.gfx.Transition;
 
 public class EntityManager {
 
@@ -36,7 +36,8 @@ public class EntityManager {
 		
 		for(int i=0;i<entities.size();i++) {
 			Entity e = entities.get(i);
-			e.tick();
+			if (!Transition.playing) //So it doesn't run during transitions... duh
+				e.tick();
 		}
 		entities.sort(renderOrder);
 		

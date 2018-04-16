@@ -32,12 +32,25 @@ public class GameState extends State {
 			Transition.played = false;
 			State.setState(new BattleState(handler, player, map.entityManager.getAssignment()));
 		}
+		
+		if (	getPlayer().stepOnPortal()	&& handler.getKeyManager().spacePressed) {
+			if(handler.getMap().getCurrentMap()==0) {
+				map.loadMap("cs_1",100);
+				handler.getMap().setCurrentMap(1);
+			}
+			
+			else if(handler.getMap().getCurrentMap()==1) {
+				map.loadMap("fast",100);
+				handler.getMap().setCurrentMap(0);
+			}
+				
+		}
 
 	}
 
 	public void render(Graphics g) {
 		map.render(g);
-		if (handler.getKeyManager().spacePressed || Transition.playing) { //First condition will change so the entire structure MIGHT change
+		if ( Transition.playing) { //First condition will change so the entire structure MIGHT change
 			Transition.playing = true;
 			transition.swipeIn(g);
 		}

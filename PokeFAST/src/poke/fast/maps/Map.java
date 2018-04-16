@@ -20,6 +20,8 @@ public class Map {
 	private int[][] tiles; //The tiles will be stored in this 2d array using their id's
 	
 	private int spawnX, spawnY; //The player's position in terms of tiles; Will be defined according to the entry point
+	private int currentMap;		//0 fast, 1 cs1
+	
 	
 	//Entities
 	public EntityManager entityManager;
@@ -49,8 +51,12 @@ public class Map {
 
 	public void loadMap (String name) {
 		//Player loading
-		spawnX = 0; //Change later according to entry position
-		spawnY = 0;
+		spawnX = 6*64;		//(int) entityManager.getPlayer().getX(); //Change later according to entry position
+		spawnY = 9*64;		//(int) entityManager.getPlayer().getY();
+		
+		entityManager.getPlayer().setX(spawnX);
+		entityManager.getPlayer().setY(spawnY);
+		
 		//Map loading
 		String file = TextReader.loadFileAsString("res/maps/" + name + ".map");
 		String[] tokens = file.split("\\s+");
@@ -64,6 +70,44 @@ public class Map {
 			}
 		}
 	}
+	
+	
+	//overload of loadMap, will merge later
+	
+	public void loadMap (String name, int dummy) {
+		//Player loading
+		if(currentMap==0) {
+			spawnX = 6*64;		//(int) entityManager.getPlayer().getX(); //Change later according to entry position
+			spawnY = 9*64;
+		}
+				//(int) entityManager.getPlayer().getY();
+		
+		else if(currentMap==1) {
+			spawnX = 9*64;
+			spawnY = 20*64;
+		}
+			
+		
+		entityManager.getPlayer().setX(spawnX);
+		entityManager.getPlayer().setY(spawnY);
+		
+		//Map loading
+		String file = TextReader.loadFileAsString("res/maps/" + name + ".map");
+		String[] tokens = file.split("\\s+");
+		width = TextReader.parseInt(tokens[0]);
+		height = TextReader.parseInt(tokens[1]);
+		
+		tiles = new int[width][height];
+		for (int y = 0; y < height; y++) {
+			for (int x = 0; x < width; x++) {
+				tiles[x][y] = TextReader.parseInt(tokens[(x + y * width) + 4]);
+			}
+		}
+	}
+	
+	//overload loadmaop
+	
+	
 	
 	public void tick () {
 		entityManager.tick();
@@ -146,5 +190,13 @@ public class Map {
 
 	public void setSpawnY(int spawnY) {
 		this.spawnY = spawnY;
+	}
+
+	public int getCurrentMap() {
+		return currentMap;
+	}
+
+	public void setCurrentMap(int currentMap) {
+		this.currentMap = currentMap;
 	}
 }

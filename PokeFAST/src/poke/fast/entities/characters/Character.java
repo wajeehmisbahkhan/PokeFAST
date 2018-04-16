@@ -70,6 +70,16 @@ public abstract class Character extends Entity {
 		return handler.getMap().getTile(x,y).isSolid();
 	}
 	
+	public boolean stepOnPortal() {
+		
+		int ty = (int) (y + yMove + bounds.y) / Tile.TILEHEIGHT;
+		if (handler.getMap().getTile( (int) (x + bounds.x) / Tile.TILEHEIGHT, ty ).isPortal()
+				||
+				handler.getMap().getTile( (int) (x + bounds.x + bounds.width) / Tile.TILEHEIGHT, ty) .isPortal())
+		return true;
+		return false;
+	}
+	
 	
 	public float getSpeed() {
 		return speed;

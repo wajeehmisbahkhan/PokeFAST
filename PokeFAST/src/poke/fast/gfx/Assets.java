@@ -14,6 +14,7 @@ public class Assets {
 	//GameItems
 	public static BufferedImage player, grass, rock, dirt, cs, shop, shades, teleport, shadow; //Tiles
 	public static BufferedImage tree, fountain; //Inanimate
+	public static BufferedImage pokeBag;
 	
 	public static BufferedImage[] player_still, player_down, player_up, player_left, player_right;
 	public static BufferedImage[] teacher_still, teacher_down, teacher_up, teacher_left, teacher_right;
@@ -50,6 +51,8 @@ public class Assets {
 		teacher = enemySheet.crop(160, 240, 80, 80);
 		assignment = enemySheet.crop(80, 0, 80, 80);
 		battleGround = battleSheet.crop(0, 0, 256, 144);
+		
+		pokeBag = ImageLoader.loadImage("/textures/poke_bag.png");
 		
 		//Menu
 		menuBg = ImageLoader.loadImage("/textures/menu_bg.jpg");

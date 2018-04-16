@@ -7,33 +7,40 @@ import poke.fast.entities.characters.Assignment;
 import poke.fast.entities.characters.Player;
 import poke.fast.entities.characters.Senior;
 import poke.fast.entities.characters.Teacher;
+import poke.fast.gfx.Transition;
 import poke.fast.maps.Map;
+import poke.fast.sfx.SoundManager;
 
 public class GameState extends State {
-
+	
 	private Map map;
-
+	private Player player;
+	
 	public GameState (Handler handler) {
 		super(handler);
 		map = new Map(handler, "fast");
 		handler.setMap(map);
-
 	}
 
 	public void tick() {
+
 		map.tick();
-		if (handler.getKeyManager().space)
-
-			State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getSenior()));
-
-			//State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getAssignment()));
-	
 		if (getPlayer().checkEntityEncounter(0f,getPlayer().getyMove())	||	getPlayer().checkEntityEncounter(getPlayer().getxMove(),0f)	)
 			State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getSenior()));
+		
+		if (Transition.played) {
+			Transition.played = false;
+			State.setState(new BattleState(handler, player, map.entityManager.getAssignment()));
+		}
+
 	}
 
 	public void render(Graphics g) {
 		map.render(g);
+		if (handler.getKeyManager().spacePressed || Transition.playing) { //First condition will change so the entire structure MIGHT change
+			Transition.playing = true;
+			transition.swipeIn(g);
+		}
 	}
 	
 	public Player getPlayer () {

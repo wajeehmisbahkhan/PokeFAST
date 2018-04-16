@@ -37,10 +37,8 @@ public class BattleState extends State {
 	private boolean starting, sliding;
 	private boolean battling = false, playerTurn = false, enemyTurn = false, selecting = false, damaging = false, damaged = false;
 	private boolean won;
-	private boolean spacePressed;
-	private int ticks = 0;
-	
 	int decreasedHealth = 0;
+	static int blackWidth = 0;
 	
 	//Battle
 	
@@ -75,13 +73,8 @@ public class BattleState extends State {
 
 
 	public void tick() {
-			
-		if (ticks > 30 && handler.getKeyManager().space) { //For space clicks
-			spacePressed = true;
-			ticks = 0;
-		}
-		else
-			spacePressed = false;
+		
+		spacePressed = handler.getKeyManager().spacePressed;
 		
 		if (starting && !sliding && spacePressed) {
 			starting = false;
@@ -96,7 +89,6 @@ public class BattleState extends State {
 			if (playerTurn && !damaging)
 				optionBox.tick();
 		}
-		ticks++;
 	}
 
 	public void render(Graphics g) {
@@ -213,14 +205,20 @@ public class BattleState extends State {
 			g.drawImage(Assets.student, playerX, playerY, null);
 			slide(enemy.getName().toLowerCase(), "down", g);
 			dialogueBox.render(g); // So that the enemy doesn't go over the dialogueBox
-			if (!sliding)
+			if (!sliding) {
 				dialogueBox.say(g, "You won! No knowledge gained.");
+				if (spacePressed)
+					State.setState(handler.getGame().getGameState());
+			}
 		} else {
 			g.drawImage(enemyImage, enemyX, enemyY, enemyWidth, enemyHeight, null);
 			slide(player.getName().toLowerCase(), "down", g);
 			dialogueBox.render(g);
-			if (!sliding)
+			if (!sliding) {
 				dialogueBox.say(g, "You lost! Better luck next year.");
+				if (spacePressed)
+					State.setState(new MenuState(handler)); //Go to menu; Change later
+			}
 		}
 			
 	}
@@ -285,6 +283,5 @@ public class BattleState extends State {
 	public void setOptionBox(OptionBox optionBox) {
 		this.optionBox = optionBox;
 	}
-	
 	
 }

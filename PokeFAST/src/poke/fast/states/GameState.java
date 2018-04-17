@@ -25,9 +25,23 @@ public class GameState extends State {
 	public void tick() {
 
 		map.tick();
-		if (getPlayer().checkEntityEncounter(0f,getPlayer().getyMove())	||	getPlayer().checkEntityEncounter(getPlayer().getxMove(),0f)	)
-			State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getSenior()));
-		
+		int encounter1 =	getPlayer().checkEntityEncounter(0f,getPlayer().getyMove());
+		int encounter2 =	getPlayer().checkEntityEncounter(getPlayer().getxMove(),0f);
+		if (	encounter1	!=0	||	encounter2	!=0	) {		//if encounter with enemy occurs
+			
+			if(	encounter1==1	||	encounter2==1	){		//teacher
+				State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getTeacher()));
+			}
+			else if(	encounter1==2	||	encounter2==2	){		//senior
+				State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getSenior()));
+			}
+			else if(	encounter1==3	||	encounter2==3	){		//assignment
+				State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getAssignment()));
+			}
+			
+			
+		}
+			
 		if (Transition.played) {
 			Transition.played = false;
 			State.setState(new BattleState(handler, player, map.entityManager.getAssignment()));

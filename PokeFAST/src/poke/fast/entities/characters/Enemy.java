@@ -12,6 +12,8 @@ public abstract class Enemy extends Character{
 	protected int health;
 	protected int fullHealth;
 	
+	
+	
 	protected Option[] options = new Option[4];
 	protected Option[] attacks = new Option[4];
 	

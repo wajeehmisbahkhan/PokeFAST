@@ -77,6 +77,8 @@ public class EntityManager {
 			Entity e = entities.get(i);
 			if (!Transition.playing) //So it doesn't run during transitions... duh
 				e.tick();
+			if(!e.isAlive())
+				entities.remove(e);
 		}
 		entities.sort(renderOrder);
 		

@@ -200,7 +200,8 @@ public class BattleState extends State {
 	}
 	
 	//End
-	private void end(Graphics g) {
+	private void end(Graphics g) {		//needs cleaning up
+		enemy.setAlive(false);
 		if (won) {
 			g.drawImage(Assets.student, playerX, playerY, null);
 			slide(enemy.getName().toLowerCase(), "down", g);

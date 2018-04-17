@@ -4,7 +4,10 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import poke.fast.Handler;
+import poke.fast.entities.characters.Assignment;
 import poke.fast.entities.characters.Enemy;
+import poke.fast.entities.characters.Senior;
+import poke.fast.entities.characters.Teacher;
 
 public abstract class Entity {
 
@@ -12,6 +15,16 @@ public abstract class Entity {
 	protected float x,y;		//position coords
 	protected int width, height;//entity dimensions
 	protected Rectangle bounds, fov;
+	
+	protected boolean alive = true;		//bad var name, will change later
+	
+	public boolean isAlive() {
+		return alive;
+	}
+
+	public void setAlive(boolean alive) {
+		this.alive = alive;
+	}
 	
 	
 	public Entity(Handler handler, float x, float y, int width, int height) {
@@ -77,14 +90,25 @@ public abstract class Entity {
 		return new Rectangle( (int) (x + bounds.x + xOffset), (int) (y + bounds.y + yOffset), bounds.width, bounds.height );
 	}
 	
-	public boolean checkEntityEncounter( float xOffset, float yOffset) {		//checks fov
+	public int checkEntityEncounter( float xOffset, float yOffset) {		//checks fov
 		for(Entity e: handler.getMap().getEntityManager().getEntities()) {
 			if(e.equals(this))
 				continue;
-			if(e.getEncounterBounds(0f,0f).intersects(getEncounterBounds(xOffset,yOffset))	&& e instanceof Enemy	)
-				return true;
+			if(e.getEncounterBounds(0f,0f).intersects(getEncounterBounds(xOffset,yOffset))	&& e instanceof Enemy	) {
+				
+				if(e instanceof Teacher)
+					return 1;
+				else if(e instanceof Senior)
+					return 2;
+				else if(e instanceof Assignment)
+					return 3;
+				
+			}
+			
+			
+			
 		}
-		return false;
+		return 0;
 	}
 	
 	public Rectangle getEncounterBounds(float xOffset, float yOffset) {

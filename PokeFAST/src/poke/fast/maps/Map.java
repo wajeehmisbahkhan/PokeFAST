@@ -51,9 +51,6 @@ public class Map {
 
 	public void loadMap (String name) {
 		//Player loading
-		spawnX = 6*64;		//(int) entityManager.getPlayer().getX(); //Change later according to entry position
-		spawnY = 9*64;		//(int) entityManager.getPlayer().getY();
-		
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
 		

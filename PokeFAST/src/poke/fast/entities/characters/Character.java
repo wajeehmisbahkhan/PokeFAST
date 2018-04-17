@@ -11,6 +11,8 @@ public abstract class Character extends Entity {
 							DEFAULT_HEIGHT = 56;
 	public static final float DEFAULT_SPEED = 3.0f;
 	
+	
+
 	protected float speed, xMove, yMove;
 	
 	protected String name; //For battles

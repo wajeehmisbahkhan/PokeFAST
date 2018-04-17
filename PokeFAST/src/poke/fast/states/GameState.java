@@ -33,7 +33,7 @@ public class GameState extends State {
 			State.setState(new BattleState(handler, player, map.entityManager.getAssignment()));
 		}
 		
-		if (	getPlayer().stepOnPortal()	&& handler.getKeyManager().spacePressed) {
+		if (	getPlayer().stepOnPortal()	&& handler.getKeyManager().spacePressed	) {
 			if(handler.getMap().getCurrentMap()==0) {
 				map.loadMap("cs_1",getPlayer().getDirection());
 				handler.getMap().setCurrentMap(1);

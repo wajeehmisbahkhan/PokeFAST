@@ -79,22 +79,18 @@ public class Map {
 		if(currentMap==0) {
 			
 			if(direction==3) {
-				System.out.println("YO");
 				spawnX = 6*64;
 				spawnY = 9*64;
 			}
 			else if(direction==0){
-				System.out.println("YO");
 				spawnX = 6*64;
 				spawnY = 5*64;
 			}
 			else if(direction==1){
-				System.out.println("YO");
 				spawnX = 13*64;
 				spawnY = 7*64;
 			}
 			else if(direction==2){
-				System.out.println("YO");
 				spawnX = 13*64;
 				spawnY = 7*64;
 			}		
@@ -104,7 +100,6 @@ public class Map {
 		else if(currentMap==1) {
 
 			if(direction==0) {
-				System.out.println("YO");
 				spawnX = 9*64;
 				spawnY = 20*64;
 			}
@@ -114,12 +109,10 @@ public class Map {
 				spawnY = 13*64;
 			}
 			else if(direction==1){
-				System.out.println("YO");
 				spawnX = 17*64;
 				spawnY = 17*64;
 			}
 			else if(direction==2){
-				System.out.println("YO");
 				spawnX = 17*64;
 				spawnY = 17*64;
 			}		

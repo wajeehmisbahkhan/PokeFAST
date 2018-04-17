@@ -66,7 +66,7 @@ public abstract class Character extends Entity {
 		
 	}
 	
-	protected boolean collisionWithTile (int x, int y) {
+	public boolean collisionWithTile (int x, int y) {
 		return handler.getMap().getTile(x,y).isSolid();
 	}
 	

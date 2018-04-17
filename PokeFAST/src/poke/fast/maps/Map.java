@@ -74,19 +74,63 @@ public class Map {
 	
 	//overload of loadMap, will merge later
 	
-	public void loadMap (String name, int dummy) {
+	public void loadMap (String name, int direction) {
 		//Player loading
 		if(currentMap==0) {
-			spawnX = 6*64;		//(int) entityManager.getPlayer().getX(); //Change later according to entry position
-			spawnY = 9*64;
+			
+			if(direction==3) {
+				System.out.println("YO");
+				spawnX = 6*64;
+				spawnY = 9*64;
+			}
+			else if(direction==0){
+				System.out.println("YO");
+				spawnX = 6*64;
+				spawnY = 5*64;
+			}
+			else if(direction==1){
+				System.out.println("YO");
+				spawnX = 13*64;
+				spawnY = 7*64;
+			}
+			else if(direction==2){
+				System.out.println("YO");
+				spawnX = 13*64;
+				spawnY = 7*64;
+			}		
+				
 		}
-				//(int) entityManager.getPlayer().getY();
 		
 		else if(currentMap==1) {
-			spawnX = 9*64;
-			spawnY = 20*64;
+
+			if(direction==0) {
+				System.out.println("YO");
+				spawnX = 9*64;
+				spawnY = 20*64;
+			}
+			else if(direction==3){
+				System.out.println("YO");
+				spawnX = 6*64;
+				spawnY = 13*64;
+			}
+			else if(direction==1){
+				System.out.println("YO");
+				spawnX = 17*64;
+				spawnY = 17*64;
+			}
+			else if(direction==2){
+				System.out.println("YO");
+				spawnX = 17*64;
+				spawnY = 17*64;
+			}		
+			
 		}
 			
+		//Teleportation links
+		//(1) 9 20 		6 9
+		//(2) 6 13		6 5
+		//(3) 17 17		13 7
+		
 		
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
@@ -155,7 +199,10 @@ public class Map {
 		return t;
 	}
 	
-	//Teleportation
+	//Teleportation links
+	//(1) 9 20 		6 9
+	//(2) 6 13		6 5
+	//(3) 17 17		13 7
 	
 	
 	

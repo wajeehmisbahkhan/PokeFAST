@@ -80,7 +80,6 @@ public abstract class Character extends Entity {
 		return false;
 	}
 	
-	
 	public float getSpeed() {
 		return speed;
 	}

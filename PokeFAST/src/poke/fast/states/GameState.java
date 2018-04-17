@@ -35,12 +35,12 @@ public class GameState extends State {
 		
 		if (	getPlayer().stepOnPortal()	&& handler.getKeyManager().spacePressed) {
 			if(handler.getMap().getCurrentMap()==0) {
-				map.loadMap("cs_1",100);
+				map.loadMap("cs_1",getPlayer().getDirection());
 				handler.getMap().setCurrentMap(1);
 			}
 			
 			else if(handler.getMap().getCurrentMap()==1) {
-				map.loadMap("fast",100);
+				map.loadMap("fast",getPlayer().getDirection());
 				handler.getMap().setCurrentMap(0);
 			}
 				
@@ -51,7 +51,7 @@ public class GameState extends State {
 	public void render(Graphics g) {
 		map.render(g);
 		if ( Transition.playing) { //First condition will change so the entire structure MIGHT change
-			Transition.playing = true;
+			Transition.playing = true;		//it already is?
 			transition.swipeIn(g);
 		}
 	}

@@ -20,32 +20,30 @@ public class GameState extends State {
 		super(handler);
 		map = new Map(handler, "fast");
 		handler.setMap(map);
+		SoundManager.setBackground("game");
 	}
 
 	public void tick() {
-
 		map.tick();
 		int encounter1 =	getPlayer().checkEntityEncounter(0f,getPlayer().getyMove());
 		int encounter2 =	getPlayer().checkEntityEncounter(getPlayer().getxMove(),0f);
 		if (	encounter1	!=0	||	encounter2	!=0	) {		//if encounter with enemy occurs
-			
-			if(	encounter1==1	||	encounter2==1	){		//teacher
-				State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getTeacher()));
+			Transition.playing = true;
+			if (Transition.played) {
+				if(	encounter1==1	||	encounter2==1	){		//teacher
+					State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getTeacher()));
+				}
+				else if(	encounter1==2	||	encounter2==2	){		//senior
+					State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getSenior()));
+				}
+				else if(	encounter1==3	||	encounter2==3	){		//assignment
+					State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getAssignment()));
+				}
+				Transition.playing = false;
+				Transition.played = false;
 			}
-			else if(	encounter1==2	||	encounter2==2	){		//senior
-				State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getSenior()));
-			}
-			else if(	encounter1==3	||	encounter2==3	){		//assignment
-				State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getAssignment()));
-			}
-			
-			
 		}
-			
-		if (Transition.played) {
-			Transition.played = false;
-			State.setState(new BattleState(handler, player, map.entityManager.getAssignment()));
-		}
+
 		
 		if (	getPlayer().stepOnPortal()	&& handler.getKeyManager().spacePressed	) {
 			if(handler.getMap().getCurrentMap()==0) {
@@ -65,7 +63,6 @@ public class GameState extends State {
 	public void render(Graphics g) {
 		map.render(g);
 		if ( Transition.playing) { //First condition will change so the entire structure MIGHT change
-			Transition.playing = true;		//it already is?
 			transition.swipeIn(g);
 		}
 	}

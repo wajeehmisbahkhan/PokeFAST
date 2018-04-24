@@ -20,14 +20,11 @@ public class MenuState extends State {
 		uiManager = new UIManager(handler);
 		handler.getMouseManager().setUIManager(uiManager);
 		//Add stuff to the menu
-
-		SoundManager.playSound("Kbc", false);
 		uiManager.addObject(new UIImageButton(handler.getGame().getWidth()/2 - 80, handler.getGame().getHeight()/2, 160, 45, Assets.btn_start, new ClickListener () {
 			@Override
 			public void onClick() {
 				handler.getMouseManager().setUIManager(null);
 				Transition.playing = true;
-				SoundManager.playSound("clap", false);
 			}
 		}));
 		

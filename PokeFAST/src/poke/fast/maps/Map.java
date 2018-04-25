@@ -29,9 +29,15 @@ public class Map {
 	public Map (Handler handler, String name) {
 		this.handler = handler;
 		entityManager = new EntityManager(handler, new Player(handler,0,0), new Teacher(handler, 600, 100), new Senior(handler, 400, 300), new Assignment(handler, 250, 500));
-		entityManager.addEntity(new Tree(handler, 100, 250));
-		entityManager.addEntity(new Tree(handler, 100, 300));
-		entityManager.addEntity(new Tree(handler, 100, 400));
+		
+		for(int i=0;i<448;i+=64) {
+			entityManager.addEntity(new Tree(handler, 1260, 1160+i));
+		}
+		
+		for(int i=0;i<448;i+=128) {
+			entityManager.addEntity(new Tree(handler, 1700, 1160+i));
+		}
+		
 		entityManager.addEntity(new Fountain(handler, 1470, 1020));	//don't change
 		loadMap(name); //Fills up the tiles array with id's
 		

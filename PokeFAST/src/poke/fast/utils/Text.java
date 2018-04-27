@@ -27,7 +27,8 @@ public class Text {
 	public static ArrayList<String> getTokenedMessage(String message) {
 		ArrayList<String> tokenedMessage = new ArrayList<String>();
 		//This will add \n's in between.
-		message = rehashMessage(message);
+		if (message.indexOf('\n') < 0)
+			message = rehashMessage(message);
 		//Check number of lines
 		int numberOfLines = 0;
 		for (int i = 0; i < message.length(); i++) {

@@ -35,7 +35,8 @@ public class MenuState extends State {
 		//If clicked and animation ended
 		if (Transition.played) {
 			Transition.played = false;
-			State.setState(handler.getGame().getGameState());
+			//State.setState(handler.getGame().getGameState());
+			State.setState(new IntroState(handler));
 		}
 	}
 

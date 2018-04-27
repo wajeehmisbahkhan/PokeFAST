@@ -11,6 +11,7 @@ import poke.fast.entities.characters.Player;
 import poke.fast.entities.characters.Senior;
 import poke.fast.entities.characters.Teacher;
 import poke.fast.gfx.Transition;
+import poke.fast.textboxes.DialogueBox;
 import poke.fast.entities.inanimates.Fountain;
 
 public class EntityManager {
@@ -76,7 +77,7 @@ public class EntityManager {
 		
 		for(int i=0;i<entities.size();i++) {
 			Entity e = entities.get(i);
-			if (!Transition.playing) //So it doesn't run during transitions... duh
+			if (!Transition.playing || !DialogueBox.isSaying) //Run !during transitions || !while something is being said
 				e.tick();
 			if(!e.isAlive())
 				entities.remove(e);

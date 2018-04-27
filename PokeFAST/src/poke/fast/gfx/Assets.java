@@ -11,6 +11,9 @@ public class Assets {
 	public static Font dialogueFont;
 	public static Font optionFont;
 	
+	//Intro
+	public static BufferedImage bus_back;	
+	
 	//GameItems
 	public static BufferedImage player, grass, rock, dirt, cs, shop, shades, teleport, shadow; //Tiles
 	public static BufferedImage tree, fountain, bench; //Inanimate
@@ -44,6 +47,8 @@ public class Assets {
 		
 		SpriteSheet enemySheet = new SpriteSheet(ImageLoader.loadImage("/textures/enemies_sheet.jpg"));
 		SpriteSheet battleSheet = new SpriteSheet(ImageLoader.loadImage("/textures/battle_sheet.png"));
+		
+		bus_back = ImageLoader.loadImage("/textures/bus_sheet.jpg");
 		
 		//Crop the required items
 		student = ImageLoader.loadImage("/textures/student.png");

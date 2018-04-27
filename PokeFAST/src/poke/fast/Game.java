@@ -8,6 +8,7 @@ import poke.fast.gfx.Assets;
 import poke.fast.gfx.GameCamera;
 import poke.fast.input.KeyManager;
 import poke.fast.input.MouseManager;
+import poke.fast.sfx.SoundManager;
 import poke.fast.states.GameState;
 import poke.fast.states.MenuState;
 import poke.fast.states.State;
@@ -35,9 +36,10 @@ public class Game implements Runnable {
 	private State menuState;
 	private State battleState;
 	
-	//These are the inputs
+	//These are the managers
 	private MouseManager mouseManager;
 	private KeyManager keyManager;
+	private SoundManager soundManager;
 	
 	//Game Camera
 	private GameCamera gameCamera;
@@ -75,9 +77,9 @@ public class Game implements Runnable {
 		//Managers
 		mouseManager = new MouseManager();
 		//keyManager = new KeyManager();
+		soundManager = new SoundManager();
 		
 		//States
-		gameState = new GameState(handler);
 		menuState = new MenuState(handler);
 		State.setState(menuState);
 		
@@ -93,8 +95,10 @@ public class Game implements Runnable {
 	//Keep updating these Managers
 	public void tick () {
 		keyManager.tick();
-		if (State.getState() != null)
+		if (State.getState() != null) {
 			State.getState().tick();
+			soundManager.tick();
+		}
 	}
 
 	//Display this every second

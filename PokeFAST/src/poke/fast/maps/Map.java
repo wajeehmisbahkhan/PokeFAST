@@ -8,6 +8,7 @@ import poke.fast.entities.characters.Assignment;
 import poke.fast.entities.characters.Player;
 import poke.fast.entities.characters.Senior;
 import poke.fast.entities.characters.Teacher;
+import poke.fast.entities.inanimates.Bench;
 import poke.fast.entities.inanimates.Fountain;
 import poke.fast.entities.inanimates.Tree;
 import poke.fast.tiles.Tile;
@@ -39,7 +40,10 @@ public class Map {
 		}
 		
 		entityManager.addEntity(new Fountain(handler, 1470, 1020));	//don't change
+		entityManager.addEntity(new Bench(handler,1470,1400));
 		loadMap(name); //Fills up the tiles array with id's
+		
+		
 		
 		//spawn position of player
 		entityManager.getPlayer().setX(100);
@@ -107,7 +111,6 @@ public class Map {
 				spawnY = 20*64;
 			}
 			else if(direction==3){
-				System.out.println("YO");
 				spawnX = 6*64;
 				spawnY = 13*64;
 			}

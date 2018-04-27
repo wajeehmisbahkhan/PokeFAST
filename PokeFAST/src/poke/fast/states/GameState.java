@@ -14,8 +14,6 @@ import poke.fast.sfx.SoundManager;
 public class GameState extends State {
 	
 	private Map map;
-	private Player player;
-	
 	public GameState (Handler handler) {
 		super(handler);
 		map = new Map(handler, "fast");
@@ -31,13 +29,19 @@ public class GameState extends State {
 			Transition.playing = true;
 			if (Transition.played) {
 				if(	encounter1==1	||	encounter2==1	){		//teacher
-					State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getTeacher()));
+					map.entityManager.getTeacher().setShouldRender(true);
+					System.out.println("BOO");
+					//State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getTeacher()));
 				}
 				else if(	encounter1==2	||	encounter2==2	){		//senior
-					State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getSenior()));
+					map.entityManager.getSenior().setShouldRender(true);
+					System.out.println("BOO");
+					//State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getSenior()));
 				}
 				else if(	encounter1==3	||	encounter2==3	){		//assignment
-					State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getAssignment()));
+					map.entityManager.getAssignment().setShouldRender(true);
+					System.out.println("BOO");
+					//State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getAssignment()));
 				}
 				Transition.playing = false;
 				Transition.played = false;

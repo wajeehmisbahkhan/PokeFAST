@@ -6,6 +6,7 @@ import java.util.Comparator;
 
 import poke.fast.Handler;
 import poke.fast.entities.characters.Assignment;
+import poke.fast.entities.characters.Enemy;
 import poke.fast.entities.characters.Player;
 import poke.fast.entities.characters.Senior;
 import poke.fast.entities.characters.Teacher;
@@ -87,7 +88,12 @@ public class EntityManager {
 	public void render(Graphics g) {
 		
 		for(Entity e : entities) {
-			e.render(g);
+			if(e instanceof Enemy) {
+				if(((Enemy) e).getShouldRender()==true)
+					e.render(g);
+			}
+			else
+				e.render(g);
 		}
 		
 	}

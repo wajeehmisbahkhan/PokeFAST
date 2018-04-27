@@ -13,7 +13,7 @@ public class Assets {
 	
 	//GameItems
 	public static BufferedImage player, grass, rock, dirt, cs, shop, shades, teleport, shadow; //Tiles
-	public static BufferedImage tree, fountain; //Inanimate
+	public static BufferedImage tree, fountain, bench; //Inanimate
 	public static BufferedImage pokeBag;
 	
 	public static BufferedImage[] player_still, player_down, player_up, player_left, player_right;
@@ -119,6 +119,7 @@ public class Assets {
 		teleport = tileSheet.crop(width*3, height, width, height);
 		tree = inanimateSheet.crop(0, 0, width, height);
 		fountain = inanimateSheet.crop(width*3, 0, width*5, height*3);
+		bench = inanimateSheet.crop(width, 0, width*2, height*1);
 
 	}
 	

@@ -11,7 +11,7 @@ public abstract class Enemy extends Character{
 	//The health
 	protected int health;
 	protected int fullHealth;
-	
+	protected boolean shouldRender;
 	
 	
 	protected Option[] options = new Option[4];
@@ -23,6 +23,7 @@ public abstract class Enemy extends Character{
 		bounds.y = 32;
 		bounds.width = 32;
 		bounds.height = 32;
+		shouldRender=false;
 	}
 
 	@Override
@@ -65,4 +66,19 @@ public abstract class Enemy extends Character{
 	public int getFullHealth() {
 		return fullHealth;
 	}
+
+	//renderFlag
+	public boolean getShouldRender() {
+		return shouldRender;
+	}
+
+	public void setShouldRender(boolean shouldRender) {
+		this.shouldRender = shouldRender;
+	}
+	
+	
+	
+	
+	
+	
 }

@@ -23,6 +23,7 @@ public class DialogueBox {
 	
 	//Static isSaying
 	public static boolean isSaying = false;
+	public static boolean said = false;
 	
 	private Handler handler;
 	
@@ -40,11 +41,10 @@ public class DialogueBox {
 	public void tick () {
 		//Keep box open during battle
 		if (State.getState() instanceof BattleState)
-			isSaying = true;
-		else {
+			return;
+		else if (isSaying) {
 			//During other states
 			if (page < this.messages.size()) {
-				isSaying = true;
 				//Showing one at a time
 				if (letters <= this.message.length())
 					letters++;
@@ -58,8 +58,9 @@ public class DialogueBox {
 					}
 				}
 			}
-			if (page == this.messages.size() && this.messages.size() != 0) {
+			if (page == this.messages.size()) {
 				isSaying = false;
+				said = true;
 				letters = 0;
 				page = 0;
 			}
@@ -77,6 +78,7 @@ public class DialogueBox {
 	}
 	
 	public void say (Graphics g, String message) {
+		isSaying = true;
 		messages = Text.getTokenedMessage(message); //This will split up the message using the \n's
 		if (State.getState() instanceof BattleState) {
 			Text.drawString(g, this.messages.get(0), x+margin, y + Assets.dialogueFont.getSize() + margin, false, Color.BLACK, Assets.dialogueFont);

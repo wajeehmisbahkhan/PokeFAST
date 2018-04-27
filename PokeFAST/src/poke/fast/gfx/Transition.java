@@ -16,7 +16,6 @@ public class Transition {
 	private int x;
 	private int width;
 	private float opacity;
-	
 	private int speed; //Of animation
 	
 	public Transition (Handler handler) {
@@ -26,15 +25,15 @@ public class Transition {
 	
 	public void fadeIn (Graphics g, int speed) {
 		if (starting) {
-			speed = 2;
 			opacity = 100;
 			starting = false;
 			playing = true;
+			this.speed = speed;
 		}
 		if (playing) {
 			g.setColor(new Color (0, 0, 0, opacity/100));
 			g.fillRect(0, 0, handler.getWidth(), handler.getHeight());
-			if (opacity > 0)
+			if (opacity-speed > 0)
 				opacity -= speed;
 			else {
 				starting = true;
@@ -53,9 +52,11 @@ public class Transition {
 		if (playing) {
 			g.setColor(new Color (0, 0, 0, opacity/100));
 			g.fillRect(0, 0, handler.getWidth(), handler.getHeight());
-			if (opacity < 100)
+			System.out.println(opacity + " " + speed);
+			if (opacity+speed < 100)
 				opacity += speed;
 			else {
+				opacity = 0;
 				starting = true;
 				playing = false;
 				played = true;

@@ -36,7 +36,7 @@ public class MenuState extends State {
 		if (Transition.played) {
 			Transition.played = false;
 			//State.setState(handler.getGame().getGameState());
-			State.setState(new GameState(handler));
+			State.setState(new IntroState(handler));
 		}
 	}
 

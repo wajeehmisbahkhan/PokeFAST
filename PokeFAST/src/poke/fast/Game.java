@@ -80,7 +80,6 @@ public class Game implements Runnable {
 		soundManager = new SoundManager();
 		
 		//States
-		gameState = new GameState(handler);
 		menuState = new MenuState(handler);
 		State.setState(menuState);
 		

@@ -1,8 +1,10 @@
 package poke.fast.entities.characters;
 
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 import poke.fast.Handler;
+import poke.fast.gfx.Animation;
 import poke.fast.gfx.Assets;
 import poke.fast.textboxes.Option;
 
@@ -13,6 +15,13 @@ public class Teacher extends Enemy {
 		name = "Teacher";
 		health = 120;
 		fullHealth = 120;
+		
+		//Animations: up, down, left, right
+				upimation = new Animation ( 1000/20, Assets.teacher_up);
+				downimation = new Animation ( 1000/20, Assets.teacher_down);
+				leftimation = new Animation ( 1000/20, Assets.teacher_left);
+				rightimation = new Animation ( 1000/20, Assets.teacher_right);
+		
 	}
 	//The options for the player
 	private Option optOne = new Option("Funny Noises", 80, "It was super annoying."); //The teacher said 'main superman nahi hoon'
@@ -29,7 +38,34 @@ public class Teacher extends Enemy {
 	}
 	
 	public void render(Graphics g) {
-		g.drawImage(Assets.teacher_down[2], (int) ( x - handler.getGameCamera().getxOffset() ), (int) ( y - handler.getGameCamera().getyOffset() ),
+		if(shouldRender)
+		g.drawImage(getCurrentAnimationFrame(), (int) ( x - handler.getGameCamera().getxOffset() ), (int) ( y - handler.getGameCamera().getyOffset() ),
 				width, height, null);
+		
 	}
+	
+	private BufferedImage getCurrentAnimationFrame() {
+		
+		if( xMove < 0 ) {
+			direction = 1;
+			return leftimation.getCurrentFrame();
+		}
+		else if( xMove > 0 ) {
+			direction = 2;
+			return rightimation.getCurrentFrame();
+		}
+		else if( yMove < 0 ) {
+			direction = 3;
+			return upimation.getCurrentFrame();
+		}
+		else if( yMove > 0 ) {
+			direction = 0;
+			return downimation.getCurrentFrame();
+		}
+		else
+			return Assets.teacher_still[direction];	//nicely done ;)
+		
+	}
+	
+	
 }

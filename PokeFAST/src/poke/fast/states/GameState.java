@@ -12,39 +12,42 @@ import poke.fast.maps.Map;
 import poke.fast.sfx.SoundManager;
 
 public class GameState extends State {
-	
+	private int encounter1,encounter2;
 	private Map map;
 	public GameState (Handler handler) {
 		super(handler);
 		map = new Map(handler, "fast");
 		handler.setMap(map);
 		SoundManager.setBackground("game");
+		
 	}
 
 	public void tick() {
 		map.tick();
-		int encounter1 =	getPlayer().checkEntityEncounter(0f,getPlayer().getyMove());
-		int encounter2 =	getPlayer().checkEntityEncounter(getPlayer().getxMove(),0f);
-		if (	encounter1	!=0	||	encounter2	!=0	) {		//if encounter with enemy occurs
-			Transition.playing = true;
-			if (Transition.played) {
-				if(	encounter1==1	||	encounter2==1	){		//teacher
-					map.entityManager.getTeacher().setShouldRender(true);
-					System.out.println("BOO");
-					//State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getTeacher()));
-				}
-				else if(	encounter1==2	||	encounter2==2	){		//senior
-					map.entityManager.getSenior().setShouldRender(true);
-					System.out.println("BOO");
-					//State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getSenior()));
-				}
-				else if(	encounter1==3	||	encounter2==3	){		//assignment
-					map.entityManager.getAssignment().setShouldRender(true);
-					System.out.println("BOO");
-					//State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getAssignment()));
-				}
-				Transition.playing = false;
-				Transition.played = false;
+		
+			encounter1 =	getPlayer().checkEntityEncounter(0f,getPlayer().getyMove());
+			encounter2 =	getPlayer().checkEntityEncounter(getPlayer().getxMove(),0f);
+		
+		
+		if (	encounter1	!=0	||	encounter2	!=0	) {
+				
+			getPlayer().setFrozen(true);
+			if(	encounter1==1	||	encounter2==1	){		//teacher
+				map.entityManager.getTeacher().setShouldRender(true);
+				map.entityManager.getTeacher().getInput();
+				//teacher walks towards, talks, starts battle
+				
+				//State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getTeacher()));
+			}
+			else if(	encounter1==2	||	encounter2==2	){		//senior
+				map.entityManager.getSenior().setShouldRender(true);
+				System.out.println("BOO");
+				//State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getSenior()));
+			}
+			else if(	encounter1==3	||	encounter2==3	){		//assignment
+				map.entityManager.getAssignment().setShouldRender(true);
+				System.out.println("BOO");
+				//State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getAssignment()));
 			}
 		}
 
@@ -65,10 +68,11 @@ public class GameState extends State {
 	}
 
 	public void render(Graphics g) {
-		map.render(g);
+		
 		if ( Transition.playing) { //First condition will change so the entire structure MIGHT change
 			transition.swipeIn(g);
 		}
+		map.render(g);
 	}
 	
 	public Player getPlayer () {

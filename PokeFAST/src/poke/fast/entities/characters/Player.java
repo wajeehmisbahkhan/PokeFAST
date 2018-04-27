@@ -13,13 +13,14 @@ public class Player extends Character{
 	//animation & direction
 	private int direction, GPA;
 	private Animation upimation, downimation, leftimation, rightimation;
+	private boolean frozen;
 	
 	public Player( Handler handler, float x, float y) {
 		super(handler, x, y, Character.DEFAULT_WIDTH, Character.DEFAULT_HEIGHT);
 		
 		GPA = 400;
 		name = "Student";
-		
+		frozen=false;
 		bounds.x = 16;
 		bounds.y = 32;
 		bounds.width = 32;
@@ -33,6 +34,14 @@ public class Player extends Character{
 		rightimation = new Animation ( 1000/20, Assets.player_right);
 	}
 
+	public boolean isFrozen() {
+		return frozen;
+	}
+
+	public void setFrozen(boolean frozen) {
+		this.frozen = frozen;
+	}
+
 	@Override
 	public void tick() {
 		downimation.tick();
@@ -40,13 +49,13 @@ public class Player extends Character{
 		rightimation.tick();
 		leftimation.tick();
 		getInput();
+		//if(!isFrozen())
 		move();
 		handler.getGameCamera().centerOnEntity(this);
 	}
 
 	private void getInput() {
 		xMove = 0; yMove = 0;
-		//will edit this later to get constant velocity
 		
 		if(handler.getKeyManager().up) {
 			if (!handler.getKeyManager().left && !handler.getKeyManager().right)
@@ -72,17 +81,6 @@ public class Player extends Character{
 			}
 		}	
 		
-		if(handler.getKeyManager().up) {
-			if (!handler.getKeyManager().left && !handler.getKeyManager().right)
-				yMove = -speed;
-			else {
-				yMove = -speed*(0.7071f);
-				if ( handler.getKeyManager().left)
-					xMove = -speed*(0.7071f);
-				if ( handler.getKeyManager().right)
-					xMove = speed*(0.7071f);
-			}
-		}	
 		
 		if(handler.getKeyManager().left) {
 			if (!handler.getKeyManager().up && !handler.getKeyManager().down)

@@ -2,6 +2,7 @@ package poke.fast.entities.characters;
 
 import poke.fast.Handler;
 import poke.fast.entities.Entity;
+import poke.fast.gfx.Transition;
 import poke.fast.tiles.Tile;
 
 public abstract class Character extends Entity {
@@ -24,11 +25,11 @@ public abstract class Character extends Entity {
 	}
 	
 	public void move() {
+			if(!checkEntityCollision(xMove,0f))
+				moveX();
+			if(!checkEntityCollision(0f,yMove))
+				moveY();
 		
-		if(!checkEntityCollision(xMove,0f))
-			moveX();
-		if(!checkEntityCollision(0f,yMove))
-			moveY();
 	}
 	
 	public void moveY() {

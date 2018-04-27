@@ -4,10 +4,15 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import poke.fast.Handler;
+import poke.fast.gfx.Animation;
+import poke.fast.gfx.Assets;
 import poke.fast.textboxes.Option;
 
 public abstract class Enemy extends Character{
 
+	protected int direction;
+	protected Animation upimation, downimation, leftimation, rightimation;
+	
 	//The health
 	protected int health;
 	protected int fullHealth;
@@ -24,18 +29,24 @@ public abstract class Enemy extends Character{
 		bounds.width = 32;
 		bounds.height = 32;
 		shouldRender=false;
+		direction=0;
+		
 	}
 
 	@Override
 	public void tick() {
-		// TODO Auto-generated method stub
+		
+		downimation.tick();
+		upimation.tick();
+		rightimation.tick();
+		leftimation.tick();
+		getInput();
+		move();
 		
 	}
 
 	@Override
 	public void render(Graphics g) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	//Enemies will return options
@@ -77,8 +88,59 @@ public abstract class Enemy extends Character{
 	}
 	
 	
-	
-	
+	public void getInput() {
+		float xDest = handler.getMap().entityManager.getPlayer().getX(); 
+		float yDest = handler.getMap().entityManager.getPlayer().getX(); 
+		
+		if(yDest<y) {	//UP
+			if (xDest==x)
+				yMove = -speed;
+			else {
+				yMove = -speed*(0.7071f);
+				if ( xDest>x)
+					xMove = -speed*(0.7071f);
+				if ( xDest<x)
+					xMove = speed*(0.7071f);
+			}
+		}	
+		
+		if(yDest>y) {	//DOWN
+			if (xDest==x)
+				yMove = speed;
+			else {
+				yMove = speed*(0.7071f);
+				if ( xDest>x)
+					xMove = -speed*(0.7071f);
+				if ( xDest<x)
+					xMove = speed*(0.7071f);
+			}
+		}	
+		
+		if(xDest>x) {	//RIGHT
+			if (yDest==y)
+				xMove = -speed;
+			else {
+				xMove = -speed*(0.7071f);
+				if ( yDest<y)
+					yMove = -speed*(0.7071f);
+				if ( yDest>y)
+					yMove = speed*(0.7071f);
+			}
+		}	
+		
+		if(xDest<x) {	//LEFT
+			if (yDest==y)
+				xMove = speed;
+			else {
+				xMove = speed*(0.7071f);
+				if ( yDest<y)
+					yMove = -speed*(0.7071f);
+				if ( yDest>y)
+					yMove = speed*(0.7071f);
+			}
+		}	
+		
+	}
 	
 	
 }

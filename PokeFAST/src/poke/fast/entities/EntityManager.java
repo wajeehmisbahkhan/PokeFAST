@@ -88,12 +88,7 @@ public class EntityManager {
 	public void render(Graphics g) {
 		
 		for(Entity e : entities) {
-			if(e instanceof Enemy) {
-				if(((Enemy) e).getShouldRender()==true)
-					e.render(g);
-			}
-			else
-				e.render(g);
+			e.render(g);
 		}
 		
 	}

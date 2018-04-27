@@ -8,7 +8,6 @@ import poke.fast.bars.Health;
 import poke.fast.entities.characters.Enemy;
 import poke.fast.entities.characters.Player;
 import poke.fast.gfx.Assets;
-import poke.fast.sfx.SoundManager;
 import poke.fast.textboxes.DialogueBox;
 import poke.fast.textboxes.Option;
 import poke.fast.textboxes.OptionBox;
@@ -74,11 +73,7 @@ public class BattleState extends State {
 
 
 	public void tick() {
-		if (!won) {
-			SoundManager.setBackground("battle_battling");
-		} else {
-			//SoundManager.playSound("battle_won", false);
-		}
+		
 		spacePressed = handler.getKeyManager().spacePressed;
 		
 		if (starting && !sliding && spacePressed) {
@@ -213,11 +208,8 @@ public class BattleState extends State {
 			dialogueBox.render(g); // So that the enemy doesn't go over the dialogueBox
 			if (!sliding) {
 				dialogueBox.say(g, "You won! No knowledge gained.");
-				if (spacePressed) {
-					SoundManager.stopBackground();
-					SoundManager.setBackground("game");
+				if (spacePressed)
 					State.setState(handler.getGame().getGameState());
-				}
 			}
 		} else {
 			g.drawImage(enemyImage, enemyX, enemyY, enemyWidth, enemyHeight, null);

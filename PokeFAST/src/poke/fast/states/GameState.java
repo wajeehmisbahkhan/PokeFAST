@@ -9,18 +9,17 @@ import poke.fast.entities.characters.Senior;
 import poke.fast.entities.characters.Teacher;
 import poke.fast.gfx.Transition;
 import poke.fast.maps.Map;
-import poke.fast.sfx.SoundManager;
+import poke.fast.textboxes.DialogueBox;
 
 public class GameState extends State {
 	
 	private Map map;
-	private Player player;
-	
+	private DialogueBox dialogueBox;
 	public GameState (Handler handler) {
 		super(handler);
 		map = new Map(handler, "fast");
 		handler.setMap(map);
-		SoundManager.setBackground("game");
+		dialogueBox = new DialogueBox(handler);
 	}
 
 	public void tick() {
@@ -62,9 +61,11 @@ public class GameState extends State {
 
 	public void render(Graphics g) {
 		map.render(g);
-		if ( Transition.playing) { //First condition will change so the entire structure MIGHT change
+		if (Transition.playing) { //First condition will change so the entire structure MIGHT change
 			transition.swipeIn(g);
 		}
+		dialogueBox.tick();
+		dialogueBox.render(g);
 	}
 	
 	public Player getPlayer () {

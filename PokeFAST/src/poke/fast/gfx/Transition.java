@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import poke.fast.Handler;
-import poke.fast.sfx.SoundManager;
 
 public class Transition {
 	
@@ -72,8 +71,6 @@ public class Transition {
 			x = 400;
 			starting = false;
 			playing = true;
-			SoundManager.stopBackground();
-			SoundManager.setBackground("battle_start");
 		}
 		//Animation
 		if (playing) {
@@ -96,6 +93,7 @@ public class Transition {
 				starting = true;
 				playing = false;
 				played = true;
+				System.out.println("played");
 			}
 		}
 	}

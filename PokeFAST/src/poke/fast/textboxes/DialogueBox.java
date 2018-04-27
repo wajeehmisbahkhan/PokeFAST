@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 import poke.fast.Handler;
 import poke.fast.gfx.Assets;
+import poke.fast.states.BattleState;
+import poke.fast.states.GameState;
+import poke.fast.states.State;
 import poke.fast.utils.Text;
 
 public class DialogueBox {
@@ -13,12 +16,13 @@ public class DialogueBox {
 	private int width, height, x, y;
 	private int margin;
 	//Message tokens
-	private ArrayList <String> message;
-	private int current;
-	private int end;
+	private ArrayList <String> messages;
+	private String message = "";
+	private int letters = 0;
+	private int page = 0;
 	
 	//Static isSaying
-
+	public static boolean isSaying = false;
 	
 	private Handler handler;
 	
@@ -29,33 +33,58 @@ public class DialogueBox {
 		x = 0;
 		y = this.handler.getHeight() - height - 1;
 		margin = 10;
-		message = new ArrayList <String>();
+		messages = new ArrayList <String>();
 	}
 
 
 	public void tick () {
-		
+		//Keep box open during battle
+		if (State.getState() instanceof BattleState)
+			isSaying = true;
+		else {
+			//During other states
+			if (page < this.messages.size()) {
+				isSaying = true;
+				//Showing one at a time
+				if (letters <= this.message.length())
+					letters++;
+				//If space is pressed
+				if (handler.getKeyManager().spacePressed) {
+					if (letters < this.message.length())
+						letters = this.message.length();
+					else {
+						letters = 0;
+						page++;
+					}
+				}
+			}
+			if (page == this.messages.size() && this.messages.size() != 0) {
+				isSaying = false;
+				letters = 0;
+				page = 0;
+			}
+		}
 	}
 	
 	public void render(Graphics g) {
-		//Display box
-		g.setColor(Color.WHITE);
-		g.fillRect(x, y, width, height);
-		g.setColor(Color.BLACK);
-		g.drawRect(x, y, width, height);
+		if (isSaying) {
+			//Display box
+			g.setColor(Color.WHITE);
+			g.fillRect(x, y, width, height);
+			g.setColor(Color.BLACK);
+			g.drawRect(x, y, width, height);
+		}
 	}
 	
 	public void say (Graphics g, String message) {
-		this.message = Text.getTokenedMessage(message); //This will split up the message using the \n's
-		//Will need to disableEverythingElse()
-		current = 0;
-		end = this.message.size();
-		for (int i = current; i < end; i++)
-			Text.drawString(g, this.message.get(i), x+margin, y + Assets.dialogueFont.getSize() + margin, false, Color.BLACK, Assets.dialogueFont);
-	}
-	
-	public void getInput () {
-		
+		messages = Text.getTokenedMessage(message); //This will split up the message using the \n's
+		if (State.getState() instanceof BattleState) {
+			Text.drawString(g, this.messages.get(0), x+margin, y + Assets.dialogueFont.getSize() + margin, false, Color.BLACK, Assets.dialogueFont);
+		} else {
+			this.message = this.messages.get(page);
+			for (int i = 0; i < letters; i++)
+				Text.drawString(g, this.message.substring(0, i), x+margin, y + Assets.dialogueFont.getSize() + margin, false, Color.BLACK, Assets.dialogueFont);
+		}
 	}
 
 	//GETTERS & SETTERS

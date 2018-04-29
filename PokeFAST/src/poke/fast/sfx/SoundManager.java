@@ -2,9 +2,9 @@ package poke.fast.sfx;
 
 import javax.sound.sampled.Clip;
 
-import poke.fast.gfx.Transition;
 import poke.fast.states.BattleState;
 import poke.fast.states.GameState;
+import poke.fast.states.OutroState;
 import poke.fast.states.State;
 
 public class SoundManager {
@@ -68,6 +68,12 @@ public class SoundManager {
 				setBackground("battle_battling", true);
 		}
 		
+		
+		if (State.getState() instanceof OutroState) {
+			if (!track.equals("evolution"))
+				setBackground("evolution");
+				//setBackground("evolution", true); <- actual
+		}
 	}
 
 }

@@ -10,20 +10,18 @@ import poke.fast.entities.characters.Teacher;
 import poke.fast.gfx.Transition;
 import poke.fast.maps.Map;
 import poke.fast.sfx.SoundManager;
-import poke.fast.textboxes.DialogueBox;
+import poke.fast.textboxes.DialogueManager;
 
 public class GameState extends State {
 	private int encounter1,encounter2;
 	private Map map;
-	private DialogueBox dialogueBox;
+	private DialogueManager dialogueManager;
 	public GameState (Handler handler) {
 		super(handler);
 		map = new Map(handler, "fast");
 		handler.setMap(map);
 		SoundManager.setBackground("game");
-		
-
-		dialogueBox = new DialogueBox(handler);
+		dialogueManager = new DialogueManager(handler);
 	}
 
 	public void tick() {
@@ -71,8 +69,8 @@ public class GameState extends State {
 		map.render(g);
 
 		
-		dialogueBox.tick();
-		dialogueBox.render(g);
+		dialogueManager.tick();
+		dialogueManager.render(g);
 	}
 	
 	public Player getPlayer () {
@@ -87,6 +85,5 @@ public class GameState extends State {
 	public Assignment getAssignment () {
 		return  map.entityManager.getAssignment();
 	}
-	
 	
 }

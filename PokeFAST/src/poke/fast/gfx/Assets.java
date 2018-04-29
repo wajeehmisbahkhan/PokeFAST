@@ -15,9 +15,8 @@ public class Assets {
 	public static BufferedImage bus_back;	
 	
 	//GameItems
-	public static BufferedImage player, grass, rock, dirt, cs, shop, shades, teleport, shadow; //Tiles
-	public static BufferedImage tree, fountain, bench; //Inanimate
-	public static BufferedImage pokeBag;
+	public static BufferedImage grass, rock, dirt, cs, shop, shades, teleport, shadow; //Tiles
+	public static BufferedImage tree, fountain, bench, bus; //Inanimate
 	
 	public static BufferedImage[] player_still, player_down, player_up, player_left, player_right;
 	public static BufferedImage[] teacher_still, teacher_down, teacher_up, teacher_left, teacher_right;
@@ -29,6 +28,9 @@ public class Assets {
 	
 	//Battle
 	public static BufferedImage student, senior, teacher, assignment, battleGround;
+	
+	//Outro
+	public static BufferedImage freshman, sophomore;	
 	
 	//When the game initializes
 	public static void init () {
@@ -57,7 +59,9 @@ public class Assets {
 		assignment = enemySheet.crop(80, 0, 80, 80);
 		battleGround = battleSheet.crop(0, 0, 256, 144);
 		
-		pokeBag = ImageLoader.loadImage("/textures/poke_bag.png");
+		freshman = enemySheet.crop(0, 0, 80, 80);
+		sophomore = enemySheet.crop(80, 720, 80, 80);
+		
 		
 		//Menu
 		menuBg = ImageLoader.loadImage("/textures/menu_bg.jpg");
@@ -124,7 +128,8 @@ public class Assets {
 		teleport = tileSheet.crop(width*3, height, width, height);
 		tree = inanimateSheet.crop(0, 0, width, height);
 		fountain = inanimateSheet.crop(width*3, 0, width*5, height*3);
-		bench = inanimateSheet.crop(width, 0, width*2, height*1);
+		bench = inanimateSheet.crop(width, 0, width*2, height);
+		bus = inanimateSheet.crop(0, height*3, width*8, height*3);
 
 	}
 	

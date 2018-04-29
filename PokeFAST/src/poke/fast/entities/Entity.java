@@ -37,11 +37,6 @@ public abstract class Entity {
 		fov = new Rectangle(-width,-height,2*width,2*height);
 	}
 	
-	//For BattleState
-	public Entity () {
-		
-	}
-	
 	public abstract void tick();
 	public abstract void render(Graphics g);
 

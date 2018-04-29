@@ -9,8 +9,11 @@ import poke.fast.entities.characters.Player;
 import poke.fast.entities.characters.Senior;
 import poke.fast.entities.characters.Teacher;
 import poke.fast.entities.inanimates.Bench;
+import poke.fast.entities.inanimates.Bus;
 import poke.fast.entities.inanimates.Fountain;
+import poke.fast.entities.inanimates.MolviSahab;
 import poke.fast.entities.inanimates.Tree;
+import poke.fast.entities.inanimates.Warner;
 import poke.fast.tiles.Tile;
 import poke.fast.utils.TextReader;
 
@@ -41,13 +44,15 @@ public class Map {
 		
 		entityManager.addEntity(new Fountain(handler, 1470, 1020));	//don't change
 		entityManager.addEntity(new Bench(handler,1470,1400));
+		entityManager.addEntity(new Bus(handler, 1400, 400));
+		entityManager.addEntity(new Warner(handler, 1536, 48));
+		entityManager.addEntity(new MolviSahab(handler, 1028, 256+64));
+		
 		loadMap(name); //Fills up the tiles array with id's
 		
-		
-		
 		//spawn position of player
-		entityManager.getPlayer().setX(100);
-		entityManager.getPlayer().setY(1200);
+		entityManager.getPlayer().setX(1200);
+		entityManager.getPlayer().setY(1600);
 		
 	}
 	

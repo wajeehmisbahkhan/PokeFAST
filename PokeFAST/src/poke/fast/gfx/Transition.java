@@ -52,7 +52,6 @@ public class Transition {
 		if (playing) {
 			g.setColor(new Color (0, 0, 0, opacity/100));
 			g.fillRect(0, 0, handler.getWidth(), handler.getHeight());
-			System.out.println(opacity + " " + speed);
 			if (opacity+speed < 100)
 				opacity += speed;
 			else {
@@ -78,13 +77,10 @@ public class Transition {
 			//Left coming swipes
 			for (int i = 0; i < 10; i++) {
 				g.fillRect(0, i*40, width, 20);
-				//Pokeballs
-				//g.drawImage(Assets.pokeBag, width, i*40, 25, 25, null);
 			}
 			//Right coming swipes
 			for (int i = 0; i < 10; i++) {
 				g.fillRect(x, 20 + (i*40), width, 20);
-				//g.drawImage(Assets.pokeBag, x-20, 20+(i*40), 25, 25, null);
 			}
 			if (width <= 400) {
 				width += speed;

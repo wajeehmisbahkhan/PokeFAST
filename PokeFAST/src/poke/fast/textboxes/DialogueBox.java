@@ -43,6 +43,7 @@ public class DialogueBox {
 		if (State.getState() instanceof BattleState)
 			return;
 		else if (isSaying) {
+			handler.getKeyManager().canMove = false;
 			//During other states
 			if (page < this.messages.size()) {
 				//Showing one at a time
@@ -59,6 +60,7 @@ public class DialogueBox {
 				}
 			}
 			if (page == this.messages.size()) {
+				handler.getKeyManager().canMove = true;
 				isSaying = false;
 				said = true;
 				letters = 0;

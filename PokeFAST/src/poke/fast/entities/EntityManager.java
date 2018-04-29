@@ -77,8 +77,7 @@ public class EntityManager {
 		
 		for(int i=0;i<entities.size();i++) {
 			Entity e = entities.get(i);
-			if (!Transition.playing || !DialogueBox.isSaying) //Run !during transitions || !while something is being said
-				e.tick();
+			e.tick();
 			if(!e.isAlive())
 				entities.remove(e);
 		}

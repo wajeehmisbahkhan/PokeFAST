@@ -190,11 +190,8 @@ public class Game implements Runnable {
 		return gameState;
 	}
 	
-	public State getMenuState () {
-		return menuState;
+	public void setGameState(State state) {
+		gameState = state;
 	}
 	
-	public State getBattleState () {
-		return battleState;
-	}
 }

@@ -72,7 +72,8 @@ public class IntroState extends State {
 				transition.fadeOut(g, 1);
 			if (Transition.played) {
 				Transition.played = false;
-				State.setState(new GameState(handler));
+				handler.getGame().setGameState(new GameState(handler));
+				State.setState(handler.getGame().getGameState());
 			}
 		}
 	}

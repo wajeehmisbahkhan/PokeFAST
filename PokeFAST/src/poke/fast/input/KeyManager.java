@@ -11,6 +11,7 @@ public class KeyManager implements KeyListener{
 	
 	public boolean spacePressed;
 	private int ticks = 0;
+	public boolean canMove = true;
 	public KeyManager() {
 		keys = new boolean[256];
 	}
@@ -31,15 +32,10 @@ public class KeyManager implements KeyListener{
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		keys[e.getKeyCode()] = true;
-		//For space
-		/*if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-			if (ticks > 30) {
-				keys[e.getKeyCode()] = true;
-				ticks = 0;
-			} else
-				keys[e.getKeyCode()] = false;
-		}*/
+		if (canMove || e.getKeyCode() == KeyEvent.VK_SPACE)
+			keys[e.getKeyCode()] = true;
+		else
+			keys[e.getKeyCode()] = false;
 	}
 
 	@Override

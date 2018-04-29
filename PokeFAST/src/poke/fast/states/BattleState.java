@@ -37,7 +37,7 @@ public class BattleState extends State {
 	private boolean starting, sliding;
 	private boolean battling = false, playerTurn = false, enemyTurn = false, selecting = false, damaging = false, damaged = false;
 	private boolean won;
-	int decreasedHealth = 0;
+	private int decreasedHealth;
 	static int blackWidth = 0;
 	
 	//Battle
@@ -106,6 +106,7 @@ public class BattleState extends State {
 	
 	//Starting animations
 	private void init (Graphics g) {
+		decreasedHealth = player.getGPA();
 		//Slide and stay
 		slide(player.getName().toLowerCase(), "left", g);
 		slide(enemy.getName().toLowerCase(), "right", g);

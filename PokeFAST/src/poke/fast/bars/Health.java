@@ -20,7 +20,7 @@ public class Health {
 			g.setColor(Color.RED);
 		//Filled up
 		if (healthWidth < 0 && maxHealth != 0)
-			healthWidth = currentHealth/maxHealth * 100;
+			healthWidth = (int) ((float)currentHealth/maxHealth * 100);
 		g.fillRoundRect(x, y, healthWidth, 15, 5, 5);
 		g.setColor(Color.BLACK);
 	}

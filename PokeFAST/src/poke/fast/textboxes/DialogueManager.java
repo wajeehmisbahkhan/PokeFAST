@@ -43,6 +43,9 @@ public class DialogueManager {
 				DialogueBox.said = false;
 				message = null;
 			}
+		} else {
+			message = null;
+			say = false;
 		}
 		
 	}

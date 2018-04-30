@@ -49,5 +49,13 @@ public class DialogueManager {
 		}
 		
 	}
+
+	public DialogueBox getDialogueBox() {
+		return dialogueBox;
+	}
+
+	public void setDialogueBox(DialogueBox dialogueBox) {
+		this.dialogueBox = dialogueBox;
+	}
 	
 }

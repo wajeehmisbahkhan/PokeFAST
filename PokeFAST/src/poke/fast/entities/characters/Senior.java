@@ -6,6 +6,8 @@ import java.awt.image.BufferedImage;
 import poke.fast.Handler;
 import poke.fast.gfx.Animation;
 import poke.fast.gfx.Assets;
+import poke.fast.textboxes.DialogueBox;
+import poke.fast.textboxes.DialogueManager;
 import poke.fast.textboxes.Option;
 
 public class Senior extends Enemy {
@@ -35,12 +37,13 @@ public class Senior extends Enemy {
 	
 	
 	public void tick () {
+		getInput();
 		setOptions(new Option[]{optOne, optTwo}); //Anonymous arrays
 		setAttacks(new Option[]{attackOne, attackTwo, attackThree}); //The enemy can have infinite attacks
 	}
 	
 	public void render(Graphics g) {
-		//if(shouldRender)
+		if(shouldRender)
 		g.drawImage(getCurrentAnimationFrame(), (int) ( x - handler.getGameCamera().getxOffset() ), (int) ( y - handler.getGameCamera().getyOffset() ),
 				width, height, null);
 		
@@ -69,5 +72,6 @@ public class Senior extends Enemy {
 		
 	}
 	
-	
+	public void startRagging(Graphics g,DialogueManager dialogueManager) {
+	}
 }

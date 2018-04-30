@@ -27,7 +27,7 @@ public abstract class Enemy extends Character{
 		bounds.x = 16;
 		bounds.y = 32;
 		bounds.width = 32;
-		bounds.height = 32;
+		bounds.height = Character.DEFAULT_HEIGHT - bounds.y;
 		shouldRender=false;
 		direction=0;
 		
@@ -89,57 +89,26 @@ public abstract class Enemy extends Character{
 	
 	
 	public void getInput() {
+		
+		
 		float xDest = handler.getMap().entityManager.getPlayer().getX(); 
-		float yDest = handler.getMap().entityManager.getPlayer().getX(); 
-		
+		float yDest = handler.getMap().entityManager.getPlayer().getY(); 
 		if(yDest<y) {	//UP
-			if (xDest==x)
 				yMove = -speed;
-			else {
-				yMove = -speed*(0.7071f);
-				if ( xDest>x)
-					xMove = -speed*(0.7071f);
-				if ( xDest<x)
-					xMove = speed*(0.7071f);
-			}
+				System.out.println("TRIED TO MOVE UP");
 		}	
-		
 		if(yDest>y) {	//DOWN
-			if (xDest==x)
 				yMove = speed;
-			else {
-				yMove = speed*(0.7071f);
-				if ( xDest>x)
-					xMove = -speed*(0.7071f);
-				if ( xDest<x)
-					xMove = speed*(0.7071f);
-			}
+				System.out.println("TRIED TO MOVE DOWN");
 		}	
-		
 		if(xDest>x) {	//RIGHT
-			if (yDest==y)
-				xMove = -speed;
-			else {
-				xMove = -speed*(0.7071f);
-				if ( yDest<y)
-					yMove = -speed*(0.7071f);
-				if ( yDest>y)
-					yMove = speed*(0.7071f);
-			}
-		}	
-		
-		if(xDest<x) {	//LEFT
-			if (yDest==y)
 				xMove = speed;
-			else {
-				xMove = speed*(0.7071f);
-				if ( yDest<y)
-					yMove = -speed*(0.7071f);
-				if ( yDest>y)
-					yMove = speed*(0.7071f);
-			}
+				System.out.println("TRIED TO MOVE RIGHT");
 		}	
-		
+		if(xDest<x) {	//LEFT
+				xMove = -speed;
+				System.out.println("TRIED TO MOVE LEFT");
+		}	
 	}
 	
 	

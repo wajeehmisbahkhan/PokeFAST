@@ -13,7 +13,7 @@ import poke.fast.sfx.SoundManager;
 import poke.fast.textboxes.DialogueManager;
 
 public class GameState extends State {
-	private int encounter1,encounter2;
+	//private int encounter1,encounter2;
 	private Map map;
 	private DialogueManager dialogueManager;
 	public GameState (Handler handler) {
@@ -35,7 +35,10 @@ public class GameState extends State {
 					State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getTeacher()));
 				}
 				else if(	encounter1==2	||	encounter2==2	){		//senior
-					State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getSenior()));
+					map.entityManager.getSenior().setShouldRender(true);
+					Graphics g = null;
+					map.entityManager.getSenior().startRagging(g,dialogueManager);
+					//State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getSenior()));
 				}
 				else if(	encounter1==3	||	encounter2==3	){		//assignment
 					State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getAssignment()));

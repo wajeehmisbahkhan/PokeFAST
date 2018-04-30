@@ -4,7 +4,6 @@ import java.awt.Graphics;
 
 import poke.fast.Handler;
 import poke.fast.gfx.Assets;
-import poke.fast.gfx.Transition;
 import poke.fast.sfx.SoundManager;
 import poke.fast.textboxes.DialogueBox;
 
@@ -15,7 +14,6 @@ public class OutroState extends State {
 	private int rate;
 	private int drate;
 	private boolean evolving;
-	private Transition transition;
 	
 	public OutroState(Handler handler) {
 		super(handler);

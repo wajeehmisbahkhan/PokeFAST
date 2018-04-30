@@ -2,7 +2,6 @@ package poke.fast.entities.characters;
 
 import poke.fast.Handler;
 import poke.fast.entities.Entity;
-import poke.fast.gfx.Transition;
 import poke.fast.tiles.Tile;
 
 public abstract class Character extends Entity {

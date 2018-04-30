@@ -1,11 +1,9 @@
 package poke.fast.entities.characters;
 
 import java.awt.Graphics;
-import java.awt.Rectangle;
 
 import poke.fast.Handler;
 import poke.fast.gfx.Animation;
-import poke.fast.gfx.Assets;
 import poke.fast.textboxes.Option;
 
 public abstract class Enemy extends Character{
@@ -93,22 +91,14 @@ public abstract class Enemy extends Character{
 		
 		float xDest = handler.getMap().entityManager.getPlayer().getX(); 
 		float yDest = handler.getMap().entityManager.getPlayer().getY(); 
-		if(yDest<y) {	//UP
+		if(yDest<y)	//UP
 				yMove = -speed;
-				System.out.println("TRIED TO MOVE UP");
-		}	
-		if(yDest>y) {	//DOWN
+		if(yDest>y) //DOWN
 				yMove = speed;
-				System.out.println("TRIED TO MOVE DOWN");
-		}	
-		if(xDest>x) {	//RIGHT
+		if(xDest>x) //RIGHT
 				xMove = speed;
-				System.out.println("TRIED TO MOVE RIGHT");
-		}	
-		if(xDest<x) {	//LEFT
+		if(xDest<x) //LEFT
 				xMove = -speed;
-				System.out.println("TRIED TO MOVE LEFT");
-		}	
 	}
 	
 	

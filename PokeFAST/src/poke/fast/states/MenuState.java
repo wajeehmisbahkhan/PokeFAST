@@ -4,8 +4,7 @@ import java.awt.Graphics;
 
 import poke.fast.Handler;
 import poke.fast.gfx.Assets;
-import poke.fast.gfx.Transition;
-import poke.fast.sfx.SoundManager;
+import poke.fast.transitions.TransitionManager;
 import poke.fast.ui.ClickListener;
 import poke.fast.ui.UIImageButton;
 import poke.fast.ui.UIManager;
@@ -24,7 +23,7 @@ public class MenuState extends State {
 			@Override
 			public void onClick() {
 				handler.getMouseManager().setUIManager(null);
-				Transition.playing = true;
+				TransitionManager.change = true;
 			}
 		}));
 		
@@ -32,12 +31,7 @@ public class MenuState extends State {
 	
 
 	public void tick() {
-		//If clicked and animation ended
-		if (Transition.played) {
-			Transition.played = false;
-			handler.getGame().setGameState(new GameState(handler));
-			State.setState(handler.getGame().getGameState());
-		}
+		transitionManager.tick();
 	}
 
 
@@ -46,9 +40,7 @@ public class MenuState extends State {
 		g.drawImage(Assets.menuBg, 0, 0, 400, 400, null);
 		//The user interface
 		uiManager.render(g);
-		//Fade out
-		if (Transition.playing)
-			transition.fadeOut(g, 4);
+		transitionManager.render(g);
 	}
 
 }

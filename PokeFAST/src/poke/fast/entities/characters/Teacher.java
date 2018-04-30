@@ -41,7 +41,6 @@ public class Teacher extends Enemy {
 		if(shouldRender)
 		g.drawImage(getCurrentAnimationFrame(), (int) ( x - handler.getGameCamera().getxOffset() ), (int) ( y - handler.getGameCamera().getyOffset() ),
 				width, height, null);
-		
 	}
 	
 	private BufferedImage getCurrentAnimationFrame() {

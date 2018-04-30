@@ -6,12 +6,9 @@ import java.util.Comparator;
 
 import poke.fast.Handler;
 import poke.fast.entities.characters.Assignment;
-import poke.fast.entities.characters.Enemy;
 import poke.fast.entities.characters.Player;
 import poke.fast.entities.characters.Senior;
 import poke.fast.entities.characters.Teacher;
-import poke.fast.gfx.Transition;
-import poke.fast.textboxes.DialogueBox;
 import poke.fast.entities.inanimates.Fountain;
 
 public class EntityManager {

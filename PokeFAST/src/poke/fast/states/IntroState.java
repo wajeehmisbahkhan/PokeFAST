@@ -5,13 +5,12 @@ import java.awt.Graphics;
 
 import poke.fast.Handler;
 import poke.fast.gfx.Assets;
-import poke.fast.gfx.Transition;
 import poke.fast.textboxes.DialogueBox;
+import poke.fast.transitions.TransitionManager;
 
 public class IntroState extends State {
 
 	private DialogueBox dialogueBox;
-	private Transition transition;
 	private Color backColor = new Color(20, 20, 20);
 	
 	private boolean[] states; //Ammi dialogue, fadeout, point
@@ -19,7 +18,7 @@ public class IntroState extends State {
 	public IntroState(Handler handler) {
 		super(handler);
 		dialogueBox = new DialogueBox(handler);
-		transition = new Transition(handler);
+		transitionManager = new TransitionManager(handler);
 		states = new boolean[3];
 		states[0] = true;
 		states[1] = false;
@@ -33,7 +32,6 @@ public class IntroState extends State {
 
 	@Override
 	public void render(Graphics g) {
-		transition.fadeIn(g, 2);
 		g.setColor(backColor);
 		g.fillRect(0, 0, handler.getWidth(), handler.getHeight());
 		if (states[0]) {
@@ -43,19 +41,12 @@ public class IntroState extends State {
 				DialogueBox.said = false;
 				states[0] = false;
 				states[1] = true;
-				Transition.playing = true;
 			}
 		}
 		else if (states[1]) {
-			if (Transition.playing) {
-				Transition.played = false;
-				transition.fadeIn(g, 2);
-			}
-			if (Transition.played) {
-				states[1] = false;
-				states[2] = true;
-				Transition.played = false;
-			}
+			states[1] = false;
+			states[2] = true;
+		
 		} else if (states[2]) {
 			g.drawImage(Assets.bus_back, 0, -30, handler.getWidth(), handler.getHeight(), null);
 			dialogueBox.render(g);
@@ -63,18 +54,11 @@ public class IntroState extends State {
 			if (DialogueBox.said) {
 				DialogueBox.said = false;
 				states[2] = false;
-				Transition.played = false;
-				Transition.playing = true;
 			}
 		} else {
 			g.drawImage(Assets.bus_back, 0, -30, handler.getWidth(), handler.getHeight(), null);
-			if (Transition.playing)
-				transition.fadeOut(g, 1);
-			if (Transition.played) {
-				Transition.played = false;
-				handler.getGame().setGameState(new GameState(handler));
-				State.setState(handler.getGame().getGameState());
-			}
+			handler.getGame().setGameState(new GameState(handler));
+			State.setState(handler.getGame().getGameState());
 		}
 	}
 

@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 import poke.fast.Handler;
 import poke.fast.gfx.Animation;
 import poke.fast.gfx.Assets;
-import poke.fast.gfx.Transition;
 
 public class Player extends Character{
 

@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 import poke.fast.Handler;
 import poke.fast.gfx.Animation;
 import poke.fast.gfx.Assets;
-import poke.fast.textboxes.DialogueBox;
 import poke.fast.textboxes.DialogueManager;
 import poke.fast.textboxes.Option;
 

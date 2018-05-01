@@ -16,7 +16,7 @@ public class Player extends Character{
 	private boolean frozen;
 	
 	public Player( Handler handler, float x, float y) {
-		super(handler, x, y, Character.DEFAULT_WIDTH, Character.DEFAULT_HEIGHT);
+		super(handler, x, y, 64, 64);
 		
 		GPA = 400;
 		name = "Student";
@@ -49,7 +49,7 @@ public class Player extends Character{
 		rightimation.tick();
 		leftimation.tick();
 		getInput();
-		//if(!isFrozen())
+		if(!isFrozen())
 		move();
 		handler.getGameCamera().centerOnEntity(this);
 		

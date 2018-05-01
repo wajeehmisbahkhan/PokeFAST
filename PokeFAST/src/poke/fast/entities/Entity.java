@@ -4,11 +4,8 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import poke.fast.Handler;
-import poke.fast.entities.characters.Assignment;
 import poke.fast.entities.characters.Character;
 import poke.fast.entities.characters.Enemy;
-import poke.fast.entities.characters.Senior;
-import poke.fast.entities.characters.Teacher;
 
 public abstract class Entity {
 

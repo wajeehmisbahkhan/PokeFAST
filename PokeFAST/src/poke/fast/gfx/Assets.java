@@ -45,8 +45,8 @@ public class Assets {
 
 		SpriteSheet tileSheet = new SpriteSheet(ImageLoader.loadImage("/textures/tiles_sheet.png"));
 		SpriteSheet inanimateSheet = new SpriteSheet(ImageLoader.loadImage("/textures/inanimates_sheet.png"));
-		SpriteSheet characterSheet = new SpriteSheet(ImageLoader.loadImage("/textures/character_sheet.png"));		
-		
+		SpriteSheet characterSheet = new SpriteSheet(ImageLoader.loadImage("/textures/untitled.png"));		
+		SpriteSheet newSheet = new SpriteSheet(ImageLoader.loadImage("/textures/player_sheet.png"));
 		SpriteSheet enemySheet = new SpriteSheet(ImageLoader.loadImage("/textures/enemies_sheet.jpg"));
 		SpriteSheet battleSheet = new SpriteSheet(ImageLoader.loadImage("/textures/battle_sheet.png"));
 		
@@ -94,29 +94,29 @@ public class Assets {
 		int i;
 		for(i=0;i<3;i++) {
 			
-			player_still[i] = characterSheet.crop(0,  height*i, width, height);
-			teacher_still[i] = characterSheet.crop(width*9, height*i, width, height);
-			senior_still[i] = characterSheet.crop(width*6, height*(i+4), width, height);
+			player_still[i] = newSheet.crop(0,  height*i, width, height);
+			teacher_still[i] = characterSheet.crop(0, height*i, width, height);
+			senior_still[i] = characterSheet.crop(width*1, height*(i+1), width, height);
 			
-			player_down[i] = characterSheet.crop(width*(i), 0, width, height);
-			player_left[i] = characterSheet.crop(width*(i), height, width, height);
-			player_right[i] = characterSheet.crop(width*(i), height*2, width, height);
-			player_up[i] = characterSheet.crop(width*(i), height*3, width, height);
+			player_down[i] = newSheet.crop(width*(i), 0, width, height);
+			player_left[i] = newSheet.crop(width*(i), height, width, height);
+			player_right[i] = newSheet.crop(width*(i), height*2, width, height);
+			player_up[i] = newSheet.crop(width*(i), height*3, width, height);
 			
-			teacher_down[i] = characterSheet.crop(width*(i+9), 0, width, height);
-			teacher_left[i] = characterSheet.crop(width*(i+9), height, width, height);
-			teacher_right[i] = characterSheet.crop(width*(i+9), height*2, width, height);
-			teacher_up[i] = characterSheet.crop(width*(i+9), height*3, width, height);
+			teacher_down[i] = characterSheet.crop(width*(i), 0, width, height);
+			teacher_left[i] = characterSheet.crop(width*(i), height, width, height);
+			teacher_right[i] = characterSheet.crop(width*(i), height*2, width, height);
+			teacher_up[i] = characterSheet.crop(width*(i), height*3, width, height);
 			
-			senior_down[i] = characterSheet.crop(width*(i+6), 0, width, height);
-			senior_left[i] = characterSheet.crop(width*(i+6), height, width, height);
-			senior_right[i] = characterSheet.crop(width*(i+6), height*2, width, height);
-			senior_up[i] = characterSheet.crop(width*(i+6), height*3, width, height);
+			senior_down[i] = characterSheet.crop(width*(i+1), 0, width, height);
+			senior_left[i] = characterSheet.crop(width*(i+1), height, width, height);
+			senior_right[i] = characterSheet.crop(width*(i+1), height*2, width, height);
+			senior_up[i] = characterSheet.crop(width*(i+1), height*3, width, height);
 			
 		}
-		player_still[i] = characterSheet.crop(0,  height*i, width, height);
-		teacher_still[i] = characterSheet.crop(width*9, height*i, width, height);
-		senior_still[i] = characterSheet.crop(width*6, height*(i+4), width, height);
+		player_still[i] = newSheet.crop(0,  height*i, width, height);
+		//teacher_still[i] = characterSheet.crop(0, height*i, width, height);
+		//senior_still[i] = characterSheet.crop(width, height*(i+1), width, height);
 		
 		grass = tileSheet.crop(0, 0, width, height);	
 		dirt = tileSheet.crop(width, 0, width, height);

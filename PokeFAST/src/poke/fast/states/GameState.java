@@ -8,18 +8,28 @@ import poke.fast.entities.characters.Player;
 import poke.fast.entities.characters.Senior;
 import poke.fast.entities.characters.Teacher;
 import poke.fast.maps.Map;
+import poke.fast.maps.MapManager;
 import poke.fast.textboxes.DialogueManager;
 import poke.fast.transitions.TransitionManager;
 
 public class GameState extends State {
 	private Map map;
+	public Map getMap() {
+		return map;
+	}
+
+	public void setMap(Map map) {
+		this.map = map;
+	}
 	private DialogueManager dialogueManager;
+	private MapManager mapManager;
 	public GameState (Handler handler) {
 		super(handler);
 		map = new Map(handler, "fast");
 		handler.setMap(map);
 		dialogueManager = new DialogueManager(handler);
 		transitionManager = new TransitionManager(handler);
+		mapManager = new MapManager(handler);
 	}
 
 	public void tick() {
@@ -27,19 +37,7 @@ public class GameState extends State {
 		dialogueManager.tick();
 		battleCheck();
 		transitionManager.tick();
-		
-		if (	getPlayer().stepOnPortal()	&& handler.getKeyManager().spacePressed	) {
-			if(handler.getMap().getCurrentMap()==0) {
-				map.loadMap("cs_1",getPlayer().getDirection());
-				handler.getMap().setCurrentMap(1);
-			}
-			
-			else if(handler.getMap().getCurrentMap()==1) {
-				map.loadMap("fast",getPlayer().getDirection());
-				handler.getMap().setCurrentMap(0);
-			}
-				
-		}
+		mapManager.tick();
 
 	}
 

@@ -1,6 +1,7 @@
 package poke.fast.entities.characters;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import poke.fast.Handler;
@@ -51,6 +52,7 @@ public class Player extends Character{
 		//if(!isFrozen())
 		move();
 		handler.getGameCamera().centerOnEntity(this);
+		
 	}
 
 	private void getInput() {

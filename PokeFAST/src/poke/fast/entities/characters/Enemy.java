@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import poke.fast.Handler;
 import poke.fast.gfx.Animation;
 import poke.fast.textboxes.Option;
+import poke.fast.tiles.Tile;
 
 public abstract class Enemy extends Character{
 
@@ -87,8 +88,7 @@ public abstract class Enemy extends Character{
 	
 	
 	public void getInput() {
-		
-		
+
 		float xDest = handler.getMap().entityManager.getPlayer().getX(); 
 		float yDest = handler.getMap().entityManager.getPlayer().getY(); 
 		if(yDest<y)	//UP
@@ -99,6 +99,27 @@ public abstract class Enemy extends Character{
 				xMove = speed;
 		if(xDest<x) //LEFT
 				xMove = -speed;
+	}
+	
+public void moveY() {
+		
+		if( yMove < 0 ) {		//UP
+			y += yMove;
+		}
+		else if( yMove > 0 ) {	//DOWN
+			y += yMove;
+		}
+	}
+	
+	public void moveX() {
+		
+		if( xMove > 0 ) {		//RIGHT
+			x += xMove;
+		}
+		else if( xMove < 0 ) {	//LEFT
+			x += xMove;
+		}
+		
 	}
 	
 	

@@ -41,7 +41,7 @@ public class TransitionManager {
 				swipeIn.setSpeed(2);
 				swipeIn.tick();
 				if (Transition.played) {
-					handler.getGame().setGameState(new MenuState(handler));
+					//handler.getGame().setGameState(new MenuState(handler));
 					State.setState(handler.getGame().getGameState());
 				}
 			}

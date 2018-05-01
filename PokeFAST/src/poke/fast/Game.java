@@ -31,10 +31,9 @@ public class Game implements Runnable {
 	//This variable will check whether the game is running or not
 	private boolean running;
 	
-	//The States
-	private State gameState;
-	private State menuState;
-	private State battleState;
+	//The States will be placed in stateManager
+	private GameState gameState;
+	private MenuState menuState;
 	
 	//These are the managers
 	private MouseManager mouseManager;
@@ -80,6 +79,7 @@ public class Game implements Runnable {
 		soundManager = new SoundManager();
 		
 		//States
+		
 		menuState = new MenuState(handler);
 		State.setState(menuState);
 		
@@ -95,10 +95,9 @@ public class Game implements Runnable {
 	//Keep updating these Managers
 	public void tick () {
 		keyManager.tick();
-		if (State.getState() != null) {
+		soundManager.tick();
+		if(State.getState() != null)
 			State.getState().tick();
-			soundManager.tick();
-		}
 	}
 
 	//Display this every second
@@ -115,7 +114,8 @@ public class Game implements Runnable {
 		g.clearRect(0, 0, width, height);
 		
 		//Let the current state fill the screen
-		if (State.getState() != null)
+
+		if(State.getState() != null)
 			State.getState().render(g);
 		
 		//Show what has been drawn
@@ -186,12 +186,14 @@ public class Game implements Runnable {
 		return gameCamera;
 	}
 
-	public State getGameState() {
+
+	public GameState getGameState() {
 		return gameState;
 	}
-	
-	public void setGameState(State state) {
-		gameState = state;
+
+	public void setGameState(GameState gameState2) {
+		gameState=gameState2;
+		
 	}
 	
 }

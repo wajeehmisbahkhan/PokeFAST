@@ -65,9 +65,6 @@ public class Map {
 	}
 
 	public void loadMap (String name) {
-		//Player loading
-		entityManager.getPlayer().setX(spawnX);
-		entityManager.getPlayer().setY(spawnY);
 		
 		//Map loading
 		String file = TextReader.loadFileAsString("res/maps/" + name + ".map");
@@ -82,80 +79,6 @@ public class Map {
 			}
 		}
 	}
-	
-	
-	//overload of loadMap, will merge later
-	
-	public void loadMap (String name, int direction) {
-		//Player loading
-		if(currentMap==0) {
-			
-			if(direction==3) {
-				spawnX = 6*64;
-				spawnY = 9*64;
-			}
-			else if(direction==0){
-				spawnX = 6*64;
-				spawnY = 5*64;
-			}
-			else if(direction==1){
-				spawnX = 13*64;
-				spawnY = 7*64;
-			}
-			else if(direction==2){
-				spawnX = 13*64;
-				spawnY = 7*64;
-			}		
-				
-		}
-		
-		else if(currentMap==1) {
-
-			if(direction==0) {
-				spawnX = 9*64;
-				spawnY = 20*64;
-			}
-			else if(direction==3){
-				spawnX = 6*64;
-				spawnY = 13*64;
-			}
-			else if(direction==1){
-				spawnX = 17*64;
-				spawnY = 17*64;
-			}
-			else if(direction==2){
-				spawnX = 17*64;
-				spawnY = 17*64;
-			}		
-			
-		}
-			
-		//Teleportation links
-		//(1) 9 20 		6 9
-		//(2) 6 13		6 5
-		//(3) 17 17		13 7
-		
-		
-		entityManager.getPlayer().setX(spawnX);
-		entityManager.getPlayer().setY(spawnY);
-		
-		//Map loading
-		String file = TextReader.loadFileAsString("res/maps/" + name + ".map");
-		String[] tokens = file.split("\\s+");
-		width = TextReader.parseInt(tokens[0]);
-		height = TextReader.parseInt(tokens[1]);
-		
-		tiles = new int[width][height];
-		for (int y = 0; y < height; y++) {
-			for (int x = 0; x < width; x++) {
-				tiles[x][y] = TextReader.parseInt(tokens[(x + y * width) + 4]);
-			}
-		}
-	}
-	
-	//overload loadmaop
-	
-	
 	
 	public void tick () {
 		entityManager.tick();
@@ -250,4 +173,5 @@ public class Map {
 	public void setCurrentMap(int currentMap) {
 		this.currentMap = currentMap;
 	}
+
 }

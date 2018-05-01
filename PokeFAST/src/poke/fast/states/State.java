@@ -26,11 +26,15 @@ public abstract class State {
 	}
 	
 	//These methods will be defined by the children
-	public abstract void tick();
-	public abstract void render(Graphics g);
+	//public abstract void tick();
+	//public abstract void render(Graphics g);
 	
 	//GETTERS & SETTERS
 	//Get the current state
+	public abstract void tick();
+	
+	public abstract void render(Graphics g);
+	
 	public static State getState () { //To access the static just by class
 		return currentState;
 	}

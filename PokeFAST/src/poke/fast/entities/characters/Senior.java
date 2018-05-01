@@ -72,5 +72,6 @@ public class Senior extends Enemy {
 	}
 	
 	public void startRagging(Graphics g,DialogueManager dialogueManager) {
+		
 	}
 }

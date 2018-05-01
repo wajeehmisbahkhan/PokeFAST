@@ -16,6 +16,10 @@ public class DialogueManager {
 	private boolean say;
 	private String message;
 	
+	//Extra checkers
+	private boolean enemyComing = false;
+	private int dialogueNumber = 0;
+	
 	public DialogueManager (Handler handler) {
 		this.handler = handler;
 		entities = handler.getMap().getEntityManager().getEntities();
@@ -29,19 +33,44 @@ public class DialogueManager {
 			if (e instanceof Inanimate)
 				if (((Inanimate) e).isInteracting()) {
 					message = ((Inanimate) e).getMessage();
-					say = true;
 				}
 		}
+
+		
+		
+		//If player is at Canteen
+		float x = handler.getGame().getGameState().getPlayer().getX();
+		float y = handler.getGame().getGameState().getPlayer().getY();
+		
+		if( (x > 300f && x < 500f) && (y < 320f && y > 290f) ) {
+			if (handler.getGame().getGameState().getSenior().isAlive() && dialogueNumber < 2) {
+				enemyComing = true;
+				message = "OYE FRESHIE!";
+			}
+		}
+		
+		if (message != null)
+			say = true;
 	}
 	
 	public void render (Graphics g) {
 		dialogueBox.render(g);
+		//Check for items
 		if ((handler.getKeyManager().spacePressed || DialogueBox.isSaying) && say && message != null) {
 			dialogueBox.say(g, message);
 			if (DialogueBox.said) {
 				DialogueBox.isSaying = false;
 				DialogueBox.said = false;
 				message = null;
+			}
+		} else if (enemyComing) {
+			dialogueBox.say(g, message);
+			if (DialogueBox.said) {
+				DialogueBox.isSaying = false;
+				DialogueBox.said = false;
+				message = null;
+				enemyComing = false;
+				dialogueNumber++;
 			}
 		} else {
 			message = null;

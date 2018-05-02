@@ -49,15 +49,15 @@ public class GameState extends State {
 		transitionManager.render(g);
 	}
 	
-	private void battleCheck() {
-			
+	private void battleCheck() {	
 		currentEnemy = getPlayer().checkEntityEncounter(getPlayer().getxMove(),getPlayer().getyMove());
 		if (!handler.getMap().getEntityManager().getSenior().isAlive()
 				||	!handler.getMap().getEntityManager().getTeacher().isAlive()
 				|| !handler.getMap().getEntityManager().getAssignment().isAlive())
-			victory = true;
-	}
+			victory = true;	}
 	
+
+
 	public Player getPlayer () {
 		return map.entityManager.getPlayer();
 	}

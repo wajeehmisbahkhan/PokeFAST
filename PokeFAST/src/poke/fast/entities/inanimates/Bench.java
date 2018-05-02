@@ -31,6 +31,7 @@ public class Bench extends Inanimate{
 
 	@Override
 	public void render(Graphics g) {
+		if(handler.getMap().getCurrentMap()==0)
 		if(direction=="front")
 			g.drawImage( Assets.bench[0], (int) ( x - handler.getGameCamera().getxOffset() ), (int) (y - handler.getGameCamera().getyOffset()), (int)(0.7*width), (int)(0.7*height), null);
 		else if(direction=="back")

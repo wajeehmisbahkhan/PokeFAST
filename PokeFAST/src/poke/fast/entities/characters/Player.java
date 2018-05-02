@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import poke.fast.Handler;
 import poke.fast.gfx.Animation;
 import poke.fast.gfx.Assets;
+import poke.fast.tiles.Tile;
 
 public class Player extends Character{
 
@@ -14,6 +15,7 @@ public class Player extends Character{
 	private int direction, GPA;
 	private Animation upimation, downimation, leftimation, rightimation;
 	private boolean frozen;
+	private Rectangle tpBounds;
 	
 	public Player( Handler handler, float x, float y) {
 		super(handler, x, y, 64, 64);
@@ -21,8 +23,13 @@ public class Player extends Character{
 		GPA = 400;
 		name = "Student";
 		frozen=false;
+		tpBounds = new Rectangle();
 		bounds.x = 16;
 		bounds.y = 32;
+		tpBounds.width=24;
+		tpBounds.height=24;
+		tpBounds.x=(int) x;
+		tpBounds.y=(int) y;
 		bounds.width = 32;
 		bounds.height = Character.DEFAULT_HEIGHT - bounds.y;
 		
@@ -44,6 +51,7 @@ public class Player extends Character{
 
 	@Override
 	public void tick() {
+		
 		downimation.tick();
 		upimation.tick();
 		rightimation.tick();
@@ -51,8 +59,39 @@ public class Player extends Character{
 		getInput();
 		if(!isFrozen())
 		move();
+		createTpBounds();
 		handler.getGameCamera().centerOnEntity(this);
 		
+	}
+
+	private void createTpBounds() {
+		if(direction==0) {	//down
+			tpBounds.x=(int) this.xMove+20;
+			tpBounds.y=(int) this.yMove+48;
+		}
+		else if(direction==1) {	//left
+			tpBounds.x=(int) this.xMove;
+			tpBounds.y=(int) this.yMove+32;
+		}
+		else if(direction==2) {	//right
+			tpBounds.x=(int) this.xMove+42;
+			tpBounds.y=(int) this.yMove+32;
+		}
+		else if(direction==3) {	//up
+			tpBounds.x=(int) this.xMove+20;
+			tpBounds.y=(int) this.yMove+12;
+		}
+		
+	}
+	
+	public boolean stepOnPortal() {
+		
+		int ty = (int) (y + yMove + tpBounds.y) / Tile.TILEHEIGHT;
+		if (handler.getMap().getTile( (int) (x + tpBounds.x) / Tile.TILEHEIGHT, ty ).isPortal()
+				||
+				handler.getMap().getTile( (int) (x + tpBounds.x + tpBounds.width) / Tile.TILEHEIGHT, ty) .isPortal())
+		return true;
+		return false;
 	}
 
 	private void getInput() {
@@ -112,6 +151,8 @@ public class Player extends Character{
 	
 	@Override
 	public void render(Graphics g) {
+		g.fillRect(tpBounds.x, tpBounds.y, tpBounds.width, tpBounds.height);
+		g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
 		g.drawImage(getCurrentAnimationFrame(), (int) ( x - handler.getGameCamera().getxOffset() ), (int) ( y - handler.getGameCamera().getyOffset() ),
 				width, height, null);
 		

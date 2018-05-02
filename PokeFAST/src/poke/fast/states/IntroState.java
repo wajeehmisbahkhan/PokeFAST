@@ -37,8 +37,8 @@ public class IntroState extends State {
 		if (states[0]) {
 			dialogueBox.render(g);
 			dialogueBox.say(g, "Zzz...Zzz...\nZzzzzz...\nKAMBAKHAT UTH JA!\n\nKia hua ammi!?\nMom: Tumhara point nikal jaiga!\nAcha acha ja raha hoon...");
-			if (DialogueBox.said) {
-				DialogueBox.said = false;
+			if (dialogueBox.said) {
+				dialogueBox.said = false;
 				states[0] = false;
 				states[1] = true;
 			}
@@ -51,8 +51,8 @@ public class IntroState extends State {
 			g.drawImage(Assets.bus_back, 0, -30, handler.getWidth(), handler.getHeight(), null);
 			dialogueBox.render(g);
 			dialogueBox.say(g, "Zindagi main pahli baar itne jaldi uthna para; I hope my first day doesn't go too bad. Suna hai is jagah pai ragging bohat hoti hai... Khair Allah malik hai.");
-			if (DialogueBox.said) {
-				DialogueBox.said = false;
+			if (dialogueBox.said) {
+				dialogueBox.said = false;
 				states[2] = false;
 			}
 		} else {

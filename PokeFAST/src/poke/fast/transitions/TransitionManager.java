@@ -41,6 +41,7 @@ public class TransitionManager {
 				}
 			} else if (State.getState() instanceof GameState) {
 				if (handler.getGame().getGameState().victory) {
+					fadeOut.setSpeed(3);
 					fadeOut.tick();
 				} else {
 					swipeIn.setSpeed(2);

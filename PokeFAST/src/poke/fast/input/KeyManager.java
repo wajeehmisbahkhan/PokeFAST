@@ -29,6 +29,18 @@ public class KeyManager implements KeyListener{
 		} else
 			spacePressed = false;
 		ticks++;
+		
+		if (!canMove) {
+			up = false;
+			down = false;
+			left = false;
+			right = false;
+		}
+		
+		if (skipSpace) {
+			space = false;
+		}
+		
 	}
 	
 	@Override

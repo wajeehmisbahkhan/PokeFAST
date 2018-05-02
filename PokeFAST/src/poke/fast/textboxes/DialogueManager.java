@@ -56,7 +56,17 @@ public class DialogueManager {
 		
 		if (handler.getGame().getGameState().victory && !victoryCheck) {
 			victoryCheck = true;
-			message = "Congratulations, you have survived the semester with a GPA of " + (float) handler.getMap().getEntityManager().getPlayer().getGPA()/100 + "... Thank you for playing :)";
+			int gpa = handler.getMap().getEntityManager().getPlayer().getGPA();
+			message = "Congratulations, you have survived the semester with a GPA of " + (float) handler.getMap().getEntityManager().getPlayer().getGPA()/100 + "...";
+			if (gpa >= 350)
+				message += "Woah, you're in the Dean's list of Honor! Way to go... Nerd... ";
+			else if (gpa > 270)
+				message += "You enjoyed your time at the university and passed like an average student... ";
+			else if (gpa > 100)
+				message += "You really need to work harder... ";
+			else
+				message += "but unfortunately you'll have to repeat it... Work harder next time.,, ";
+			message += "Thank you for playing :)";
 		}
 		
 		if (message != null)
@@ -66,27 +76,28 @@ public class DialogueManager {
 	public void render (Graphics g) {
 		dialogueBox.render(g);
 		//Check for items
-		if ((handler.getKeyManager().spacePressed || DialogueBox.isSaying) && itemCheck && message != null &&!enemyCheck) {
+		if ((handler.getKeyManager().spacePressed || dialogueBox.isSaying) && itemCheck && message != null &&!enemyCheck && !handler.getGame().getGameState().victory) {
 			dialogueBox.say(g, message);
-			if (DialogueBox.said) {
-				DialogueBox.isSaying = false;
-				DialogueBox.said = false;
+			if (dialogueBox.said) {
+				dialogueBox.isSaying = false;
+				dialogueBox.said = false;
 				message = null;
 			}
-		} else if (enemyCheck && message != null) {
+		} else if (enemyCheck && message != null && !handler.getGame().getGameState().victory) {
 			dialogueBox.say(g, message);
-			if (DialogueBox.said) {
-				DialogueBox.isSaying = false;
-				DialogueBox.said = false;
+			if (dialogueBox.said) {
+				dialogueBox.isSaying = false; 
+				dialogueBox.said = false;
 				message = null;
 				TransitionManager.change = true;
 			}
 		} else if (handler.getGame().getGameState().victory && message != null) {
 			dialogueBox.say(g, message);
-			if (DialogueBox.said) {
-				DialogueBox.isSaying = false;
-				DialogueBox.said = false;
+			if (dialogueBox.said) {
+				dialogueBox.isSaying = false;
+				dialogueBox.said = false;
 				message = null;
+				TransitionManager.change = true;
 			}
 		} else {
 			message = null;

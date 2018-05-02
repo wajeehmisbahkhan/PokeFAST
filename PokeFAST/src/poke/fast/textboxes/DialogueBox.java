@@ -22,8 +22,8 @@ public class DialogueBox {
 	private int page = 0;
 	
 	//Static isSaying
-	public static boolean isSaying = false;
-	public static boolean said = false;
+	public boolean isSaying = false;
+	public boolean said = false;
 	
 	private Handler handler;
 	

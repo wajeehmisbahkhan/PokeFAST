@@ -32,12 +32,13 @@ public class GameState extends State {
 		dialogueManager = new DialogueManager(handler);
 		transitionManager = new TransitionManager(handler);
 		mapManager = new MapManager(handler);
+		handler.getKeyManager().canMove = true;
 	}
 
 	public void tick() {
 		map.tick();
-		dialogueManager.tick();
 		battleCheck();
+		dialogueManager.tick();
 		transitionManager.tick();
 		mapManager.tick();
 
@@ -54,7 +55,8 @@ public class GameState extends State {
 		if (!handler.getMap().getEntityManager().getSenior().isAlive()
 				&& !handler.getMap().getEntityManager().getTeacher().isAlive()
 				&& !handler.getMap().getEntityManager().getAssignment().isAlive())
-			victory = true;	}
+			victory = true;
+		}
 	
 
 

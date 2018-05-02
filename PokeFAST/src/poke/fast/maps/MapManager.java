@@ -15,6 +15,7 @@ public class MapManager {
 			if(handler.getMap().getCurrentMap()==0) {
 				switchMap("cs_1",handler.getGame().getGameState().getPlayer().getDirection());
 				handler.getMap().setCurrentMap(1);
+				
 			}
 			
 			else if(handler.getMap().getCurrentMap()==1) {

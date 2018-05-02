@@ -32,7 +32,7 @@ public class Map {
 	
 	public Map (Handler handler, String name) {
 		this.handler = handler;
-		entityManager = new EntityManager(handler, new Player(handler,0,0), new Teacher(handler, 600, 100), new Senior(handler, 400, 600), new Assignment(handler, 250, 500));
+		entityManager = new EntityManager(handler, new Player(handler,0,0), new Teacher(handler, 600, 100), new Senior(handler, 400, 250), new Assignment(handler, 250, 500));
 		
 		for(int i=0;i<448;i+=64) {
 			entityManager.addEntity(new Tree(handler, 1260, 1160+i));

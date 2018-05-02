@@ -51,14 +51,14 @@ public class GameState extends State {
 		String encounter = getPlayer().checkEntityEncounter(getPlayer().getxMove(),getPlayer().getyMove());
 		if (encounter != null) {
 			encounter = encounter.toLowerCase();
-			if (encounter.equals("teacher"))
+			if (encounter.equals("teacher")	&&	map.getCurrentMap()==1)
 				State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getTeacher()));
-			if (encounter.equals("senior")) {
+			if (encounter.equals("senior") && map.getCurrentMap()==0) {
 				map.entityManager.getSenior().setShouldRender(true);
 				Graphics g = null;
 				map.entityManager.getSenior().startRagging(g,dialogueManager);
 			}
-			if (encounter.equals("assignment"))
+			if (encounter.equals("assignment")	&&	map.getCurrentMap()==1)
 				assignmentEncountered();
 		}
 	}

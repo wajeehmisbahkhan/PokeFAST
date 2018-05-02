@@ -40,10 +40,17 @@ public class Map {
 		
 		for(int i=0;i<448;i+=128) {
 			entityManager.addEntity(new Tree(handler, 1700, 1160+i));
+			if(i<=320)
+			entityManager.addEntity(new Bench(handler,1700,1216+i,"left"));
+		}
+		
+		
+		for(int i=0;i<320;i+=192) {
+			entityManager.addEntity(new Bench(handler,64+i,320,"front"));
+			entityManager.addEntity(new Bench(handler,600,320+i,"left"));
 		}
 		
 		entityManager.addEntity(new Fountain(handler, 1470, 1020));	//don't change
-		entityManager.addEntity(new Bench(handler,1470,1400));
 		entityManager.addEntity(new Bus(handler, 1400, 400));
 		entityManager.addEntity(new Warner(handler, 1536, 48));
 		entityManager.addEntity(new MolviSahab(handler, 1028, 256+64));

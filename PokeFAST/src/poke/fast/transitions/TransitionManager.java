@@ -3,8 +3,10 @@ package poke.fast.transitions;
 import java.awt.Graphics;
 
 import poke.fast.Handler;
+import poke.fast.states.BattleState;
 import poke.fast.states.GameState;
 import poke.fast.states.MenuState;
+import poke.fast.states.OutroState;
 import poke.fast.states.State;
 
 public class TransitionManager {
@@ -38,11 +40,25 @@ public class TransitionManager {
 					State.setState(handler.getGame().getGameState());
 				}
 			} else if (State.getState() instanceof GameState) {
+				//Enemies
 				swipeIn.setSpeed(2);
 				swipeIn.tick();
 				if (Transition.played) {
-					//handler.getGame().setGameState(new MenuState(handler));
-					State.setState(handler.getGame().getGameState());
+					String enemy = handler.getGame().getGameState().getCurrentEnemy();
+					if (enemy != null) {
+						if (enemy.toLowerCase().equals("senior")) {
+							State.setState(new BattleState(handler, handler.getGame().getGameState().getPlayer(), handler.getMap().getEntityManager().getSenior()));
+						} else if (enemy.toLowerCase().equals("teacher")) {
+							State.setState(new BattleState(handler, handler.getGame().getGameState().getPlayer(), handler.getMap().getEntityManager().getTeacher()));
+						} else if (enemy.toLowerCase().equals("assignment")) {
+							State.setState(new BattleState(handler, handler.getGame().getGameState().getPlayer(), handler.getMap().getEntityManager().getAssignment()));
+						}
+					}
+					
+					//Game end
+					if (handler.getGame().getGameState().victory)
+						State.setState(new OutroState(handler));
+					
 				}
 			}
 		}
@@ -54,6 +70,9 @@ public class TransitionManager {
 			handler.getKeyManager().canMove = true;
 			change = false;
 			Transition.played = false;
+			swipeIn = new SwipeIn(handler);
+			fadeIn = new FadeIn(handler);
+			fadeOut = new FadeOut(handler);
 		}
 	}
 	

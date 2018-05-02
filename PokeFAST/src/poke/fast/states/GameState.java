@@ -13,7 +13,9 @@ import poke.fast.textboxes.DialogueManager;
 import poke.fast.transitions.TransitionManager;
 
 public class GameState extends State {
+	private String currentEnemy = null;
 	private Map map;
+	public boolean victory = false;
 	public Map getMap() {
 		return map;
 	}
@@ -48,7 +50,7 @@ public class GameState extends State {
 	}
 	
 	private void battleCheck() {
-		String encounter = getPlayer().checkEntityEncounter(getPlayer().getxMove(),getPlayer().getyMove());
+		/*String encounter = getPlayer().checkEntityEncounter(getPlayer().getxMove(),getPlayer().getyMove());
 		if (encounter != null) {
 			encounter = encounter.toLowerCase();
 			if (encounter.equals("teacher"))
@@ -60,14 +62,15 @@ public class GameState extends State {
 			}
 			if (encounter.equals("assignment"))
 				assignmentEncountered();
-		}
+		}*/
+		
+		currentEnemy = getPlayer().checkEntityEncounter(getPlayer().getxMove(),getPlayer().getyMove());
+		if (!handler.getMap().getEntityManager().getSenior().isAlive()
+				||	!handler.getMap().getEntityManager().getTeacher().isAlive()
+				|| !handler.getMap().getEntityManager().getAssignment().isAlive())
+			victory = true;
 	}
 	
-	private void assignmentEncountered() {
-		TransitionManager.change = true;
-		
-	}
-
 	public Player getPlayer () {
 		return map.entityManager.getPlayer();
 	}
@@ -79,6 +82,14 @@ public class GameState extends State {
 	}
 	public Assignment getAssignment () {
 		return  map.entityManager.getAssignment();
+	}
+
+	public String getCurrentEnemy() {
+		return currentEnemy;
+	}
+
+	public void setCurrentEnemy(String currentEnemy) {
+		this.currentEnemy = currentEnemy;
 	}
 	
 }

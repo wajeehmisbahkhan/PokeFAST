@@ -48,6 +48,7 @@ public class BattleState extends State {
 		this.player = player;
 		this.enemy = enemy;
 		TransitionManager.change = false;
+		handler.getGame().getGameState().getDialogueManager().setEnemyCheck(false);
 		//For Battling
 		dialogueBox = new DialogueBox(handler);
 		optionBox = new OptionBox(handler, enemy);

@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import poke.fast.Handler;
 import poke.fast.states.BattleState;
 import poke.fast.states.GameState;
+import poke.fast.states.IntroState;
 import poke.fast.states.MenuState;
 import poke.fast.states.OutroState;
 import poke.fast.states.State;
@@ -36,8 +37,7 @@ public class TransitionManager {
 				fadeOut.setSpeed(2);
 				fadeOut.tick();
 				if (Transition.played) {
-					handler.getGame().setGameState(new GameState(handler));
-					State.setState(handler.getGame().getGameState());
+					State.setState(new IntroState(handler));
 				}
 			} else if (State.getState() instanceof GameState) {
 				if (handler.getGame().getGameState().victory) {

@@ -52,8 +52,8 @@ public class GameState extends State {
 	private void battleCheck() {	
 		currentEnemy = getPlayer().checkEntityEncounter(getPlayer().getxMove(),getPlayer().getyMove());
 		if (!handler.getMap().getEntityManager().getSenior().isAlive()
-				||	!handler.getMap().getEntityManager().getTeacher().isAlive()
-				|| !handler.getMap().getEntityManager().getAssignment().isAlive())
+				&& !handler.getMap().getEntityManager().getTeacher().isAlive()
+				&& !handler.getMap().getEntityManager().getAssignment().isAlive())
 			victory = true;	}
 	
 
@@ -77,6 +77,10 @@ public class GameState extends State {
 
 	public void setCurrentEnemy(String currentEnemy) {
 		this.currentEnemy = currentEnemy;
+	}
+
+	public DialogueManager getDialogueManager() {
+		return dialogueManager;
 	}
 	
 }

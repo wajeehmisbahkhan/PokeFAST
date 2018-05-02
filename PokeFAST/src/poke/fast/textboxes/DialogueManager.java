@@ -79,7 +79,6 @@ public class DialogueManager {
 				DialogueBox.isSaying = false;
 				DialogueBox.said = false;
 				message = null;
-				enemyCheck = false;
 				TransitionManager.change = true;
 			}
 		} else if (handler.getGame().getGameState().victory && message != null) {
@@ -96,6 +95,10 @@ public class DialogueManager {
 		
 	}
 
+	public void setEnemyCheck (boolean enemyCheck) {
+		this.enemyCheck = enemyCheck;
+	}
+	
 	public DialogueBox getDialogueBox() {
 		return dialogueBox;
 	}

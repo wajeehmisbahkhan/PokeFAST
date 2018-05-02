@@ -58,8 +58,8 @@ public class Map {
 		loadMap(name); //Fills up the tiles array with id's
 		
 		//spawn position of player
-		entityManager.getPlayer().setX(1200);
-		entityManager.getPlayer().setY(1600);
+		entityManager.getPlayer().setX(100);
+		entityManager.getPlayer().setY(100);
 		
 	}
 	

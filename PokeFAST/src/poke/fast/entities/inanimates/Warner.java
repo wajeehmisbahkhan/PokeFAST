@@ -21,6 +21,6 @@ public class Warner extends Inanimate {
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage( Assets.player_down[0], (int) ( x - handler.getGameCamera().getxOffset() ), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+		g.drawImage( Assets.young, (int) ( x - handler.getGameCamera().getxOffset() ), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
 	}
 }

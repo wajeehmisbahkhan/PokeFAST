@@ -50,20 +50,7 @@ public class GameState extends State {
 	}
 	
 	private void battleCheck() {
-		/*String encounter = getPlayer().checkEntityEncounter(getPlayer().getxMove(),getPlayer().getyMove());
-		if (encounter != null) {
-			encounter = encounter.toLowerCase();
-			if (encounter.equals("teacher"))
-				State.setState(new BattleState(handler, map.entityManager.getPlayer(),map.entityManager.getTeacher()));
-			if (encounter.equals("senior")) {
-				map.entityManager.getSenior().setShouldRender(true);
-				Graphics g = null;
-				map.entityManager.getSenior().startRagging(g,dialogueManager);
-			}
-			if (encounter.equals("assignment"))
-				assignmentEncountered();
-		}*/
-		
+			
 		currentEnemy = getPlayer().checkEntityEncounter(getPlayer().getxMove(),getPlayer().getyMove());
 		if (!handler.getMap().getEntityManager().getSenior().isAlive()
 				||	!handler.getMap().getEntityManager().getTeacher().isAlive()

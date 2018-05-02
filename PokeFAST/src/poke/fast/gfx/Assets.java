@@ -16,7 +16,7 @@ public class Assets {
 	
 	//GameItems
 	public static BufferedImage grass, rock, dirt, cs, shop, shades, teleport, shadow; //Tiles
-	public static BufferedImage tree, fountain, bench[], bus; //Inanimate
+	public static BufferedImage tree, fountain, bench[], bus, old, young; //Inanimate
 	
 	public static BufferedImage[] player_still, player_down, player_up, player_left, player_right;
 	public static BufferedImage[] teacher_still, teacher_down, teacher_up, teacher_left, teacher_right;
@@ -45,22 +45,22 @@ public class Assets {
 
 		SpriteSheet tileSheet = new SpriteSheet(ImageLoader.loadImage("/textures/tiles_sheet.png"));
 		SpriteSheet inanimateSheet = new SpriteSheet(ImageLoader.loadImage("/textures/inanimates_sheet.png"));
-		SpriteSheet characterSheet = new SpriteSheet(ImageLoader.loadImage("/textures/untitled.png"));		
+		SpriteSheet characterSheet = new SpriteSheet(ImageLoader.loadImage("/textures/untitled.png"));
 		SpriteSheet newSheet = new SpriteSheet(ImageLoader.loadImage("/textures/player_sheet.png"));
-		SpriteSheet enemySheet = new SpriteSheet(ImageLoader.loadImage("/textures/enemies_sheet.jpg"));
+		SpriteSheet battleCharacterSheet = new SpriteSheet(ImageLoader.loadImage("/textures/character_sheet.png"));
 		SpriteSheet battleSheet = new SpriteSheet(ImageLoader.loadImage("/textures/battle_sheet.png"));
 		
 		bus_back = ImageLoader.loadImage("/textures/bus_sheet.jpg");
 		
 		//Crop the required items
 		student = ImageLoader.loadImage("/textures/student.png");
-		senior = enemySheet.crop(80, 240, 80, 80);
-		teacher = enemySheet.crop(160, 240, 80, 80);
-		assignment = enemySheet.crop(80, 0, 80, 80);
+		senior = battleCharacterSheet.crop(0, 0, 80, 80);
+		teacher = battleCharacterSheet.crop(80, 0, 80, 80);
+		assignment = battleCharacterSheet.crop(160, 0, 80, 80);
 		battleGround = battleSheet.crop(0, 0, 256, 144);
 		
-		freshman = enemySheet.crop(0, 0, 80, 80);
-		sophomore = enemySheet.crop(80, 720, 80, 80);
+		freshman = battleCharacterSheet.crop(0, 80, 80, 80);
+		sophomore = battleCharacterSheet.crop(80, 80, 80, 80);
 		
 		
 		//Menu
@@ -137,6 +137,8 @@ public class Assets {
 		bench[2] = inanimateSheet.crop(0, height, width, height*2);
 		bench[3] = inanimateSheet.crop(width, height, width*2, height);
 		bus = inanimateSheet.crop(0, height*3, width*8, height*3);
+		old = inanimateSheet.crop(width, height*2, width, height);
+		young = inanimateSheet.crop(width*2, height*2, width, height);
 
 	}
 	

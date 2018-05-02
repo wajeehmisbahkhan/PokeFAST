@@ -76,7 +76,7 @@ public class Game implements Runnable {
 		//Managers
 		mouseManager = new MouseManager();
 		//keyManager = new KeyManager();
-		soundManager = new SoundManager();
+		soundManager = new SoundManager(handler);
 		
 		//States
 		

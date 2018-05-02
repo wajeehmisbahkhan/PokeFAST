@@ -12,6 +12,7 @@ public class KeyManager implements KeyListener{
 	public boolean spacePressed;
 	private int ticks = 0;
 	public boolean canMove = true;
+	public boolean skipSpace = false;
 	public KeyManager() {
 		keys = new boolean[256];
 	}
@@ -32,7 +33,7 @@ public class KeyManager implements KeyListener{
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (canMove || e.getKeyCode() == KeyEvent.VK_SPACE)
+		if (canMove || (e.getKeyCode() == KeyEvent.VK_SPACE && !skipSpace))
 			keys[e.getKeyCode()] = true;
 		else
 			keys[e.getKeyCode()] = false;

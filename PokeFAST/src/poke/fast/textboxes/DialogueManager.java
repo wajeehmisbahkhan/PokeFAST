@@ -14,17 +14,20 @@ public class DialogueManager {
 	private ArrayList<Entity> entities;
 	private DialogueBox dialogueBox;
 	
-	private boolean itemCheck;
 	private String message;
 	
 	//Extra checkers
-	private boolean enemyComing = false;
+	private boolean itemCheck;
+	private boolean enemyCheck;
+	private boolean victoryCheck;
 	
 	public DialogueManager (Handler handler) {
 		this.handler = handler;
 		entities = handler.getMap().getEntityManager().getEntities();
 		dialogueBox = new DialogueBox(handler);
 		itemCheck = false;
+		enemyCheck = false;
+		victoryCheck = false;
 	}
 	
 	public void tick () {
@@ -39,22 +42,21 @@ public class DialogueManager {
 		
 		
 		String enemy = handler.getGame().getGameState().getCurrentEnemy();
-		if (enemy != null) {
+		if (enemy != null && !enemyCheck) {
+			enemyCheck = true;
 			enemy = enemy.toLowerCase();
 			if (enemy.equals("senior")) {
-				enemyComing = true;
 				message = "OYE FRESHIE!";
-				if (DialogueBox.said) {
-					message = null;
-					enemyComing = false;
-					TransitionManager.change = true;
-				}
+			} else if (enemy.equals("teacher")) {
+				message = "Time for a test...";
+			} else {
+				message = "Surprise!";
 			}
 		}
 		
-		if (handler.getGame().getGameState().victory) {
-			message = "Congratulations, you have survived the semester with a GPA of " + handler.getMap().getEntityManager().getPlayer().getGPA() + "... Thank you for playing :)... wait, what's going on!?";
-			TransitionManager.change = false;
+		if (handler.getGame().getGameState().victory && !victoryCheck) {
+			victoryCheck = true;
+			message = "Congratulations, you have survived the semester with a GPA of " + (float) handler.getMap().getEntityManager().getPlayer().getGPA()/100 + "... Thank you for playing :)";
 		}
 		
 		if (message != null)
@@ -64,20 +66,21 @@ public class DialogueManager {
 	public void render (Graphics g) {
 		dialogueBox.render(g);
 		//Check for items
-		if ((handler.getKeyManager().spacePressed || DialogueBox.isSaying) && itemCheck && message != null) {
+		if ((handler.getKeyManager().spacePressed || DialogueBox.isSaying) && itemCheck && message != null &&!enemyCheck) {
 			dialogueBox.say(g, message);
 			if (DialogueBox.said) {
 				DialogueBox.isSaying = false;
 				DialogueBox.said = false;
 				message = null;
 			}
-		} else if (enemyComing && message != null) {
+		} else if (enemyCheck && message != null) {
 			dialogueBox.say(g, message);
 			if (DialogueBox.said) {
 				DialogueBox.isSaying = false;
 				DialogueBox.said = false;
 				message = null;
-				enemyComing = false;
+				enemyCheck = false;
+				TransitionManager.change = true;
 			}
 		} else if (handler.getGame().getGameState().victory && message != null) {
 			dialogueBox.say(g, message);

@@ -31,15 +31,17 @@ public class OutroState extends State {
 		//When evolving sound ends
 		if (ticks >= 520)
 			evolving = false;
+
 	}
 
 	@Override
 	public void render(Graphics g) {
 		dialogueBox.render(g);
+		handler.getKeyManager().skipSpace = true;
 		if (evolving)
-			dialogueBox.say(g, "What!? You're evolving!\n\nSo exciting! You is won the game! \n\nMore easter eggs...\nDid you get all of them?");
+			dialogueBox.say(g, "What!? You're evolving!");
 		else
-			dialogueBox.say(g, "Freshman evolved into Sophomore!\n\n\nThanks for playing :)");
+			dialogueBox.say(g, "Freshman evolved into Sophomore!");
 		if (ticks % rate == 0) {
 			g.drawImage(Assets.sophomore, handler.getWidth()/2 - 100, handler.getHeight()/2 - 100 - 30, 200, 200, null);
 			if (rate > 0+drate) {

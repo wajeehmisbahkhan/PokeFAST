@@ -2,15 +2,22 @@ package poke.fast.sfx;
 
 import javax.sound.sampled.Clip;
 
+import poke.fast.Handler;
 import poke.fast.states.BattleState;
 import poke.fast.states.GameState;
 import poke.fast.states.OutroState;
 import poke.fast.states.State;
+import poke.fast.transitions.TransitionManager;
 
 public class SoundManager {
 	
 	public static Clip background;
 	private static String track = "none";
+	private Handler handler;
+	
+	public SoundManager (Handler handler) {
+		this.handler = handler;
+	}
 
 	//For first time
 	public static void setBackground (String name) {
@@ -59,20 +66,22 @@ public class SoundManager {
 		if (State.getState() instanceof GameState) {
 			if (track.equals("none"))
 				setBackground("game");
-			else if (!track.equals("game"))
+			else if (!track.equals("game") && !TransitionManager.change)
 				setBackground("game", true);
+			else if (!track.equals("battle_start") && TransitionManager.change && !handler.getGame().getGameState().victory) {
+				setBackground("battle_start", true);
+			}
 		}
 		
 		if (State.getState() instanceof BattleState) {
-			if (!track.equals("battle_battling"))
+			if (!track.equals("battle_battling") && background.getMicrosecondPosition() >= background.getMicrosecondLength())
 				setBackground("battle_battling", true);
 		}
 		
 		
 		if (State.getState() instanceof OutroState) {
 			if (!track.equals("evolution"))
-				setBackground("evolution");
-				//setBackground("evolution", true); <- actual
+				setBackground("evolution", true);
 		}
 	}
 

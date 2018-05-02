@@ -11,6 +11,7 @@ import poke.fast.gfx.Assets;
 import poke.fast.textboxes.DialogueBox;
 import poke.fast.textboxes.Option;
 import poke.fast.textboxes.OptionBox;
+import poke.fast.transitions.TransitionManager;
 
 public class BattleState extends State {
 	
@@ -46,6 +47,7 @@ public class BattleState extends State {
 		super(handler);
 		this.player = player;
 		this.enemy = enemy;
+		TransitionManager.change = false;
 		//For Battling
 		dialogueBox = new DialogueBox(handler);
 		optionBox = new OptionBox(handler, enemy);

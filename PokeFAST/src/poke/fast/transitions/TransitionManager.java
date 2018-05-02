@@ -40,10 +40,14 @@ public class TransitionManager {
 					State.setState(handler.getGame().getGameState());
 				}
 			} else if (State.getState() instanceof GameState) {
-				//Enemies
-				swipeIn.setSpeed(2);
-				swipeIn.tick();
+				if (handler.getGame().getGameState().victory) {
+					fadeOut.tick();
+				} else {
+					swipeIn.setSpeed(2);
+					swipeIn.tick();
+				}
 				if (Transition.played) {
+					change = false;
 					String enemy = handler.getGame().getGameState().getCurrentEnemy();
 					if (enemy != null) {
 						if (enemy.toLowerCase().equals("senior")) {

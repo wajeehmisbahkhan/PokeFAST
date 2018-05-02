@@ -16,7 +16,7 @@ public class Assets {
 	
 	//GameItems
 	public static BufferedImage grass, rock, dirt, cs, shop, shades, teleport, shadow; //Tiles
-	public static BufferedImage tree, fountain, bench, bus; //Inanimate
+	public static BufferedImage tree, fountain, bench[], bus; //Inanimate
 	
 	public static BufferedImage[] player_still, player_down, player_up, player_left, player_right;
 	public static BufferedImage[] teacher_still, teacher_down, teacher_up, teacher_left, teacher_right;
@@ -73,10 +73,10 @@ public class Assets {
 		//Game
 		
 		player_still = new BufferedImage[4];
-		player_up = new BufferedImage[3];
-		player_down = new BufferedImage[3];
-		player_left = new BufferedImage[3];
-		player_right = new BufferedImage[3];
+		player_up = new BufferedImage[4];
+		player_down = new BufferedImage[4];
+		player_left = new BufferedImage[4];
+		player_right = new BufferedImage[4];
 		
 		teacher_still = new BufferedImage[4];
 		teacher_up = new BufferedImage[3];
@@ -90,7 +90,7 @@ public class Assets {
 		senior_left = new BufferedImage[3];
 		senior_right = new BufferedImage[3];
 		
-		
+		bench = new BufferedImage[4];
 		int i;
 		for(i=0;i<3;i++) {
 			
@@ -114,6 +114,10 @@ public class Assets {
 			senior_up[i] = characterSheet.crop(width*(i+1), height*3, width, height);
 			
 		}
+		player_down[i] = newSheet.crop(width*(i), 0, width, height);
+		player_left[i] = newSheet.crop(width*(i), height, width, height);
+		player_right[i] = newSheet.crop(width*(i), height*2, width, height);
+		player_up[i] = newSheet.crop(width*(i), height*3, width, height);
 		player_still[i] = newSheet.crop(0,  height*i, width, height);
 		//teacher_still[i] = characterSheet.crop(0, height*i, width, height);
 		//senior_still[i] = characterSheet.crop(width, height*(i+1), width, height);
@@ -128,7 +132,10 @@ public class Assets {
 		teleport = tileSheet.crop(width*3, height, width, height);
 		tree = inanimateSheet.crop(0, 0, width, height);
 		fountain = inanimateSheet.crop(width*3, 0, width*5, height*3);
-		bench = inanimateSheet.crop(width, 0, width*2, height);
+		bench[0] = inanimateSheet.crop(width, 0, width*2, height);
+		bench[1] = inanimateSheet.crop(width, height, width*2, height);
+		bench[2] = inanimateSheet.crop(0, height, width, height*2);
+		bench[3] = inanimateSheet.crop(width, height, width*2, height);
 		bus = inanimateSheet.crop(0, height*3, width*8, height*3);
 
 	}

@@ -51,9 +51,9 @@ public class TransitionManager {
 					change = false;
 					String enemy = handler.getGame().getGameState().getCurrentEnemy();
 					if (enemy != null) {
-						if (enemy.toLowerCase().equals("senior")) {
+						if (enemy.toLowerCase().equals("senior") && handler.getMap().getCurrentMap() == 0) {
 							State.setState(new BattleState(handler, handler.getGame().getGameState().getPlayer(), handler.getMap().getEntityManager().getSenior()));
-						} else if (enemy.toLowerCase().equals("teacher")) {
+						} else if (enemy.toLowerCase().equals("teacher") && handler.getMap().getCurrentMap() == 1) {
 							State.setState(new BattleState(handler, handler.getGame().getGameState().getPlayer(), handler.getMap().getEntityManager().getTeacher()));
 						} else if (enemy.toLowerCase().equals("assignment")) {
 							State.setState(new BattleState(handler, handler.getGame().getGameState().getPlayer(), handler.getMap().getEntityManager().getAssignment()));

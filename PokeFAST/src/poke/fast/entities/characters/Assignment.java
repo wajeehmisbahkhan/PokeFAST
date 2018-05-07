@@ -30,8 +30,8 @@ public class Assignment extends Enemy {
 	}
 
 	public void render(Graphics g) {
-		g.drawImage(Assets.teacher_up[2], (int) ( x - handler.getGameCamera().getxOffset() ), (int) ( y - handler.getGameCamera().getyOffset() ),
-				width, height, null);
+		//g.drawImage(Assets.teacher_up[2], (int) ( x - handler.getGameCamera().getxOffset() ), (int) ( y - handler.getGameCamera().getyOffset() ),
+			//	width, height, null);
 	}
 	
 }

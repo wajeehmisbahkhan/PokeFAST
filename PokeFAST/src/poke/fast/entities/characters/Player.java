@@ -151,8 +151,8 @@ public class Player extends Character{
 	
 	@Override
 	public void render(Graphics g) {
-		g.fillRect(tpBounds.x, tpBounds.y, tpBounds.width, tpBounds.height);
-		g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
+		//g.fillRect(tpBounds.x, tpBounds.y, tpBounds.width, tpBounds.height);
+		//g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
 		g.drawImage(getCurrentAnimationFrame(), (int) ( x - handler.getGameCamera().getxOffset() ), (int) ( y - handler.getGameCamera().getyOffset() ),
 				width, height, null);
 		

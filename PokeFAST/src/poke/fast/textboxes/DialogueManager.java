@@ -43,14 +43,16 @@ public class DialogueManager {
 		
 		String enemy = handler.getGame().getGameState().getCurrentEnemy();
 		if (enemy != null && !enemyCheck) {
-			enemyCheck = true;
 			enemy = enemy.toLowerCase();
 			if (enemy.equals("senior") && handler.getMap().getCurrentMap() == 0) {
 				message = "OYE FRESHIE!";
+				enemyCheck = true;
 			} else if (enemy.equals("teacher") && handler.getMap().getCurrentMap() == 1) {
 				message = "Time for a test...";
+				enemyCheck = true;
 			} else if (enemy.equals("assignment")) {
 				message = "Surprise!";
+				enemyCheck = true;
 			}
 		}
 		

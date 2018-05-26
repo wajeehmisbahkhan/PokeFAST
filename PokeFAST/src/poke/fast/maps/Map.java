@@ -1,5 +1,6 @@
 package poke.fast.maps;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 import poke.fast.Handler;
@@ -14,6 +15,7 @@ import poke.fast.entities.inanimates.Fountain;
 import poke.fast.entities.inanimates.MolviSahab;
 import poke.fast.entities.inanimates.Tree;
 import poke.fast.entities.inanimates.Warner;
+import poke.fast.gfx.Assets;
 import poke.fast.tiles.Tile;
 import poke.fast.utils.TextReader;
 
@@ -116,10 +118,11 @@ public class Map {
 						if( getTile(x,y).renderLater()) 
 							getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - handler.getGameCamera().getxOffset()),
 								(int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
-						
-					
-				
-		
+		//Quick GPA
+		g.setFont(Assets.dialogueFont);
+		g.setColor(Color.WHITE);
+		g.drawString("GPA: " + (float) handler.getGame().getGameState().getPlayer().getGPA()/100, 10, 20);
+		g.setColor(Color.BLACK);
 	}
 	
 	public Tile getTile(int x, int y) {

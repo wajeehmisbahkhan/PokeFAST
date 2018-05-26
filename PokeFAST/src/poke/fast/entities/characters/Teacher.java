@@ -30,8 +30,8 @@ public class Teacher extends Enemy {
 	private Option optFour = new Option("Ignore", 20, "The teacher's anger increased.");
 	//Attacks for teacher
 	private Option attackOne = new Option("Lecture", 20, "You endured it.");
-	private Option attackTwo = new Option("Surprize Quiz", 100, "It was unexpectedly hard.");
-	private Option attackThree = new Option("Impossible to do assignment", 5, "You ignored it.");
+	private Option attackTwo = new Option("Surprize Quiz", 40, "It was unexpectedly hard.");
+	private Option attackThree = new Option("Impossible to do assignment", 10, "You ignored it.");
 	public void tick() {
 		setOptions(new Option[]{optOne, optTwo, optThree, optFour}); //Anonymous arrays
 		setAttacks(new Option[]{attackOne, attackTwo, attackThree}); //The enemy can have infinite attacks

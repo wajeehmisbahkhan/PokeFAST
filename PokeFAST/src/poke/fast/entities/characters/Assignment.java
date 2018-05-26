@@ -3,7 +3,6 @@ package poke.fast.entities.characters;
 import java.awt.Graphics;
 
 import poke.fast.Handler;
-import poke.fast.gfx.Assets;
 import poke.fast.textboxes.Option;
 
 public class Assignment extends Enemy {
@@ -14,7 +13,7 @@ public class Assignment extends Enemy {
 	private Option optThree = new Option("Copy From Friend", 50, "It was super efficient.");
 	
 	//Attacks for Assignment
-	private Option attackOne = new Option("Incomplete Question", 50, "It was too ambiguous to solve.");
+	private Option attackOne = new Option("Incomplete Question", 10, "It was too ambiguous to solve.");
 	private Option attackTwo = new Option("Facebook", 30, "You became distracted.");
 	
 	public Assignment(Handler handler, float x, float y) {

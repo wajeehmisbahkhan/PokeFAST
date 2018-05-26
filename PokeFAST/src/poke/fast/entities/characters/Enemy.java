@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import poke.fast.Handler;
 import poke.fast.gfx.Animation;
 import poke.fast.textboxes.Option;
-import poke.fast.tiles.Tile;
 
 public abstract class Enemy extends Character{
 

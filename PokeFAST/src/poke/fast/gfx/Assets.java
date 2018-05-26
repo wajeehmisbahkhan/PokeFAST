@@ -57,7 +57,7 @@ public class Assets {
 		senior = battleCharacterSheet.crop(0, 0, 80, 80);
 		teacher = battleCharacterSheet.crop(80, 0, 80, 80);
 		assignment = battleCharacterSheet.crop(160, 0, 80, 80);
-		battleGround = battleSheet.crop(0, 0, 256, 144);
+		battleGround = battleSheet.crop(260, 148, 255, 143);
 		
 		freshman = battleCharacterSheet.crop(0, 80, 80, 80);
 		sophomore = battleCharacterSheet.crop(80, 80, 80, 80);
